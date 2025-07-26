@@ -2,19 +2,20 @@ package main
 
 templ Book() {
 	<script>
-        func sendEmail(form) {
+		document.getElementById('booking-form').addEventListener('submit', function(event) {
+			event.preventDefault();
 			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("name").value;
-			return true;
-		}
+			this.submit();
+		});
     </script>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	@Page() {
 		<div class="card w-full h-full">
 			<div class="card-body items-center">
 				// tatittoo.a@gmail.com
-				<form id="booking-form" action="https://formsubmit.co/trinhke1996@gmail.com" method="POST" onsubmit="sendEmail(this);">
+				<form id="booking-form" action="https://formsubmit.co/trinhke1996@gmail.com" method="POST">
 					<input type="hidden" name="_next" value="https://www.tati2.com/thank_you.html"/>
-					<input type="hidden" id="subject" name="_subject" value="New submission!"/>
+					<input type="hidden" id="subject" name="_subject" value="[Booking Request] Unknown Name"/>
 					<input type="text" name="_honey" style="display:none"/>
 					<input type="hidden" name="_captcha" value="false"/>
 					<input type="hidden" name="_template" value="table"/>

@@ -4,10 +4,10 @@
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 window.location.href = `mailto:tatittoo.a@gmail.com?subject=Booking Request [${form.name.value}]&body=` + 
-                    encodeURIComponent("Name: " + form.name.value + "\n" +
-                                       "Email: " + form.email.value + "\n" +
-                                       "Phone Number: " + form.number.value + "\n" +
-                                       "Description: " + form.description.value + "\n" +
+                    encodeURIComponent("Name: " + form.name.value + "\n\n" +
+                                       "Email: " + form.email.value + "\n\n" +
+                                       "Phone Number: " + form.number.value + "\n\n" +
+                                       "Description: " + form.description.value + "\n\n" +
 									   "** Please attach any photos you'd like to reference"),true;
                 console.log("Booking request sent!");
             });

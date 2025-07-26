@@ -29,7 +29,7 @@ func Book() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script>\n\t\tdocument.getElementById('booking-form').addEventListener('submit', function(event) {\n\t\t\tevent.preventDefault();\n\t\t\tconsole.log(\"Form submitted\");\n\t\t\tconsole.log(\"Name:\", document.getElementById(\"name\").value);\n\t\t\tdocument.getElementById(\"subject\").value = \"[Booking Request] \" + document.getElementById(\"name\").value;\n\t\t\tdocument.getElementById(\"g-recaptcha-response\").value = '';\n\t\t\tthis.submit();\n\t\t});\n    </script><script>\n </script>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script>\n\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\tdocument.getElementById('booking-form').addEventListener('submit', function(event) {\n\t\t\t\tevent.preventDefault();\n\t\t\t\tconsole.log(\"Form submitted\");\n\t\t\t\tconsole.log(\"Name:\", document.getElementById(\"name\").value);\n\t\t\t\tdocument.getElementById(\"subject\").value = \"[Booking Request] \" + document.getElementById(\"name\").value;\n\t\t\t\tdocument.getElementById(\"g-recaptcha-response\").value = '';\n\t\t\t\tthis.submit();\n\t\t\t});\n\t\t});\n    </script><script>\n </script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

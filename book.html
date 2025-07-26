@@ -2,6 +2,7 @@
 		document.getElementById('booking-form').addEventListener('submit', function(event) {
 			event.preventDefault();
 			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("name").value;
+			document.getElementById("g-recaptcha-response").value = '';
 			this.submit();
 		});
     </script><script src="https://www.google.com/recaptcha/api.js"></script><script>

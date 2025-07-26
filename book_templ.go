@@ -29,7 +29,7 @@ func Book() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script src=\"https://www.google.com/recaptcha/api.js\"></script><script>\n\t\tfunction onSubmit(token) {\n\t\t\tdocument.getElementById(\"subject\").value = \"[Booking Request] \" + document.getElementById(\"name\").value;\n\t\t\tdocument.getElementById(\"g-recaptcha-response\").value = \"\";\n\t\t\tconst form = document.getElementById(\"booking-form\");\n\t\t\tform.submit();\n\t\t}\n\t</script>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<script src=\"https://www.google.com/recaptcha/api.js\"></script><script>\n\t\tfunction onSubmit(token) {\n\t\t\tdocument.getElementById(\"subject\").value = \"[Booking Request] \" + document.getElementById(\"name\").value;\n\t\t\tdocument.getElementById(\"g-recaptcha-response\").remove();\n\t\t\tconst form = document.getElementById(\"booking-form\");\n\t\t\tform.submit();\n\t\t}\n\t</script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

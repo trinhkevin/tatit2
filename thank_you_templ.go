@@ -41,7 +41,7 @@ func ThankYou() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<main class=\"grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8\"><div class=\"text-center\"><figure class=\"my-5\"><picture><source loading=\"lazy\" srcset=\"images/butterfly.webp\" type=\"image/webp\"> <img loading=\"lazy\" alt=\"butterfly\" src=\"images/butterfly.png\" class=\"h-50\"></picture></figure><h1 class=\"text-4xl\">Thank you for your interest!</h1><p class=\"mt-2 text-lg\">We will get back to you as soon as possible.</p></div></main>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<main class=\"grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8\"><div class=\"text-center\"><figure class=\"my-5\"><picture><source loading=\"lazy\" srcset=\"images/butterfly.webp\" type=\"image/webp\"> <img loading=\"lazy\" alt=\"butterfly\" src=\"images/butterfly.png\" class=\"h-60\"></picture></figure><h1 class=\"text-4xl\">Thank you for your interest!</h1><p class=\"mt-2 text-lg\">We will get back to you as soon as possible.</p></div></main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

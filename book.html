@@ -1,6 +1,7 @@
 <script src="https://www.google.com/recaptcha/api.js"></script><script>
 		function onSubmit(token) {
 			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("name").value;
+			document.getElementById("g-recaptcha-response").value = "";
 			const form = document.getElementById("booking-form");
 			form.submit();
 		}

@@ -6,12 +6,11 @@ templ Book() {
             const form = document.getElementById("booking-form");
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
-               	const url = `mailto:tatittoo.a@gmail.com?subject=Booking Request [${form.name.value}]&body=` + 
+               	window.location.href = `mailto:tatittoo.a@gmail.com?subject=Booking Request [${form.name.value}]&body=` + 
                     encodeURIComponent("Name: " + form.name.value + "\n\n" +
                                        "Phone Number: " + form.number.value + "\n\n" +
                                        "Description: " + form.description.value + "\n\n" +
 									   "** Please attach any photos you'd like to reference"),true;
-				window.open(url, '_blank').focus();
             });
         });
     </script>

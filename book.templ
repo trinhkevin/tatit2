@@ -2,26 +2,28 @@ package main
 
 templ Book() {
 	<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById("booking-form");
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-               	window.location.href = `mailto:tatittoo.a@gmail.com?subject=Booking Request [${form.name.value}]&body=` + 
-                    encodeURIComponent("Name: " + form.name.value + "\n\n" +
-                                       "Phone Number: " + form.number.value + "\n\n" +
-                                       "Description: " + form.description.value + "\n\n" +
-									   "** Please attach any photos you'd like to reference"),true;
-            });
-        });
+        func sendEmail(form) {
+			document.getElementById("subject").value = "[Booking Request]" + document.getElementById("name").value;
+			return true;
+		}
     </script>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	@Page() {
 		<div class="card w-full h-full">
 			<div class="card-body items-center">
-				<form id="booking-form">
+				// tatittoo.a@gmail.com
+				<form id="booking-form" action="https://formsubmit.co/trinhke1996@gmail.com" method="POST" onsubmit="sendEmail(this);">
+					<input type="hidden" name="_next" value="google.com"/>
+					<input type="hidden" id="subject" name="_subject" value="New submission!"/>
+					<input type="text" name="_honey" style="display:none"/>
+					<input type="hidden" name="_template" value="table"/>
 					<fieldset class="fieldset">
 						<legend class="fieldset-legend">Name</legend>
-						<input autocomplete="name" name="name" type="text" class="input validator border sm:w-xl lg:w-2xl" required/>
+						<input autocomplete="name" id="name" name="name" type="text" class="input validator border sm:w-xl lg:w-2xl" required/>
+					</fieldset>
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend">Email</legend>
+						<input autocomplete="on" name="email" type="email" class="input validator border sm:w-xl lg:w-2xl" required/>
 					</fieldset>
 					<fieldset class="fieldset">
 						<legend class="fieldset-legend">Phone Number</legend>
@@ -32,8 +34,11 @@ templ Book() {
 						<textarea autocomplete="off" name="description" class="textarea h-24 validator border sm:w-xl lg:w-2xl" placeholder="Your tattoo description" required></textarea>
 					</fieldset>
 					<fieldset class="fieldset">
-						<div class="g-recaptcha" data-sitekey="6Lfyzo8rAAAAADU_L7zh_u_FfcxtGfNXFYfLmtQO"></div>
-						<br/>
+						<legend class="fieldset-legend">Image</legend>
+						<input type="file" class="file-input" name="attachment" accept="image/png, image/jpeg"/>
+					</fieldset>
+					<fieldset class="fieldset">
+						<div class="g-recaptcha" data-sitekey="your_site_key"></div>
 						<button type="submit" class="hover:bg-black hover:text-white justify-center w-2xs input border">Submit</button>
 					</fieldset>
 				</form>

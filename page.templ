@@ -1,5 +1,7 @@
 package main
 
+import "time"
+
 templ Page() {
 	<!DOCTYPE html>
 	<html lang="en">
@@ -12,7 +14,7 @@ templ Page() {
 			<link type="text/css" href="./src/main.css" rel="stylesheet"/>
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-			<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" async defer	/>
+			<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" async defer/>
 			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond" async defer/>
 		</head>
 		<body>
@@ -36,7 +38,7 @@ templ Page() {
 			</div>
 			<footer class="footer sm:footer-horizontal footer-end p-4 justify-end">
 				<aside>
-					<p>Copyright © 2025 - All right reserved</p>
+					<p>Copyright © { time.Now().Format("2006") } - All right reserved</p>
 				</aside>
 			</footer>
 		</body>

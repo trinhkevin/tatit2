@@ -8,7 +8,12 @@ templ Book() {
 			this.submit();
 		});
     </script>
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<script>
+   function onSubmit(token) {
+     document.getElementById("booking-form").submit();
+   }
+ </script>
 	@Page() {
 		<div class="card w-full h-full">
 			<div class="card-body items-center">
@@ -40,8 +45,12 @@ templ Book() {
 						<input type="file" class="file-input" name="attachment" accept="image/png, image/jpeg"/>
 					</fieldset>
 					<fieldset class="fieldset">
-						<div class="g-recaptcha" data-sitekey="6Lfyzo8rAAAAADU_L7zh_u_FfcxtGfNXFYfLmtQO"></div>
-						<button type="submit" class="hover:bg-black hover:text-white justify-center w-2xs input border">Submit</button>
+						<button
+							class="g-recaptcha hover:bg-black hover:text-white justify-center w-2xs input border"
+							data-sitekey="6Lfyzo8rAAAAADU_L7zh_u_FfcxtGfNXFYfLmtQO"
+							data-callback="onSubmit"
+							data-action="submit"
+						>Submit</button>
 					</fieldset>
 				</form>
 			</div>

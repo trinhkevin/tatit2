@@ -1,0 +1,45 @@
+package main
+
+templ Book() {
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById("booking-form");
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                window.location.href = `mailto:tatittoo.a@gmail.com?subject=Booking Request [${form.name.value}]&body=` + 
+                    encodeURIComponent("Name: " + form.name.value + "\n" +
+                                       "Email: " + form.email.value + "\n" +
+                                       "Phone Number: " + form.number.value + "\n" +
+                                       "Description: " + form.description.value),true;
+                console.log("Booking request sent!");
+            });
+        });
+    </script>
+	@Page() {
+		<div class="card w-full h-full">
+			<div class="card-body items-center">
+				<form id="booking-form">
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend">Name</legend>
+						<input autocomplete="name" name="name" type="text" class="input validator border min-w-200" required/>
+					</fieldset>
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend">Email</legend>
+						<input autocomplete="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="input validator border min-w-200" required/>
+					</fieldset>
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend">Phone Number</legend>
+						<input autocomplete="tel" name="number" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="input validator border min-w-200" required/>
+					</fieldset>
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend">Description</legend>
+						<textarea autocomplete="off" name="description" class="textarea h-24 validator border min-w-200" placeholder="Your tattoo description" required></textarea>
+					</fieldset>
+					<fieldset class="fieldset">
+						<button type="submit" class="justify-center w-50 input border">Submit</button>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	}
+}

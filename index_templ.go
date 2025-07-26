@@ -41,7 +41,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "\"foo\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"card w-full\"><div class=\"card-body items-center text-center mt-10\"><h1 class=\"card-title text-6xl\">tat.it.too</h1><h2 class=\"card-title text-4xl font-thin\">Click below to book</h2><div class=\"card-actions hover:bg-black hover:text-white\"><button class=\"btn btn-primary\"><a href=\"book.html\">Book Now</a></button></div></div><figure class=\"my-5\"><img src=\"images/sample.png\" class=\"rounded-xl h-100\"></figure></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

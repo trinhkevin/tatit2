@@ -10,6 +10,9 @@ import (
 
 var components = map[string]func() templ.Component{
 	"index.html": Index,
+	"book.html": Book,
+	"gallery.html": Gallery,
+	"flash.html": Flash,
 	"404.html":   NotFound,
 }
 

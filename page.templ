@@ -2,6 +2,7 @@ package main
 
 import "time"
 
+// border-b
 templ Page() {
 	<!DOCTYPE html>
 	<html lang="en">
@@ -16,6 +17,15 @@ templ Page() {
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 			<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" async defer/>
 			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond" async defer/>
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					let path = window.location.href;
+					// Strip the prefix and get the last part of the URL
+					// foo.com/bar/baz.html -> baz.html
+					path = path.substring(path.lastIndexOf('/')+1);
+					document.getElementById(path).classList.add('border-b');
+				});
+			</script>
 		</head>
 		<body>
 			<div class="navbar p-0">
@@ -24,18 +34,19 @@ templ Page() {
 				</div>
 				<div class="navbar-center md:flex">
 					<ul class="menu menu-horizontal text-2xl p-0">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="gallery.html">Gallery</a></li>
-						<li><a href="book.html">Book</a></li>
-						<li><a href="flash.html">Flash</a></li>
+						<li id="index.html"><a href="index.html">Home</a></li>
+						<li id="gallery.html"><a href="gallery.html">Gallery</a></li>
+						<li id="book.html"><a href="book.html">Book</a></li>
+						<li id="flash.html"><a href="flash.html">Flash</a></li>
 						<li><a href="https://www.instagram.com/tat.it.too/">Instagram</a></li>
 					</ul>
 				</div>
 				<div class="navbar-end md:flex"></div>
 			</div>
-			<div class="card w-full h-full border-b">
+			<div class="card w-full h-full">
 				{ children... }
 			</div>
+			<hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700 mx-3"/>
 			<footer class="footer sm:footer-horizontal footer-end p-4 justify-end">
 				<aside>
 					<p>Copyright © { time.Now().Format("2006") } - All right reserved</p>

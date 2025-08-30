@@ -13,8 +13,6 @@ var components = map[string]func() templ.Component{
 	"book.html": Book,
 	"404.html":   NotFound,
 	"thank_you.html": ThankYou,
-	"fine_line.html": FineLine,
-	"pet_portraits.html": PetPortraits,
 }
 
 // main - generate components and output to *.html files

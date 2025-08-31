@@ -1,3 +1,8 @@
 body {
 	font-family: 'EB Garamond', serif;
 }
+
+.required-label::after {
+	content: '*'; /* Add a space before the asterisk for spacing */
+	color: red;
+}

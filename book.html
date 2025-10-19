@@ -3,12 +3,16 @@
 			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("name").value;
 			document.getElementById("g-recaptcha-response").remove();
 			const form = document.getElementById("booking-form");
-			form.submit();
+			if (form.checkValidity()) {
+            	form.submit();
+        	} else {
+				grecaptcha.reset();
+				form.reportValidity();
+			}
 		}
 
 		document.addEventListener('DOMContentLoaded', function() {
 			const tattooType = document.getElementById('tattoo-type');
-
 			tattooType.addEventListener('change', function() {
 					const tattooTypeTemplate = document.getElementById(this.value.replaceAll(' ', '-'));
 					let tattoTypeForm = document.getElementById('tattoo-type-form');

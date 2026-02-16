@@ -59,12 +59,53 @@ body {
 	opacity: 0.7;
 }
 
+/* Mobile nav: reliable tap targets and details-based menu */
+.mobile-menu {
+	position: relative;
+}
+
+.mobile-menu summary {
+	list-style: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+	display: none;
+}
+
+/* Hamburger button: min 44px touch target (accessibility) */
+.nav-tap-target {
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	padding: 0.5rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Mobile menu links: easy to tap */
+.mobile-menu-list a {
+	display: block;
+	min-height: 2.75rem;
+	padding: 0.5rem 0.75rem;
+	line-height: 1.5;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+}
+
 /* Mobile dropdown: minimal panel */
-.dropdown-nav .dropdown-content {
+.dropdown-nav .dropdown-content,
+.mobile-menu .dropdown-content {
 	background: var(--page-bg);
 	border: 1px solid var(--border-subtle);
 	border-radius: 0.5rem;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Ensure details dropdown shows when open */
+.mobile-menu[open] .dropdown-content {
+	display: block;
+	position: absolute;
 }
 
 /* Hero title: editorial, minimal */

@@ -38,9 +38,9 @@ templ Page() {
 		</head>
 		<body class="page-body">
 			<a href="#main-content" class="skip-link">Skip to main content</a>
-			<nav class="navbar p-0 flex-shrink-0" aria-label="Main navigation">
+			<nav class="navbar p-0 flex-shrink-0 bg-transparent" aria-label="Main navigation">
 				<div class="navbar-start md:flex">
-					<div class="dropdown bg-white">
+					<div class="dropdown dropdown-nav">
 						<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path> </svg>
 						</div>
@@ -51,6 +51,7 @@ templ Page() {
 							<li id="index.html"><a href="index.html">Home</a></li>
 							<li id="book.html"><a href="book.html">Book</a></li>
 							<li id="flash.html"><a href="flash.html">Flash</a></li>
+							<li id="aftercare.html"><a href="aftercare.html">Aftercare</a></li>
 							<li><a href="https://www.instagram.com/tat.it.too/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
 						</ul>
 					</div>
@@ -60,6 +61,7 @@ templ Page() {
 						<li id="index.html"><a href="index.html">Home</a></li>
 						<li id="book.html"><a href="book.html">Book</a></li>
 						<li id="flash.html"><a href="flash.html">Flash</a></li>
+						<li id="aftercare.html"><a href="aftercare.html">Aftercare</a></li>
 						<li><a href="https://www.instagram.com/tat.it.too/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
 					</ul>
 				</div>
@@ -69,7 +71,7 @@ templ Page() {
 				{ children... }
 			</main>
 			<hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700 mx-3 flex-shrink-0"/>
-			<footer class="footer sm:footer-horizontal footer-end p-4 justify-end flex-shrink-0" role="contentinfo">
+			<footer class="footer footer-compact flex-shrink-0" role="contentinfo">
 				<aside>
 					<p>Copyright © { time.Now().Format("2006") } - All right reserved</p>
 				</aside>

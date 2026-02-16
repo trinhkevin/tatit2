@@ -16,10 +16,19 @@
 	top: 0.5rem;
 }
 
+/* Gen Z–friendly minimal palette */
+:root {
+	--page-bg: #f8f7f4;
+	--text-primary: #0f0f0f;
+	--text-muted: #525252;
+	--border-subtle: rgba(15, 15, 15, 0.08);
+	--nav-bg: rgba(248, 247, 244, 0.92);
+}
+
 /* Full viewport layout, mobile-first */
 html {
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 }
 
 body {
@@ -28,17 +37,129 @@ body {
 	width: 100%;
 	min-height: 100vh;
 	min-height: 100dvh;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
+	background-color: var(--page-bg);
+	color: var(--text-primary);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Nav: clean bar with soft edge */
+.page-body > nav.navbar {
+	background: var(--nav-bg);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.page-body > nav .menu a {
+	transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.page-body > nav .menu a:hover {
+	opacity: 0.7;
+}
+
+/* Mobile dropdown: minimal panel */
+.dropdown-nav .dropdown-content {
+	background: var(--page-bg);
+	border: 1px solid var(--border-subtle);
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Hero title: editorial, minimal */
+.hero-title {
+	letter-spacing: -0.02em;
+	font-weight: 600;
+}
+
+.hero-subtitle {
+	letter-spacing: 0.02em;
+	color: var(--text-muted);
+	font-weight: 400;
+}
+
+/* Primary CTAs: subtle lift on hover */
+.btn-hip {
+	transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (hover: hover) {
+	.btn-hip:hover {
+		transform: translateY(-1px);
+	}
+}
+
+/* Footer: compact, muted copyright only */
+.page-body > footer.footer-compact {
+	color: var(--text-muted);
+	font-size: 0.75rem;
+	padding: 0.5rem 1rem;
+	min-height: auto;
+	gap: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.page-body > footer.footer-compact aside {
+	padding: 0;
+}
+
+.page-body > footer.footer-compact p {
+	margin: 0;
+}
+
+.page-body > hr {
+	background: var(--border-subtle);
+}
+
+/* Aftercare page: clean, minimal content */
+.aftercare-content {
+	color: var(--text-primary);
+}
+
+.aftercare-content .aftercare-muted {
+	color: var(--text-muted);
+}
+
+.aftercare-content .aftercare-list {
+	list-style: disc;
+	list-style-position: outside;
+	padding-left: 1.25rem;
+}
+
+.aftercare-content .aftercare-heading {
+	letter-spacing: -0.01em;
+}
+
+.aftercare-avoid .aftercare-heading {
+	border-left: 3px solid rgba(197, 48, 48, 0.6);
+	padding-left: 0.75rem;
+	margin-left: -0.75rem;
+}
+
+.aftercare-tips .aftercare-heading {
+	border-left: 3px solid rgba(47, 133, 90, 0.6);
+	padding-left: 0.75rem;
+	margin-left: -0.75rem;
+}
+
+/* Main content cards: no box, just content on page bg */
+.page-main > .card {
+	background: transparent;
+	border: none;
+	box-shadow: none;
 }
 
 .page-body .page-main {
-	flex: 1 1 0;
+	flex: 1 1 auto;
 	min-height: 0;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	/* At least fill viewport when content is short; grows with content so footer stays at end */
+	min-height: calc(100dvh - 6rem);
 }
 
 .required-label::after {

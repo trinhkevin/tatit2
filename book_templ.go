@@ -51,7 +51,7 @@ func Book() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("Book a Tattoo | tat.it.too", "Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking.", "https://www.tatit2.com/book.html", "https://www.tatit2.com/book.html").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

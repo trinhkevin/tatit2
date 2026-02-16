@@ -47,7 +47,7 @@ func ThankYou() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("Thank You | tat.it.too", "Thanks for your booking request. tat.it.too will be in touch soon.", "https://www.tatit2.com/thank_you.html", "https://www.tatit2.com/thank_you.html").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

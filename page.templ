@@ -2,33 +2,38 @@ package main
 
 import "time"
 
-// border-b
-templ Page() {
+// border-b. title, description, canonical (empty = no canonical link), ogURL (for og:url, use canonical or homepage).
+templ Page(title string, description string, canonical string, ogURL string) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<title>tat.it.too – Tattoo Artist | Book Online</title>
+			<title>{ title }</title>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<meta name="description" content="tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs."/>
+			<meta name="description" content={ description }/>
 			<meta name="theme-color" content="#000000"/>
 			<link rel="icon" href="images/favicon.webp" type="image/webp"/>
 			<link rel="apple-touch-icon" href="images/favicon.webp"/>
+			if canonical != "" {
+				<link rel="canonical" href={ canonical }/>
+			}
 			<link rel="preload" href="./src/tailwind.css" as="style"/>
 			<link rel="preload" href="./src/main.css" as="style"/>
 			<link type="text/css" href="./src/tailwind.css" rel="stylesheet"/>
 			<link type="text/css" href="./src/main.css" rel="stylesheet"/>
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link rel="preconnect" href="https://www.google.com"/>
+			<link rel="preconnect" href="https://www.gstatic.com" crossorigin/>
 			<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet"/>
 			<meta property="og:type" content="website"/>
-			<meta property="og:title" content="tat.it.too – Tattoo Artist | Book Online"/>
-			<meta property="og:description" content="Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs."/>
-			<meta property="og:image" content="/images/sample.webp"/>
-			<meta property="og:url" content="https://www.tatit2.com/"/>
+			<meta property="og:title" content={ title }/>
+			<meta property="og:description" content={ description }/>
+			<meta property="og:image" content="https://www.tatit2.com/images/sample.webp"/>
+			<meta property="og:url" content={ ogURL }/>
 			<meta name="twitter:card" content="summary_large_image"/>
-			<meta name="twitter:title" content="tat.it.too – Tattoo Artist | Book Online"/>
-			<meta name="twitter:description" content="Custom tattoos and flash. Book your appointment online."/>
+			<meta name="twitter:title" content={ title }/>
+			<meta name="twitter:description" content={ description }/>
 			<script type="application/ld+json">
 				[
 					{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.tatit2.com/#website","url":"https://www.tatit2.com","name":"tat.it.too","description":"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.","publisher":{"@id":"https://www.tatit2.com/#business"},"inLanguage":"en"},

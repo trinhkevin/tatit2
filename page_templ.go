@@ -10,8 +10,8 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "time"
 
-// border-b
-func Page() templ.Component {
+// border-b. title, description, canonical (empty = no canonical link), ogURL (for og:url, use canonical or homepage).
+func Page(title string, description string, canonical string, ogURL string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -32,7 +32,121 @@ func Page() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><title>tat.it.too – Tattoo Artist | Book Online</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"description\" content=\"tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.\"><meta name=\"theme-color\" content=\"#000000\"><link rel=\"icon\" href=\"images/favicon.webp\" type=\"image/webp\"><link rel=\"apple-touch-icon\" href=\"images/favicon.webp\"><link rel=\"preload\" href=\"./src/tailwind.css\" as=\"style\"><link rel=\"preload\" href=\"./src/main.css\" as=\"style\"><link type=\"text/css\" href=\"./src/tailwind.css\" rel=\"stylesheet\"><link type=\"text/css\" href=\"./src/main.css\" rel=\"stylesheet\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap\" rel=\"stylesheet\"><meta property=\"og:type\" content=\"website\"><meta property=\"og:title\" content=\"tat.it.too – Tattoo Artist | Book Online\"><meta property=\"og:description\" content=\"Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.\"><meta property=\"og:image\" content=\"/images/sample.webp\"><meta property=\"og:url\" content=\"https://www.tatit2.com/\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"twitter:title\" content=\"tat.it.too – Tattoo Artist | Book Online\"><meta name=\"twitter:description\" content=\"Custom tattoos and flash. Book your appointment online.\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/sample.webp\"}\n\t\t\t\t]\n\t\t\t</script></head><body class=\"page-body\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><nav class=\"navbar navbar-mobile p-0 flex-shrink-0 bg-transparent\" aria-label=\"Main navigation\"><div class=\"navbar-start navbar-start-mobile\"><details class=\"dropdown dropdown-nav mobile-menu\"><summary class=\"btn btn-ghost btn-square nav-tap-target hamburger-btn\" aria-label=\"Open menu\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 hamburger-icon\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h8m-8 6h16\"></path></svg></summary><ul class=\"menu menu-lg dropdown-content rounded-box z-1000 mt-2 w-56 p-2 text-xl mobile-menu-list\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\">Instagram</a></li></ul></details></div><div class=\"navbar-logo-center\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-center hidden lg:flex\" aria-hidden=\"true\"><ul class=\"menu menu-horizontal text-2xl p-0\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\">Instagram</a></li></ul></div><div class=\"navbar-logo-left hidden lg:block\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-end navbar-end-mobile\"></div></nav><main id=\"main-content\" class=\"page-main\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><title>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var2 string
+		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 10, Col: 17}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"description\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var3 string
+		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 13, Col: 49}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"><meta name=\"theme-color\" content=\"#000000\"><link rel=\"icon\" href=\"images/favicon.webp\" type=\"image/webp\"><link rel=\"apple-touch-icon\" href=\"images/favicon.webp\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if canonical != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<link rel=\"canonical\" href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 templ.SafeURL
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(canonical)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 18, Col: 42}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<link rel=\"preload\" href=\"./src/tailwind.css\" as=\"style\"><link rel=\"preload\" href=\"./src/main.css\" as=\"style\"><link type=\"text/css\" href=\"./src/tailwind.css\" rel=\"stylesheet\"><link type=\"text/css\" href=\"./src/main.css\" rel=\"stylesheet\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link rel=\"preconnect\" href=\"https://www.google.com\"><link rel=\"preconnect\" href=\"https://www.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap\" rel=\"stylesheet\"><meta property=\"og:type\" content=\"website\"><meta property=\"og:title\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var5 string
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 30, Col: 44}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\"><meta property=\"og:description\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var6 string
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 31, Col: 56}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\"><meta property=\"og:image\" content=\"https://www.tatit2.com/images/sample.webp\"><meta property=\"og:url\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var7 string
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(ogURL)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 33, Col: 42}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"twitter:title\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var8 string
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 35, Col: 45}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"><meta name=\"twitter:description\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var9 string
+		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 36, Col: 57}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/sample.webp\"}\n\t\t\t\t]\n\t\t\t</script></head><body class=\"page-body\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><nav class=\"navbar navbar-mobile p-0 flex-shrink-0 bg-transparent\" aria-label=\"Main navigation\"><div class=\"navbar-start navbar-start-mobile\"><details class=\"dropdown dropdown-nav mobile-menu\"><summary class=\"btn btn-ghost btn-square nav-tap-target hamburger-btn\" aria-label=\"Open menu\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 hamburger-icon\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h8m-8 6h16\"></path></svg></summary><ul class=\"menu menu-lg dropdown-content rounded-box z-1000 mt-2 w-56 p-2 text-xl mobile-menu-list\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\">Instagram</a></li></ul></details></div><div class=\"navbar-logo-center\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-center hidden lg:flex\" aria-hidden=\"true\"><ul class=\"menu menu-horizontal text-2xl p-0\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\">Instagram</a></li></ul></div><div class=\"navbar-logo-left hidden lg:block\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-end navbar-end-mobile\"></div></nav><main id=\"main-content\" class=\"page-main\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -40,20 +154,20 @@ func Page() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</main><hr class=\"h-px my-1 bg-gray-200 border-0 dark:bg-gray-700 mx-3 flex-shrink-0\"><footer class=\"footer footer-compact flex-shrink-0\" role=\"contentinfo\"><aside><p>Copyright © ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</main><hr class=\"h-px my-1 bg-gray-200 border-0 dark:bg-gray-700 mx-3 flex-shrink-0\"><footer class=\"footer footer-compact flex-shrink-0\" role=\"contentinfo\"><aside><p>Copyright © ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(time.Now().Format("2006"))
+		var templ_7745c5c3_Var10 string
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(time.Now().Format("2006"))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 83, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 88, Col: 48}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " - All right reserved</p></aside></footer><script>\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tvar path = window.location.href;\n\t\t\t\t\tpath = path.substring(path.lastIndexOf('/') + 1);\n\t\t\t\t\tvar el = document.getElementById(path);\n\t\t\t\t\tif (el) el.classList.add('border-b');\n\t\t\t\t});\n\t\t\t</script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " - All right reserved</p></aside></footer><script>\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tvar path = window.location.href;\n\t\t\t\t\tpath = path.substring(path.lastIndexOf('/') + 1);\n\t\t\t\t\tvar el = document.getElementById(path);\n\t\t\t\t\tif (el) el.classList.add('border-b');\n\t\t\t\t});\n\t\t\t</script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

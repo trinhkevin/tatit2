@@ -47,7 +47,7 @@ func Aftercare() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("Tattoo Aftercare | tat.it.too", "Tattoo aftercare instructions. How to care for your new tattoo. Keep it clean and heal well.", "https://www.tatit2.com/aftercare.html", "https://www.tatit2.com/aftercare.html").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -1,7 +1,7 @@
 package main
 
 templ Book() {
-	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" defer></script>
 	<script>
 		function onSubmit(token) {
 			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("name").value;
@@ -45,6 +45,15 @@ templ Book() {
 							<option disabled selected>Select</option>
 							<option value="fine line">Fine Line</option>
 							<option value="animal portrait">Animal Portrait</option>
+							<option value="flash">Flash</option>
+						</select>
+					</fieldset>
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend required-label">Date:</legend>
+						<select class="select border input sm:w-xl lg:w-2xl" id="date-preference" name="date_preference" required>
+							<option disabled selected>Select</option>
+							<option value="Weekday">Weekday</option>
+							<option value="Weekend">Weekend</option>
 						</select>
 					</fieldset>
 					<div id="tattoo-type-form"></div>
@@ -75,7 +84,35 @@ templ Book() {
 					</fieldset>
 					<fieldset class="fieldset">
 						<button
-							class="g-recaptcha active:bg-black active:text-white hover:bg-black hover:text-white justify-center w-2xs input border"
+							class="g-recaptcha active:bg-black active:text-white hover:bg-black hover:text-white justify-center w-full sm:w-xl lg:w-2xl input border"
+							data-sitekey="6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC"
+							data-callback="onSubmit"
+							data-action="submit"
+						>Submit</button>
+					</fieldset>
+				</template>
+				<template id="flash">
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend required-label">Placement picture on your body:</legend>
+						<input type="file" class="file-input" name="placement_photo" accept="image/png, image/jpeg" required/>
+						<p class="label text-md text-wrap">Please attach a picture of your body for context around the area.</p>
+					</fieldset>
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend required-label">Size:</legend>
+						<input name="size" type="number" class="input border sm:w-xl lg:w-2xl" required/>
+						<p class="label text-md text-wrap">Inches only please, not centimeters.</p>
+					</fieldset>
+					<fieldset class="fieldset">
+						<legend class="fieldset-legend required-label">Color:</legend>
+						<select class="select border input sm:w-xl lg:w-2xl" id="color" name="color" required>
+							<option disabled selected>Select</option>
+							<option value="fine-line">Color</option>
+							<option value="animal-portrait">Black/Gray</option>
+						</select>
+					</fieldset>
+					<fieldset class="fieldset">
+						<button
+							class="g-recaptcha active:bg-black active:text-white hover:bg-black hover:text-white justify-center w-full sm:w-xl lg:w-2xl input border"
 							data-sitekey="6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC"
 							data-callback="onSubmit"
 							data-action="submit"
@@ -108,7 +145,7 @@ templ Book() {
 					</fieldset>
 					<fieldset class="fieldset">
 						<button
-							class="g-recaptcha active:bg-black active:text-white hover:bg-black hover:text-white justify-center w-2xs input border"
+							class="g-recaptcha active:bg-black active:text-white hover:bg-black hover:text-white justify-center w-full sm:w-xl lg:w-2xl input border"
 							data-sitekey="6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC"
 							data-callback="onSubmit"
 							data-action="submit"

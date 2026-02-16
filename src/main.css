@@ -1,8 +1,154 @@
+/* Skip link: visible on focus for accessibility */
+.skip-link {
+	position: absolute;
+	top: -100%;
+	left: 0.5rem;
+	z-index: 10000;
+	padding: 0.5rem 1rem;
+	background: #000;
+	color: #fff;
+	text-decoration: none;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+	transition: top 0.2s ease;
+}
+.skip-link:focus {
+	top: 0.5rem;
+}
+
+/* Full viewport layout, mobile-first */
+html {
+	width: 100%;
+	height: 100%;
+}
+
 body {
 	font-family: 'EB Garamond', serif;
+	margin: 0;
+	width: 100%;
+	min-height: 100vh;
+	min-height: 100dvh;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.page-body .page-main {
+	flex: 1 1 0;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .required-label::after {
 	content: '*'; /* Add a space before the asterisk for spacing */
 	color: red;
+}
+
+/* Splash screen (index only, first visit per session) */
+.splash-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #000;
+	transition: opacity 1.4s ease-out, visibility 1.4s ease-out;
+}
+
+.splash-overlay.splash-dismissed {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.splash-figure {
+	position: relative;
+	margin: 0;
+	padding: 0.5rem;
+	animation: splash-entrance 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	filter: drop-shadow(0 0 0 transparent);
+}
+
+.splash-figure::before {
+	content: "";
+	position: absolute;
+	inset: -2px;
+	border-radius: 4px;
+	padding: 2px;
+	background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08), rgba(255,255,255,0.25));
+	background-size: 200% 200%;
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	opacity: 0;
+	animation: splash-border-in 1s 0.3s ease-out forwards, splash-shimmer 3s 1.5s ease-in-out infinite;
+	pointer-events: none;
+}
+
+.splash-dismissed .splash-figure {
+	animation: splash-exit 1.2s ease-out forwards;
+}
+
+.splash-dismissed .splash-figure::before {
+	animation: none;
+	opacity: 0;
+}
+
+.splash-img {
+	max-height: 85vh;
+	width: auto;
+	object-fit: contain;
+	border-radius: 2px;
+}
+
+@keyframes splash-entrance {
+	0% {
+		opacity: 0;
+		transform: scale(0.75);
+		filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+	}
+	40% {
+		opacity: 1;
+		filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.25));
+	}
+	70% {
+		transform: scale(1.02);
+		filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.35));
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+		filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.2));
+	}
+}
+
+@keyframes splash-border-in {
+	0% {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes splash-shimmer {
+	0%, 100% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+}
+
+@keyframes splash-exit {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(0.98);
+	}
 }

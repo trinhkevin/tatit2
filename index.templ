@@ -2,32 +2,56 @@ package main
 
 templ Index() {
 	@Page() {
-		<div class="card w-full mt-20">
-			<div class="card-body items-center text-center p-0">
-				<h1 class="card-title text-6xl">tat.it.too</h1>
-				<h2 class="card-title text-4xl font-thin">Click below to book</h2>
-				<div class="card-actions">
-					<a
-						href="book.html"
-						class="btn btn-xl active:bg-black active:text-white hover:bg-black hover:text-white btn-primary m-4 text-2xl font-semibold"
-					>Book Now</a>
-				</div>
-			</div>
-			<figure class="my-5">
+		<div id="splash-overlay" class="splash-overlay" aria-hidden="false">
+			<figure class="splash-figure">
 				<picture>
 					<source
-						loading="lazy"
 						srcset="images/sample.webp"
 						type="image/webp"
 					/>
 					<img
-						loading="lazy"
-						alt="Sample Tattoo"
+						alt="Sample Tattoo – tat.it.too tattoo art"
 						src="images/sample.png"
-						class="h-80"
+						class="splash-img"
+						decoding="async"
+						fetchpriority="high"
 					/>
 				</picture>
 			</figure>
 		</div>
+		<div class="card w-full flex-1 flex flex-col min-h-0 px-4">
+			<div class="flex-1 flex items-center justify-center">
+				<div class="card-body items-center text-center p-0">
+					<h1 class="card-title text-6xl">tat.it.too</h1>
+					<h2 class="card-title text-4xl font-thin">Click below to book</h2>
+					<div class="card-actions flex-col justify-center">
+						<a
+							href="book.html"
+							class="btn btn-xl active:bg-black active:text-white hover:bg-black hover:text-white btn-primary m-4 text-2xl font-semibold min-w-52"
+						>Book Now</a>
+						<a
+							href="flash.html"
+							class="btn btn-xl active:bg-black active:text-white hover:bg-black hover:text-white btn-primary m-4 text-2xl font-semibold min-w-52"
+						>Flash</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var overlay = document.getElementById('splash-overlay');
+				if (!overlay) return;
+				if (sessionStorage.getItem('tatit2SplashSeen') === '1') {
+					overlay.classList.add('splash-dismissed');
+					overlay.setAttribute('aria-hidden', 'true');
+					return;
+				}
+				setTimeout(function() {
+					overlay.classList.add('splash-dismissed');
+					overlay.setAttribute('aria-hidden', 'true');
+					sessionStorage.setItem('tatit2SplashSeen', '1');
+				}, 1500);
+			});
+		</script>
 	}
 }

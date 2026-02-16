@@ -8,7 +8,7 @@ package main
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Index() templ.Component {
+func Flash() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -41,7 +41,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div id=\"splash-overlay\" class=\"splash-overlay\" aria-hidden=\"false\"><figure class=\"splash-figure\"><picture><source srcset=\"images/sample.webp\" type=\"image/webp\"> <img alt=\"Sample Tattoo – tat.it.too tattoo art\" src=\"images/sample.png\" class=\"splash-img\" decoding=\"async\" fetchpriority=\"high\"></picture></figure></div><div class=\"card w-full flex-1 flex flex-col min-h-0 px-4\"><div class=\"flex-1 flex items-center justify-center\"><div class=\"card-body items-center text-center p-0\"><h1 class=\"card-title text-6xl\">tat.it.too</h1><h2 class=\"card-title text-4xl font-thin\">Click below to book</h2><div class=\"card-actions flex-col justify-center\"><a href=\"book.html\" class=\"btn btn-xl active:bg-black active:text-white hover:bg-black hover:text-white btn-primary m-4 text-2xl font-semibold min-w-52\">Book Now</a> <a href=\"flash.html\" class=\"btn btn-xl active:bg-black active:text-white hover:bg-black hover:text-white btn-primary m-4 text-2xl font-semibold min-w-52\">Flash</a></div></div></div></div><script>\n\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\tvar overlay = document.getElementById('splash-overlay');\n\t\t\t\tif (!overlay) return;\n\t\t\t\tif (sessionStorage.getItem('tatit2SplashSeen') === '1') {\n\t\t\t\t\toverlay.classList.add('splash-dismissed');\n\t\t\t\t\toverlay.setAttribute('aria-hidden', 'true');\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tsetTimeout(function() {\n\t\t\t\t\toverlay.classList.add('splash-dismissed');\n\t\t\t\t\toverlay.setAttribute('aria-hidden', 'true');\n\t\t\t\t\tsessionStorage.setItem('tatit2SplashSeen', '1');\n\t\t\t\t}, 1500);\n\t\t\t});\n\t\t</script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex-1 flex flex-col min-h-0 px-4\"><div class=\"flex-1 flex items-center justify-center\"><p class=\"text-2xl font-thin text-center\">Coming soon</p></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -38,11 +38,11 @@ templ Page() {
 		</head>
 		<body class="page-body">
 			<a href="#main-content" class="skip-link">Skip to main content</a>
-			<nav class="navbar p-0 flex-shrink-0 bg-transparent" aria-label="Main navigation">
-				<div class="navbar-start md:flex">
+			<nav class="navbar navbar-mobile p-0 flex-shrink-0 bg-transparent" aria-label="Main navigation">
+				<div class="navbar-start navbar-start-mobile">
 					<details class="dropdown dropdown-nav mobile-menu">
-						<summary class="btn btn-ghost btn-square lg:hidden nav-tap-target" aria-label="Open menu">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
+						<summary class="btn btn-ghost btn-square nav-tap-target hamburger-btn" aria-label="Open menu">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hamburger-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
 						</summary>
 						<ul class="menu menu-lg dropdown-content rounded-box z-1000 mt-2 w-56 p-2 text-xl mobile-menu-list">
 							<li id="index.html"><a href="index.html">Home</a></li>
@@ -53,7 +53,12 @@ templ Page() {
 						</ul>
 					</details>
 				</div>
-				<div class="navbar-center hidden lg:flex">
+				<div class="navbar-logo-center">
+					<a href="index.html" class="nav-logo-link" aria-label="Home">
+						<img src="images/logo-A.png" alt="" class="nav-logo-img" width="40" height="48"/>
+					</a>
+				</div>
+				<div class="navbar-center hidden lg:flex" aria-hidden="true">
 					<ul class="menu menu-horizontal text-2xl p-0">
 						<li id="index.html"><a href="index.html">Home</a></li>
 						<li id="book.html"><a href="book.html">Book</a></li>
@@ -62,7 +67,12 @@ templ Page() {
 						<li><a href="https://www.instagram.com/tat.it.too/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
 					</ul>
 				</div>
-				<div class="navbar-end md:flex"></div>
+				<div class="navbar-logo-left hidden lg:block">
+					<a href="index.html" class="nav-logo-link" aria-label="Home">
+						<img src="images/logo-A.png" alt="" class="nav-logo-img" width="40" height="48"/>
+					</a>
+				</div>
+				<div class="navbar-end navbar-end-mobile"></div>
 			</nav>
 			<main id="main-content" class="page-main">
 				{ children... }

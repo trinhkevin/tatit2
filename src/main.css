@@ -44,11 +44,136 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-/* Nav: clean bar with soft edge */
-.page-body > nav.navbar {
+/* Nav: clean bar with soft edge, always on top */
+.page-body > nav.navbar,
+.page-body > nav.navbar-mobile {
 	background: var(--nav-bg);
 	backdrop-filter: blur(8px);
 	border-bottom: 1px solid var(--border-subtle);
+	position: relative;
+	z-index: 1000;
+	display: flex !important;
+	flex-direction: row;
+	align-items: center !important;
+	min-height: 4rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	box-sizing: border-box;
+}
+
+/* Mobile: ensure hamburger container is visible and flex */
+.navbar-start-mobile {
+	display: flex;
+	align-items: center;
+}
+/* Override DaisyUI 50% widths so centered logo has room on mobile */
+.page-body > nav.navbar-mobile .navbar-start,
+.page-body > nav.navbar-mobile .navbar-end {
+	width: auto;
+	flex: 0 0 auto;
+}
+
+/* Hamburger: visible on mobile, hidden on desktop (lg) */
+.hamburger-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: visible;
+	pointer-events: auto;
+	color: var(--text-primary);
+	background: transparent;
+	border-radius: 0.375rem;
+}
+.hamburger-btn:hover {
+	background: var(--border-subtle);
+}
+.hamburger-btn:active {
+	background: var(--border-subtle);
+	transform: scale(0.96);
+}
+.hamburger-btn {
+	transition: background 0.15s ease, transform 0.1s ease;
+}
+.hamburger-icon {
+	color: inherit;
+	stroke: currentColor;
+}
+/* Logo: mobile centered, desktop left */
+.navbar-logo-center {
+	display: flex !important;
+	flex: 1;
+	justify-content: center;
+	align-items: center !important;
+	align-self: stretch;
+	min-width: 0;
+	min-height: 3rem;
+}
+.navbar-logo-center .nav-logo-link {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center;
+}
+.navbar-logo-left {
+	display: none;
+}
+/* Mobile: balance so logo is centered (end same width as hamburger) */
+.navbar-end-mobile {
+	flex-shrink: 0;
+	min-width: 2.75rem;
+	display: flex;
+	align-items: center;
+}
+.nav-logo-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.08);
+	transition: opacity 0.1s ease;
+}
+.nav-logo-link:active {
+	opacity: 0.65;
+}
+.nav-logo-img {
+	display: block;
+	height: 2rem;
+	width: auto;
+	object-fit: contain;
+	vertical-align: middle;
+}
+@media (min-width: 1024px) {
+	.navbar-logo-center {
+		display: none !important;
+	}
+	.navbar-logo-left {
+		display: block;
+		order: -1;
+		flex-shrink: 0;
+	}
+	.navbar-logo-left .nav-logo-img {
+		height: 2.25rem;
+	}
+	.hamburger-btn {
+		display: none !important;
+	}
+	.navbar-start-mobile {
+		display: none !important;
+	}
+	.navbar-start-mobile .mobile-menu .dropdown-content {
+		display: none !important;
+	}
+	/* Desktop: logo left, then centered nav links */
+	.page-body > nav.navbar-mobile {
+		justify-content: flex-start;
+	}
+	.page-body > nav.navbar-mobile .navbar-center {
+		flex: 1;
+		justify-content: center;
+		margin: 0;
+		display: flex;
+	}
+	.page-body > nav.navbar-mobile .navbar-end-mobile {
+		display: none;
+	}
 }
 
 .page-body > nav .menu a {
@@ -67,7 +192,7 @@ body {
 .mobile-menu summary {
 	list-style: none;
 	cursor: pointer;
-	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.08);
 }
 
 .mobile-menu summary::-webkit-details-marker {
@@ -90,7 +215,11 @@ body {
 	min-height: 2.75rem;
 	padding: 0.5rem 0.75rem;
 	line-height: 1.5;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.08);
+	transition: background 0.1s ease;
+}
+.mobile-menu-list a:active {
+	background: var(--border-subtle);
 }
 
 /* Mobile dropdown: minimal panel */
@@ -120,14 +249,36 @@ body {
 	font-weight: 400;
 }
 
-/* Primary CTAs: subtle lift on hover */
-.btn-hip {
-	transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+/* Index hero: subtle butterfly background (fast: one WebP, CSS-only) */
+.index-hero {
+	position: relative;
+	overflow: hidden;
+}
+.index-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image: url("../images/butterfly.webp");
+	background-size: 70%;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.2;
+	pointer-events: none;
 }
 
+/* Primary CTAs: subtle lift on hover, clear press on tap */
+.btn-hip {
+	transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.btn-hip:active {
+	transform: scale(0.97);
+}
 @media (hover: hover) {
 	.btn-hip:hover {
 		transform: translateY(-1px);
+	}
+	.btn-hip:active {
+		transform: translateY(-1px) scale(0.98);
 	}
 }
 
@@ -158,6 +309,15 @@ body {
 /* Aftercare page: clean, minimal content */
 .aftercare-content {
 	color: var(--text-primary);
+}
+
+@media (max-width: 639px) {
+	.aftercare-content {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+		padding-top: 2rem;
+		padding-bottom: 2.5rem;
+	}
 }
 
 .aftercare-content .aftercare-muted {
@@ -201,6 +361,18 @@ body {
 	width: 100%;
 	/* At least fill viewport when content is short; grows with content so footer stays at end */
 	min-height: calc(100dvh - 6rem);
+}
+
+/* Index page on mobile: lock to viewport, no scroll */
+@media (max-width: 1023px) {
+	.page-body:has(.index-hero) {
+		height: 100dvh;
+		overflow: hidden;
+	}
+	.page-body:has(.index-hero) .page-main {
+		min-height: 0;
+		flex: 1 1 0;
+	}
 }
 
 .required-label::after {

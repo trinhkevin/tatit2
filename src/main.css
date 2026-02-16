@@ -385,6 +385,18 @@ body {
 	color: red;
 }
 
+/* Book form on mobile: use full width */
+@media (max-width: 639px) {
+	.book-form-card .card-body {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+	}
+	#booking-form .file-input {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
 /* Splash screen (index only, first visit per session) */
 .splash-overlay {
 	position: fixed;

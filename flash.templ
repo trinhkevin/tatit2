@@ -2,10 +2,50 @@ package main
 
 templ Flash() {
 	@Page("Flash Tattoos | tat.it.too", "Browse flash tattoo designs. Pre-drawn designs ready to book. tat.it.too tattoo artist.", "https://www.tatit2.com/flash.html", "https://www.tatit2.com/flash.html") {
-		<div class="flex-1 flex flex-col min-h-0 px-4">
-			<div class="flex-1 flex items-center justify-center">
-				<p class="text-2xl font-thin text-center">Coming soon</p>
+		<div class="flash-page flex-1 flex flex-col min-h-0">
+			<div class="flash-grid" role="list" aria-label="Flash tattoo designs">
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
+				<button type="button" class="flash-cell" role="listitem" aria-label="View flash design" data-caption="Coming soon"><span class="flash-placeholder">Coming soon</span></button>
 			</div>
 		</div>
+		<div id="flash-modal" class="flash-modal" role="dialog" aria-modal="true" aria-label="Flash design" hidden>
+			<div class="flash-modal-backdrop" aria-hidden="true"></div>
+			<div class="flash-modal-inner">
+				<button type="button" class="flash-modal-close" aria-label="Close">×</button>
+				<div class="flash-modal-image">
+					<span class="flash-placeholder">Coming soon</span>
+				</div>
+				<p id="flash-modal-caption" class="flash-modal-caption">Coming soon</p>
+			</div>
+		</div>
+		<script>
+			(function() {
+				var modal = document.getElementById('flash-modal');
+				var captionEl = document.getElementById('flash-modal-caption');
+				if (!modal || !captionEl) return;
+				function openModal(caption) {
+					captionEl.textContent = caption || 'Coming soon';
+					modal.removeAttribute('hidden');
+					document.body.style.overflow = 'hidden';
+				}
+				function closeModal() {
+					modal.setAttribute('hidden', '');
+					document.body.style.overflow = '';
+				}
+				document.querySelectorAll('.flash-cell').forEach(function(btn) {
+					btn.addEventListener('click', function() { openModal(this.getAttribute('data-caption')); });
+				});
+				modal.querySelector('.flash-modal-backdrop').addEventListener('click', closeModal);
+				modal.querySelector('.flash-modal-close').addEventListener('click', closeModal);
+				document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+			})();
+		</script>
 	}
 }

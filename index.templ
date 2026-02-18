@@ -2,7 +2,8 @@ package main
 
 templ Index() {
 	@Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.", "https://www.tatit2.com/", "https://www.tatit2.com/") {
-		<div id="splash-overlay" class="splash-overlay" aria-hidden="false">
+		<div id="splash-overlay" class="splash-overlay" aria-hidden="false" aria-label="Welcome splash">
+			<button type="button" id="splash-skip" class="splash-skip-btn" aria-label="Skip welcome animation">Skip</button>
 			<figure class="splash-figure">
 				<picture>
 					<source
@@ -33,17 +34,19 @@ templ Index() {
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
 				var overlay = document.getElementById('splash-overlay');
+				var skipBtn = document.getElementById('splash-skip');
 				if (!overlay) return;
-				if (sessionStorage.getItem('tatit2SplashSeen') === '1') {
-					overlay.classList.add('splash-dismissed');
-					overlay.setAttribute('aria-hidden', 'true');
-					return;
-				}
-				setTimeout(function() {
+				function dismissSplash() {
 					overlay.classList.add('splash-dismissed');
 					overlay.setAttribute('aria-hidden', 'true');
 					sessionStorage.setItem('tatit2SplashSeen', '1');
-				}, 1500);
+				}
+				if (skipBtn) skipBtn.addEventListener('click', dismissSplash);
+				if (sessionStorage.getItem('tatit2SplashSeen') === '1') {
+					dismissSplash();
+					return;
+				}
+				setTimeout(dismissSplash, 1500);
 			});
 		</script>
 	}

@@ -2,9 +2,9 @@ package main
 
 templ FineLine() {
 	@Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online.", "", "https://www.tatit2.com/") {
-		<main class="grid min-h-full place-items-center bg-white px-4 py-12 sm:py-16 lg:px-6">
+		<div class="grid min-h-full place-items-center bg-white px-4 py-12 sm:py-16 lg:px-6" role="region" aria-labelledby="fine-line-heading">
 			<div class="text-center">
-				<h1 class="text-2xl font-bold text-center mb-6">REALISM &amp; FINE LINE INFORMATION</h1>
+				<h1 id="fine-line-heading" class="text-2xl font-bold text-center mb-6">REALISM &amp; FINE LINE INFORMATION</h1>
 				<p class="text-center mb-4">
 					Please send me all information below.
 					<br/>
@@ -40,6 +40,6 @@ templ FineLine() {
 					Thank you for your patience 🖤
 				</p>
 			</div>
-		</main>
+		</div>
 	}
 }

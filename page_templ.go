@@ -45,14 +45,14 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"description\" content=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"color-scheme\" content=\"light\"><meta name=\"description\" content=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 13, Col: 49}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 14, Col: 49}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -70,7 +70,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 			var templ_7745c5c3_Var4 templ.SafeURL
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(canonical)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 18, Col: 42}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 19, Col: 42}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -88,7 +88,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 30, Col: 44}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 31, Col: 44}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -101,7 +101,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 31, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 32, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -114,7 +114,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(ogURL)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 33, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 34, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -127,7 +127,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 35, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 36, Col: 45}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -140,13 +140,13 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 36, Col: 57}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 37, Col: 57}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/sample.webp\"}\n\t\t\t\t]\n\t\t\t</script></head><body class=\"page-body\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><nav class=\"navbar navbar-mobile p-0 flex-shrink-0 bg-transparent\" aria-label=\"Main navigation\"><div class=\"navbar-start navbar-start-mobile\"><details class=\"dropdown dropdown-nav mobile-menu\"><summary class=\"btn btn-ghost btn-square nav-tap-target hamburger-btn\" aria-label=\"Open menu\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 hamburger-icon\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h8m-8 6h16\"></path></svg></summary><ul class=\"menu menu-lg dropdown-content rounded-box z-1000 mt-2 w-56 p-2 text-xl mobile-menu-list\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\">Instagram</a></li></ul></details></div><div class=\"navbar-logo-center\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-center hidden lg:flex\" aria-hidden=\"true\"><ul class=\"menu menu-horizontal text-2xl p-0\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\">Instagram</a></li></ul></div><div class=\"navbar-logo-left hidden lg:block\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-end navbar-end-mobile\"></div></nav><main id=\"main-content\" class=\"page-main\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/sample.webp\"}\n\t\t\t\t]\n\t\t\t</script></head><body class=\"page-body\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><nav class=\"navbar navbar-mobile p-0 flex-shrink-0 bg-transparent\" aria-label=\"Main navigation\"><div class=\"navbar-start navbar-start-mobile\"><details class=\"dropdown dropdown-nav mobile-menu\"><summary class=\"btn btn-ghost btn-square nav-tap-target hamburger-btn\" aria-label=\"Open menu\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 hamburger-icon\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h8m-8 6h16\"></path></svg></summary><ul class=\"menu menu-lg dropdown-content rounded-box z-1000 mt-2 w-56 p-2 text-xl mobile-menu-list\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">Instagram</a></li></ul></details></div><div class=\"navbar-logo-center\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-center hidden lg:flex\" aria-hidden=\"true\"><ul class=\"menu menu-horizontal text-2xl p-0\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">Instagram</a></li></ul></div><div class=\"navbar-logo-left hidden lg:block\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.png\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-end navbar-end-mobile\"></div></nav><main id=\"main-content\" class=\"page-main\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -161,13 +161,13 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(time.Now().Format("2006"))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 88, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 89, Col: 48}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " - All right reserved</p></aside></footer><script>\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tvar path = window.location.href;\n\t\t\t\t\tpath = path.substring(path.lastIndexOf('/') + 1);\n\t\t\t\t\tvar el = document.getElementById(path);\n\t\t\t\t\tif (el) el.classList.add('border-b');\n\t\t\t\t});\n\t\t\t</script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " - All right reserved</p></aside></footer><script>\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tvar path = window.location.href;\n\t\t\t\t\tpath = path.substring(path.lastIndexOf('/') + 1);\n\t\t\t\t\tvar el = document.getElementById(path);\n\t\t\t\t\tif (el) el.classList.add('border-b');\n\t\t\t\t\tvar menu = document.querySelector('.mobile-menu');\n\t\t\t\t\tvar summary = menu ? menu.querySelector('summary') : null;\n\t\t\t\t\tif (menu && summary) {\n\t\t\t\t\t\tmenu.addEventListener('toggle', function() {\n\t\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t\t\tsummary.setAttribute('aria-label', menu.open ? 'Close menu' : 'Open menu');\n\t\t\t\t\t\t});\n\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t}\n\t\t\t\t});\n\t\t\t</script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

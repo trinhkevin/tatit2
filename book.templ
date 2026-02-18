@@ -17,23 +17,29 @@ templ Book() {
 
 		document.addEventListener('DOMContentLoaded', function() {
 			const tattooType = document.getElementById('tattoo-type');
+			const tattooTypeForm = document.getElementById('tattoo-type-form');
+			const liveRegion = document.getElementById('form-live-region');
 			tattooType.addEventListener('change', function() {
-					const tattooTypeTemplate = document.getElementById(this.value.replaceAll(' ', '-'));
-					let tattoTypeForm = document.getElementById('tattoo-type-form');
-    				tattoTypeForm.innerHTML = ''; 
-					tattoTypeForm.appendChild(tattooTypeTemplate.content.cloneNode(true));
-				}
-			);
+				const val = this.value;
+				if (!val) { tattooTypeForm.innerHTML = ''; return; }
+				const template = document.getElementById(val.replaceAll(' ', '-'));
+				if (!template) return;
+				tattooTypeForm.innerHTML = '';
+				tattooTypeForm.appendChild(template.content.cloneNode(true));
+				if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
+				tattooTypeForm.querySelector('input, select')?.focus();
+			});
 		});
 	</script>
 	@Page("Book a Tattoo | tat.it.too", "Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking.", "https://www.tatit2.com/book.html", "https://www.tatit2.com/book.html") {
 		<div class="card w-full h-full book-form-card">
-			<div class="card-body book-form-body flex flex-col h-screen md:h-auto md:m-auto md:py-10">
+			<div class="card-body book-form-body flex flex-col min-h-screen md:h-auto md:m-auto md:py-10">
 				<div class="book-form-header text-center mb-6 sm:mb-8">
 					<h1 class="book-form-title text-3xl sm:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">Book your tattoo</h1>
 					<p class="book-form-subtitle text-lg sm:text-xl font-thin text-[var(--text-muted)] mt-1">Tell me what you have in mind</p>
 				</div>
-				<form id="booking-form" action="https://formsubmit.co/tatittoo.a@gmail.com" method="POST" enctype="multipart/form-data" class="book-form w-full min-w-0 px-2 sm:px-4 text-wrap max-w-xl mx-auto">
+				<div aria-live="polite" aria-atomic="true" id="form-live-region" class="sr-only" role="status"></div>
+				<form id="booking-form" action="https://formsubmit.co/tatittoo.a@gmail.com" method="POST" enctype="multipart/form-data" class="book-form w-full min-w-0 px-3 sm:px-4 text-wrap max-w-xl mx-auto">
 					<input type="hidden" name="_next" value="https://www.tatit2.com/thank_you.html"/>
 					<input type="hidden" id="subject" name="_subject" value="[Booking Request] Unknown Name"/>
 					<input type="text" name="_honey" style="display:none"/>
@@ -60,7 +66,7 @@ templ Book() {
 							<option value="Weekend">Weekend</option>
 						</select>
 					</fieldset>
-					<div id="tattoo-type-form" class="book-dynamic-fields"></div>
+					<div id="tattoo-type-form" class="book-dynamic-fields" aria-label="Additional booking details"></div>
 				</form>
 				<template id="fine-line">
 					<fieldset class="book-fieldset">

@@ -2,12 +2,15 @@ package main
 
 templ NotFound() {
 	@Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online.", "", "https://www.tatit2.com/") {
-		<main class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+		<div class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8" role="region" aria-labelledby="not-found-heading">
 			<div class="text-center">
-				<h1 class="text-4xl">
+				<h1 id="not-found-heading" class="text-4xl">
 					Page not found
 				</h1>
+				<p class="mt-4">
+					<a href="index.html" class="underline focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-black">Return to home</a>
+				</p>
 			</div>
-		</main>
+		</div>
 	}
 }

@@ -12,15 +12,52 @@
 	border-radius: 0.25rem;
 	transition: top 0.2s ease;
 }
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:focus-visible {
 	top: 0.5rem;
+	outline: 3px solid currentColor;
+	outline-offset: 2px;
 }
 
-/* Gen Z–friendly minimal palette */
+/* Screen reader only: visually hidden, available to assistive tech (WCAG 2.4.7, 4.1.2) */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Focus visible: high-contrast outline for keyboard users (WCAG 2.4.7) */
+:focus {
+	outline: 2px solid transparent;
+}
+:focus-visible {
+	outline: 2px solid var(--text-primary);
+	outline-offset: 2px;
+}
+/* Restore outline for skip link - handled above */
+
+/* Reduced motion: respect user preference (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Gen Z–friendly minimal palette (WCAG AA contrast) */
 :root {
 	--page-bg: #f8f7f4;
 	--text-primary: #0f0f0f;
-	--text-muted: #525252;
+	--text-muted: #404040;
 	--border-subtle: rgba(15, 15, 15, 0.08);
 	--nav-bg: rgba(248, 247, 244, 0.92);
 }
@@ -633,6 +670,10 @@ body {
 	background-position: right 0.6rem center;
 	background-size: 1.25rem;
 	padding-right: 2.25rem;
+	/* Prevent option text from being truncated (override DaisyUI's text-overflow: ellipsis) */
+	width: 100%;
+	max-width: none;
+	text-overflow: unset;
 }
 .book-hint {
 	font-size: 0.8125rem;
@@ -665,7 +706,7 @@ body {
 	margin-bottom: 1.5rem;
 }
 
-/* Book form on mobile: use full width */
+/* Book form on mobile: use full width, prevent padding shift on focus */
 @media (max-width: 639px) {
 	.book-form-card .card-body {
 		padding-left: 0.75rem;
@@ -676,9 +717,49 @@ body {
 		width: 100%;
 		max-width: 100%;
 	}
+	/* Prevent layout shift when virtual keyboard opens or on input focus */
+	.page-body:has(.book-form) {
+		overflow-x: hidden;
+	}
+	.book-form {
+		/* Use fixed padding to match card-body and prevent viewport-resize shifts on focus */
+		padding-inline: 0.75rem !important;
+	}
+	.book-form .book-input,
+	.book-form .book-select {
+		touch-action: manipulation;
+	}
 }
 
 /* Splash screen (index only, first visit per session) */
+.splash-skip-btn {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+	top: 1rem;
+	right: 1rem;
+	z-index: 10001;
+}
+.splash-skip-btn:focus {
+	width: auto;
+	height: auto;
+	padding: 0.5rem 1rem;
+	margin: 0;
+	overflow: visible;
+	clip: auto;
+	background: #000;
+	color: #fff;
+	border-radius: 0.25rem;
+	font-size: 1rem;
+	cursor: pointer;
+	font-family: inherit;
+}
 .splash-overlay {
 	position: fixed;
 	inset: 0;

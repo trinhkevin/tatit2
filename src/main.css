@@ -664,6 +664,20 @@ body {
 	border-color: var(--text-primary);
 	box-shadow: 0 0 0 2px rgba(15, 15, 15, 0.08);
 }
+
+/* Invalid state: only after user attempted submit (accessibility: border + outline, not color alone) */
+.form-attempted .book-input:invalid,
+.form-attempted .book-select:invalid {
+	border-color: #b91c1c;
+	outline: 2px solid #b91c1c;
+	outline-offset: 1px;
+}
+.form-attempted .book-input:invalid:focus,
+.form-attempted .book-select:invalid:focus {
+	outline: 2px solid #b91c1c;
+	outline-offset: 1px;
+	box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.2);
+}
 .book-select {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
 	background-repeat: no-repeat;

@@ -1,21 +1,78 @@
 package main
 
 templ Book() {
-	<script src="https://www.google.com/recaptcha/api.js" defer></script>
+	<script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady&render=explicit" defer></script>
 	<script>
-		function onSubmit(token) {
-			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value;
-			document.getElementById("g-recaptcha-response").remove();
-			const form = document.getElementById("booking-form");
-			if (form.checkValidity()) {
-            	form.submit();
-        	} else {
-				grecaptcha.reset();
-				form.reportValidity();
+		var recaptchaWidgetId;
+
+		function onRecaptchaReady() {
+			if (document.readyState === "loading") return;
+			var el = document.getElementById("recaptcha-container");
+			if (el && recaptchaWidgetId === undefined) {
+				recaptchaWidgetId = grecaptcha.render(el, {
+					sitekey: "6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC",
+					size: "invisible",
+					callback: onRecaptchaSuccess
+				});
 			}
 		}
 
+		function onRecaptchaSuccess(token) {
+			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value;
+			document.getElementById("g-recaptcha-response").remove();
+			document.getElementById("booking-form").submit();
+		}
+
+		function handleFormSubmit(event) {
+			event.preventDefault();
+			const form = document.getElementById("booking-form");
+			const liveRegion = document.getElementById("form-live-region");
+			form.classList.add("form-attempted");
+			if (!form.checkValidity()) {
+				form.reportValidity();
+				var invalid = form.querySelectorAll(":invalid");
+				var labels = [];
+				invalid.forEach(function(el) {
+					var label = el.closest("fieldset")?.querySelector(".book-legend")?.textContent?.trim() || el.name || "Field";
+					if (label && !labels.includes(label)) labels.push(label);
+				});
+				if (liveRegion && labels.length) {
+					liveRegion.setAttribute("aria-live", "assertive");
+					liveRegion.textContent = "Please fix " + labels.length + " error(s): " + labels.join(", ") + ".";
+				}
+				return false;
+			}
+			if (liveRegion) {
+				liveRegion.setAttribute("aria-live", "polite");
+				liveRegion.textContent = "";
+			}
+			if (recaptchaWidgetId !== undefined) {
+				grecaptcha.execute(recaptchaWidgetId);
+			} else {
+				form.submit();
+			}
+			return false;
+		}
+
 		document.addEventListener('DOMContentLoaded', function() {
+			var form = document.getElementById("booking-form");
+			form.addEventListener("submit", handleFormSubmit);
+			form.querySelectorAll("input, select").forEach(function(el) {
+				el.addEventListener("invalid", function() {
+					this.setAttribute("aria-invalid", "true");
+				});
+				el.addEventListener("input", function() {
+					if (form.classList.contains("form-attempted")) {
+						this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+					}
+				});
+				el.addEventListener("blur", function() {
+					if (form.classList.contains("form-attempted")) {
+						this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+					}
+				});
+			});
+			onRecaptchaReady();
 			const tattooType = document.getElementById('tattoo-type');
 			const tattooTypeForm = document.getElementById('tattoo-type-form');
 			const liveRegion = document.getElementById('form-live-region');
@@ -26,6 +83,20 @@ templ Book() {
 				if (!template) return;
 				tattooTypeForm.innerHTML = '';
 				tattooTypeForm.appendChild(template.content.cloneNode(true));
+				tattooTypeForm.querySelectorAll("input, select").forEach(function(el) {
+					var form = document.getElementById("booking-form");
+					el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
+					el.addEventListener("input", function() {
+						if (form.classList.contains("form-attempted")) {
+							this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+						}
+					});
+					el.addEventListener("blur", function() {
+						if (form.classList.contains("form-attempted")) {
+							this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+						}
+					});
+				});
 				if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
 				tattooTypeForm.querySelector('input, select')?.focus();
 			});
@@ -38,7 +109,7 @@ templ Book() {
 					<h1 class="book-form-title text-3xl sm:text-4xl font-semibold tracking-tight text-[var(--text-primary)]">Book your tattoo</h1>
 					<p class="book-form-subtitle text-lg sm:text-xl font-thin text-[var(--text-muted)] mt-1">Tell me what you have in mind</p>
 				</div>
-				<div aria-live="polite" aria-atomic="true" id="form-live-region" class="sr-only" role="status"></div>
+				<div id="form-live-region" class="sr-only" role="alert" aria-live="polite" aria-atomic="true" aria-relevant="additions text"></div>
 				<form id="booking-form" action="https://formsubmit.co/tatittoo.a@gmail.com" method="POST" enctype="multipart/form-data" class="book-form w-full min-w-0 px-3 sm:px-4 text-wrap max-w-xl mx-auto">
 					<input type="hidden" name="_next" value="https://www.tatit2.com/thank_you.html"/>
 					<input type="hidden" id="subject" name="_subject" value="[Booking Request] Unknown Name"/>
@@ -47,26 +118,38 @@ templ Book() {
 					<input type="hidden" name="_template" value="table"/>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Full Name</legend>
-						<input autocomplete="name" id="full-name" name="full_name" type="text" class="book-input input w-full" placeholder="Your name" required/>
+						<input autocomplete="name" id="full-name" name="full_name" type="text" class="book-input input w-full" placeholder="Your name" required aria-required="true" title="Please enter your full name"/>
+					</fieldset>
+					<fieldset class="book-fieldset">
+						<legend class="book-legend required-label">Email</legend>
+						<input autocomplete="email" id="email" name="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" class="book-input input w-full" placeholder="Your email" required aria-required="true"/>
+					</fieldset>
+					<fieldset class="book-fieldset">
+						<legend class="book-legend required-label">Phone Number</legend>
+						<input autocomplete="tel" id="phone-number" name="phone_number" type="tel" class="book-input input w-full" placeholder="Your phone number" required aria-required="true" title="Please enter your phone number"/>
+					</fieldset>
+					<fieldset class="book-fieldset">
+						<legend class="book-legend required-label">Preferred Day</legend>
+						<select class="book-input book-select select input w-full" id="date-preference" name="date_preference" required aria-required="true" title="Please select your preferred day">
+							<option disabled selected value="">Choose one</option>
+							<option value="Weekday">Weekday</option>
+							<option value="Weekend">Weekend</option>
+						</select>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Tattoo Type</legend>
-						<select class="book-input book-select select input w-full" id="tattoo-type" name="tattoo_type" required>
+						<select class="book-input book-select select input w-full" id="tattoo-type" name="tattoo_type" required aria-required="true" title="Please select a tattoo type">
 							<option disabled selected value="">Choose one</option>
 							<option value="fine line">Fine Line</option>
 							<option value="animal portrait">Animal Portrait</option>
 							<option value="flash">Flash</option>
 						</select>
 					</fieldset>
-					<fieldset class="book-fieldset">
-						<legend class="book-legend required-label">Preferred Day</legend>
-						<select class="book-input book-select select input w-full" id="date-preference" name="date_preference" required>
-							<option disabled selected value="">Choose one</option>
-							<option value="Weekday">Weekday</option>
-							<option value="Weekend">Weekend</option>
-						</select>
-					</fieldset>
 					<div id="tattoo-type-form" class="book-dynamic-fields" aria-label="Additional booking details"></div>
+					<div id="recaptcha-container" aria-hidden="true" class="sr-only"></div>
+					<fieldset class="book-fieldset book-fieldset-submit">
+						<button type="submit" class="btn btn-xl btn-hip btn-primary w-full font-semibold active:bg-black active:text-white hover:bg-black hover:text-white" aria-describedby="form-live-region">Send request</button>
+					</fieldset>
 				</form>
 				<template id="fine-line">
 					<fieldset class="book-fieldset">
@@ -92,9 +175,6 @@ templ Book() {
 							<option value="animal-portrait">Black/Gray</option>
 						</select>
 					</fieldset>
-					<fieldset class="book-fieldset book-fieldset-submit">
-						<button type="submit" class="btn btn-xl btn-hip btn-primary g-recaptcha w-full font-semibold active:bg-black active:text-white hover:bg-black hover:text-white" data-sitekey="6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC" data-callback="onSubmit" data-action="submit">Send request</button>
-					</fieldset>
 				</template>
 				<template id="flash">
 					<fieldset class="book-fieldset">
@@ -114,9 +194,6 @@ templ Book() {
 							<option value="fine-line">Color</option>
 							<option value="animal-portrait">Black/Gray</option>
 						</select>
-					</fieldset>
-					<fieldset class="book-fieldset book-fieldset-submit">
-						<button type="submit" class="btn btn-xl btn-hip btn-primary g-recaptcha w-full font-semibold active:bg-black active:text-white hover:bg-black hover:text-white" data-sitekey="6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC" data-callback="onSubmit" data-action="submit">Send request</button>
 					</fieldset>
 				</template>
 				<template id="animal-portrait">
@@ -142,9 +219,6 @@ templ Book() {
 							<option value="fine-line">Color</option>
 							<option value="animal-portrait">Black/Gray</option>
 						</select>
-					</fieldset>
-					<fieldset class="book-fieldset book-fieldset-submit">
-						<button type="submit" class="btn btn-xl btn-hip btn-primary g-recaptcha w-full font-semibold active:bg-black active:text-white hover:bg-black hover:text-white" data-sitekey="6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC" data-callback="onSubmit" data-action="submit">Send request</button>
 					</fieldset>
 				</template>
 			</div>

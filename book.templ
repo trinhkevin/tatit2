@@ -7,13 +7,16 @@ templ Book() {
 
 		function onRecaptchaReady() {
 			if (document.readyState === "loading") return;
+			if (typeof grecaptcha === "undefined") return;
 			var el = document.getElementById("recaptcha-container");
 			if (el && recaptchaWidgetId === undefined) {
-				recaptchaWidgetId = grecaptcha.render(el, {
-					sitekey: "6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC",
-					size: "invisible",
-					callback: onRecaptchaSuccess
-				});
+				try {
+					recaptchaWidgetId = grecaptcha.render(el, {
+						sitekey: "6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC",
+						size: "invisible",
+						callback: onRecaptchaSuccess
+					});
+				} catch (e) { /* reCAPTCHA failed, form will submit without it */ }
 			}
 		}
 
@@ -56,11 +59,41 @@ templ Book() {
 
 		document.addEventListener('DOMContentLoaded', function() {
 			var form = document.getElementById("booking-form");
+			if (!form) return;
+			var tattooType = document.getElementById('tattoo-type');
+			var tattooTypeForm = document.getElementById('tattoo-type-form');
+			var liveRegion = document.getElementById('form-live-region');
+			if (tattooType && tattooTypeForm) {
+				tattooType.addEventListener('change', function() {
+					var val = this.value;
+					if (!val) { tattooTypeForm.innerHTML = ''; return; }
+					var templateId = val.replace(/\s+/g, '-');
+					var template = document.getElementById(templateId);
+					if (!template) return;
+					tattooTypeForm.innerHTML = '';
+					tattooTypeForm.appendChild(template.content.cloneNode(true));
+					tattooTypeForm.querySelectorAll("input, select").forEach(function(el) {
+						var f = document.getElementById("booking-form");
+						el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
+						el.addEventListener("input", function() {
+							if (f && f.classList.contains("form-attempted")) {
+								this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+							}
+						});
+						el.addEventListener("blur", function() {
+							if (f && f.classList.contains("form-attempted")) {
+								this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+							}
+						});
+					});
+					if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
+					var firstField = tattooTypeForm.querySelector('input, select');
+					if (firstField) firstField.focus();
+				});
+			}
 			form.addEventListener("submit", handleFormSubmit);
 			form.querySelectorAll("input, select").forEach(function(el) {
-				el.addEventListener("invalid", function() {
-					this.setAttribute("aria-invalid", "true");
-				});
+				el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
 				el.addEventListener("input", function() {
 					if (form.classList.contains("form-attempted")) {
 						this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
@@ -73,33 +106,6 @@ templ Book() {
 				});
 			});
 			onRecaptchaReady();
-			const tattooType = document.getElementById('tattoo-type');
-			const tattooTypeForm = document.getElementById('tattoo-type-form');
-			const liveRegion = document.getElementById('form-live-region');
-			tattooType.addEventListener('change', function() {
-				const val = this.value;
-				if (!val) { tattooTypeForm.innerHTML = ''; return; }
-				const template = document.getElementById(val.replaceAll(' ', '-'));
-				if (!template) return;
-				tattooTypeForm.innerHTML = '';
-				tattooTypeForm.appendChild(template.content.cloneNode(true));
-				tattooTypeForm.querySelectorAll("input, select").forEach(function(el) {
-					var form = document.getElementById("booking-form");
-					el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
-					el.addEventListener("input", function() {
-						if (form.classList.contains("form-attempted")) {
-							this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
-						}
-					});
-					el.addEventListener("blur", function() {
-						if (form.classList.contains("form-attempted")) {
-							this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
-						}
-					});
-				});
-				if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
-				tattooTypeForm.querySelector('input, select')?.focus();
-			});
 		});
 	</script>
 	@Page("Book a Tattoo | tat.it.too", "Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking.", "https://www.tatit2.com/book.html", "https://www.tatit2.com/book.html") {

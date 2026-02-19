@@ -3,13 +3,16 @@
 
 		function onRecaptchaReady() {
 			if (document.readyState === "loading") return;
+			if (typeof grecaptcha === "undefined") return;
 			var el = document.getElementById("recaptcha-container");
 			if (el && recaptchaWidgetId === undefined) {
-				recaptchaWidgetId = grecaptcha.render(el, {
-					sitekey: "6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC",
-					size: "invisible",
-					callback: onRecaptchaSuccess
-				});
+				try {
+					recaptchaWidgetId = grecaptcha.render(el, {
+						sitekey: "6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC",
+						size: "invisible",
+						callback: onRecaptchaSuccess
+					});
+				} catch (e) { /* reCAPTCHA failed, form will submit without it */ }
 			}
 		}
 
@@ -52,11 +55,41 @@
 
 		document.addEventListener('DOMContentLoaded', function() {
 			var form = document.getElementById("booking-form");
+			if (!form) return;
+			var tattooType = document.getElementById('tattoo-type');
+			var tattooTypeForm = document.getElementById('tattoo-type-form');
+			var liveRegion = document.getElementById('form-live-region');
+			if (tattooType && tattooTypeForm) {
+				tattooType.addEventListener('change', function() {
+					var val = this.value;
+					if (!val) { tattooTypeForm.innerHTML = ''; return; }
+					var templateId = val.replace(/\s+/g, '-');
+					var template = document.getElementById(templateId);
+					if (!template) return;
+					tattooTypeForm.innerHTML = '';
+					tattooTypeForm.appendChild(template.content.cloneNode(true));
+					tattooTypeForm.querySelectorAll("input, select").forEach(function(el) {
+						var f = document.getElementById("booking-form");
+						el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
+						el.addEventListener("input", function() {
+							if (f && f.classList.contains("form-attempted")) {
+								this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+							}
+						});
+						el.addEventListener("blur", function() {
+							if (f && f.classList.contains("form-attempted")) {
+								this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+							}
+						});
+					});
+					if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
+					var firstField = tattooTypeForm.querySelector('input, select');
+					if (firstField) firstField.focus();
+				});
+			}
 			form.addEventListener("submit", handleFormSubmit);
 			form.querySelectorAll("input, select").forEach(function(el) {
-				el.addEventListener("invalid", function() {
-					this.setAttribute("aria-invalid", "true");
-				});
+				el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
 				el.addEventListener("input", function() {
 					if (form.classList.contains("form-attempted")) {
 						this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
@@ -69,33 +102,6 @@
 				});
 			});
 			onRecaptchaReady();
-			const tattooType = document.getElementById('tattoo-type');
-			const tattooTypeForm = document.getElementById('tattoo-type-form');
-			const liveRegion = document.getElementById('form-live-region');
-			tattooType.addEventListener('change', function() {
-				const val = this.value;
-				if (!val) { tattooTypeForm.innerHTML = ''; return; }
-				const template = document.getElementById(val.replaceAll(' ', '-'));
-				if (!template) return;
-				tattooTypeForm.innerHTML = '';
-				tattooTypeForm.appendChild(template.content.cloneNode(true));
-				tattooTypeForm.querySelectorAll("input, select").forEach(function(el) {
-					var form = document.getElementById("booking-form");
-					el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
-					el.addEventListener("input", function() {
-						if (form.classList.contains("form-attempted")) {
-							this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
-						}
-					});
-					el.addEventListener("blur", function() {
-						if (form.classList.contains("form-attempted")) {
-							this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
-						}
-					});
-				});
-				if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
-				tattooTypeForm.querySelector('input, select')?.focus();
-			});
 		});
 	</script><!doctype html><html lang="en"><head><title>Book a Tattoo | tat.it.too</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light"><meta name="description" content="Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking."><meta name="theme-color" content="#000000"><link rel="icon" href="images/favicon.webp" type="image/webp"><link rel="apple-touch-icon" href="images/favicon.webp"><link rel="canonical" href="https://www.tatit2.com/book.html"><link rel="preload" href="./src/tailwind.css" as="style"><link rel="preload" href="./src/main.css" as="style"><link type="text/css" href="./src/tailwind.css" rel="stylesheet"><link type="text/css" href="./src/main.css" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://www.google.com"><link rel="preconnect" href="https://www.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet"><meta property="og:type" content="website"><meta property="og:title" content="Book a Tattoo | tat.it.too"><meta property="og:description" content="Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking."><meta property="og:image" content="https://www.tatit2.com/images/sample.webp"><meta property="og:url" content="https://www.tatit2.com/book.html"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Book a Tattoo | tat.it.too"><meta name="twitter:description" content="Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking."><script type="application/ld+json">
 				[

@@ -91,8 +91,7 @@ templ Page(title string, description string, canonical string, ogURL string) {
 			</footer>
 			<script>
 				document.addEventListener('DOMContentLoaded', function() {
-					var path = window.location.href;
-					path = path.substring(path.lastIndexOf('/') + 1);
+					var path = (window.location.pathname || '/').split('/').pop() || '';
 					if (path === 'index.html' || path === '') {
 						sessionStorage.setItem('tatit2HasSeenIndex', '1');
 					} else {
@@ -100,6 +99,10 @@ templ Page(title string, description string, canonical string, ogURL string) {
 					}
 					var el = document.getElementById(path);
 					if (el) el.classList.add('border-b');
+					setTimeout(function() {
+						var btn = document.getElementById('hero-flash-btn');
+						if (btn) btn.classList.add('flash-pulse');
+					}, 2000);
 					var menu = document.querySelector('.mobile-menu');
 					var summary = menu ? menu.querySelector('summary') : null;
 					if (menu && summary) {

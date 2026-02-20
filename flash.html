@@ -49,8 +49,7 @@
 			})();
 		</script></main><hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700 mx-3 flex-shrink-0"><footer class="footer footer-compact flex-shrink-0" role="contentinfo"><aside><p>Copyright © 2026 - All right reserved</p></aside></footer><script>
 				document.addEventListener('DOMContentLoaded', function() {
-					var path = window.location.href;
-					path = path.substring(path.lastIndexOf('/') + 1);
+					var path = (window.location.pathname || '/').split('/').pop() || '';
 					if (path === 'index.html' || path === '') {
 						sessionStorage.setItem('tatit2HasSeenIndex', '1');
 					} else {
@@ -58,6 +57,10 @@
 					}
 					var el = document.getElementById(path);
 					if (el) el.classList.add('border-b');
+					setTimeout(function() {
+						var btn = document.getElementById('hero-flash-btn');
+						if (btn) btn.classList.add('flash-pulse');
+					}, 2000);
 					var menu = document.querySelector('.mobile-menu');
 					var summary = menu ? menu.querySelector('summary') : null;
 					if (menu && summary) {

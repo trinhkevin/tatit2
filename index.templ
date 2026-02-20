@@ -52,6 +52,7 @@ templ Index() {
 					sessionStorage.setItem('tatit2SplashSeen', '1');
 				}
 				if (skipBtn) skipBtn.addEventListener('click', dismissSplash);
+				overlay.addEventListener('click', dismissSplash);
 				var lastPage = sessionStorage.getItem('tatit2LastPage');
 				var cameFromOtherPage = lastPage && lastPage !== '' && lastPage !== 'index.html';
 				var hasSeenIndex = sessionStorage.getItem('tatit2HasSeenIndex') === '1';

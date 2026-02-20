@@ -85,6 +85,7 @@ body {
 .page-body > nav.navbar,
 .page-body > nav.navbar-mobile {
 	background: var(--nav-bg);
+	-webkit-backdrop-filter: blur(8px);
 	backdrop-filter: blur(8px);
 	border-bottom: 1px solid var(--border-subtle);
 	position: relative;
@@ -459,6 +460,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	max-width: 100%;
+	max-height: calc(100vh - 4rem);
 	max-height: calc(100dvh - 4rem);
 }
 .flash-modal-close {
@@ -623,12 +625,14 @@ body {
 	flex-direction: column;
 	width: 100%;
 	/* At least fill viewport when content is short; grows with content so footer stays at end */
+	min-height: calc(100vh - 6rem);
 	min-height: calc(100dvh - 6rem);
 }
 
 /* Index page on mobile: lock to viewport, no scroll */
 @media (max-width: 1023px) {
 	.page-body:has(.index-hero) {
+		height: 100vh;
 		height: 100dvh;
 		overflow: hidden;
 	}
@@ -829,15 +833,53 @@ body {
 	font-size: 1rem;
 	cursor: pointer;
 	font-family: inherit;
+	-webkit-tap-highlight-color: transparent;
 }
+
+@media (max-width: 639px) {
+	/* Show Skip on mobile so users can tap it (no hover/focus) */
+	.splash-skip-btn {
+		width: auto;
+		height: auto;
+		padding: 0.5rem 1rem;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
+		top: 1rem;
+		top: max(1rem, env(safe-area-inset-top));
+		right: 1rem;
+		right: max(1rem, env(safe-area-inset-right));
+		background: rgba(0, 0, 0, 0.7);
+		color: #fff;
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
+		min-height: 44px;
+		min-width: 44px;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		-webkit-appearance: none;
+	}
+}
+
 .splash-overlay {
 	position: fixed;
-	inset: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	z-index: 9999;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background: #f8f6f1;
+	overflow: hidden;
+	min-height: 100vh;
+	min-height: 100dvh;
+	touch-action: manipulation;
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .splash-overlay.splash-dismissed {
@@ -848,7 +890,10 @@ body {
 
 .splash-scrapbook {
 	position: absolute;
-	inset: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
@@ -870,16 +915,24 @@ body {
 }
 
 .splash-dismissed .splash-photo:nth-child(odd) {
+	will-change: transform;
 	animation: splash-pull-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 .splash-dismissed .splash-photo:nth-child(even) {
+	will-change: transform;
 	animation: splash-pull-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 @keyframes splash-pull-left {
-	to { transform: translateX(-100%); }
+	to {
+		transform: translateX(-100%);
+		-webkit-transform: translateX(-100%);
+	}
 }
 
 @keyframes splash-pull-right {
-	to { transform: translateX(100%); }
+	to {
+		transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+	}
 }

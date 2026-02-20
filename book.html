@@ -118,10 +118,6 @@
 					}
 					var el = document.getElementById(path);
 					if (el) el.classList.add('border-b');
-					setTimeout(function() {
-						var btn = document.getElementById('hero-flash-btn');
-						if (btn) btn.classList.add('flash-pulse');
-					}, 2000);
 					var menu = document.querySelector('.mobile-menu');
 					var summary = menu ? menu.querySelector('summary') : null;
 					if (menu && summary) {

@@ -41,7 +41,7 @@ func ThankYou() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8\" role=\"region\" aria-labelledby=\"thank-you-heading\"><div class=\"text-center\"><figure class=\"my-5\"><picture><source loading=\"lazy\" srcset=\"images/butterfly.webp\" type=\"image/webp\"> <img loading=\"lazy\" decoding=\"async\" alt=\"Decorative butterfly illustration\" src=\"images/butterfly.png\" class=\"h-60\"></picture></figure><h1 id=\"thank-you-heading\" class=\"text-2xl\">If you have any questions, or need any details, feel free to let me know.</h1><p class=\"mt-2 text-lg\">I will get back to you as soon as possible.</p><p class=\"mt-2 text-lg\">Thank you for your patience 🖤</p></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8\" role=\"region\" aria-labelledby=\"thank-you-heading\"><div class=\"text-center\"><figure class=\"my-5\"><img src=\"images/butterfly.webp\" alt=\"Decorative butterfly illustration\" class=\"h-60\" loading=\"lazy\" decoding=\"async\"></figure><h1 id=\"thank-you-heading\" class=\"text-2xl\">If you have any questions, or need any details, feel free to let me know.</h1><p class=\"mt-2 text-lg\">I will get back to you as soon as possible.</p><p class=\"mt-2 text-lg\">Thank you for your patience 🖤</p></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

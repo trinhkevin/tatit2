@@ -888,6 +888,29 @@ body {
 	transition: visibility 0s 1.2s;
 }
 
+.splash-logo {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	z-index: 10000;
+	font-family: 'EB Garamond', serif;
+	font-size: clamp(2.25rem, 12vw, 4.5rem);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+	color: #fff;
+	text-shadow:
+		0 1px 2px rgba(0, 0, 0, 0.5),
+		0 2px 8px rgba(0, 0, 0, 0.4),
+		0 0 40px rgba(0, 0, 0, 0.3);
+}
+
 .splash-scrapbook {
 	position: absolute;
 	top: 0;

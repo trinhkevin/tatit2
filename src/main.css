@@ -911,6 +911,16 @@ body {
 		0 0 40px rgba(0, 0, 0, 0.3);
 }
 
+@media (max-width: 639px) {
+	.splash-logo {
+		font-size: clamp(2.5rem, 14vw, 3.5rem);
+		text-shadow:
+			0 1px 3px rgba(0, 0, 0, 0.6),
+			0 3px 12px rgba(0, 0, 0, 0.5);
+		padding: 0 1.5rem;
+	}
+}
+
 .splash-scrapbook {
 	position: absolute;
 	top: 0;

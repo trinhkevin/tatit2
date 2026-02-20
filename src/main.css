@@ -837,47 +837,49 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: #fff;
+	background: #f8f6f1;
 }
 
 .splash-overlay.splash-dismissed {
 	pointer-events: none;
 	visibility: hidden;
-	transition: visibility 0s 1.5s;
+	transition: visibility 0s 1.2s;
 }
 
-.splash-grid {
+.splash-scrapbook {
 	position: absolute;
 	inset: 0;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
-	gap: 2px;
-	animation: splash-grid-enter 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+	gap: 0;
 }
 
-.splash-tile {
+.splash-photo {
+	position: relative;
 	overflow: hidden;
-	background: #f5f5f5;
+	background: #000;
 }
 
-.splash-tile img {
+.splash-photo img {
+	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	display: block;
 	filter: grayscale(100%);
 }
 
-.splash-dismissed .splash-tile {
-	animation: splash-tile-fade 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.splash-dismissed .splash-photo:nth-child(odd) {
+	animation: splash-pull-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.splash-dismissed .splash-photo:nth-child(even) {
+	animation: splash-pull-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-@keyframes splash-grid-enter {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
+@keyframes splash-pull-left {
+	to { transform: translateX(-100%); }
 }
 
-@keyframes splash-tile-fade {
-	to { opacity: 0; }
+@keyframes splash-pull-right {
+	to { transform: translateX(100%); }
 }

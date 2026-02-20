@@ -4,16 +4,16 @@ templ Index() {
 	@Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.", "https://www.tatit2.com/", "https://www.tatit2.com/") {
 		<div id="splash-overlay" class="splash-overlay" aria-hidden="false" aria-label="Welcome splash">
 			<button type="button" id="splash-skip" class="splash-skip-btn" aria-label="Skip welcome animation">Skip</button>
-			<div class="splash-grid" aria-hidden="false">
-				<div class="splash-tile"><img src="images/splash/IMG_0057.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_2265.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_2932.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_3149.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_4167.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_4760.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_5077.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_5725.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-tile"><img src="images/splash/IMG_8282.webp" alt="" loading="eager" decoding="async"></div>
+			<div class="splash-scrapbook" aria-hidden="false">
+				<div class="splash-photo splash-photo-1"><img src="images/splash/IMG_0057.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-2"><img src="images/splash/IMG_2265.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-3"><img src="images/splash/IMG_2932.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-4"><img src="images/splash/IMG_3149.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-5"><img src="images/splash/IMG_4167.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-6"><img src="images/splash/IMG_4760.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-7"><img src="images/splash/IMG_5077.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-8"><img src="images/splash/IMG_5725.webp" alt="" loading="eager" decoding="async"></div>
+				<div class="splash-photo splash-photo-9"><img src="images/splash/IMG_8282.webp" alt="" loading="eager" decoding="async"></div>
 			</div>
 		</div>
 		<div class="index-hero card w-full flex-1 flex flex-col min-h-0 px-4">
@@ -31,7 +31,21 @@ templ Index() {
 			document.addEventListener('DOMContentLoaded', function() {
 				var overlay = document.getElementById('splash-overlay');
 				var skipBtn = document.getElementById('splash-skip');
+				var scrapbook = overlay && overlay.querySelector('.splash-scrapbook');
 				if (!overlay) return;
+
+				function shufflePhotos() {
+					if (!scrapbook) return;
+					var photos = Array.from(scrapbook.children);
+					for (var i = photos.length - 1; i > 0; i--) {
+						var j = Math.floor(Math.random() * (i + 1));
+						var t = photos[i];
+						photos[i] = photos[j];
+						photos[j] = t;
+					}
+					photos.forEach(function(p) { scrapbook.appendChild(p); });
+				}
+
 				function dismissSplash() {
 					overlay.classList.add('splash-dismissed');
 					overlay.setAttribute('aria-hidden', 'true');
@@ -45,7 +59,8 @@ templ Index() {
 					dismissSplash();
 					return;
 				}
-				setTimeout(dismissSplash, 1500);
+				shufflePhotos();
+				setTimeout(dismissSplash, 1000);
 			});
 		</script>
 	}

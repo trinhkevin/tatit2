@@ -937,6 +937,8 @@ body {
 	position: relative;
 	overflow: hidden;
 	background: #000;
+	contain: layout paint;
+	backface-visibility: hidden;
 }
 
 .splash-photo img {
@@ -947,25 +949,44 @@ body {
 	filter: grayscale(100%);
 }
 
-.splash-dismissed .splash-photo:nth-child(odd) {
-	will-change: transform;
-	animation: splash-pull-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+/* Desktop: slide photos off-screen (GPU-accelerated) */
+@media (min-width: 640px) {
+	.splash-dismissed .splash-photo:nth-child(odd) {
+		will-change: transform;
+		animation: splash-pull-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+	}
+	.splash-dismissed .splash-photo:nth-child(even) {
+		will-change: transform;
+		animation: splash-pull-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+	}
 }
-.splash-dismissed .splash-photo:nth-child(even) {
-	will-change: transform;
-	animation: splash-pull-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+
+/* Mobile: single overlay fade for smooth performance on weaker GPUs */
+@media (max-width: 639px) {
+	.splash-overlay.splash-dismissed {
+		opacity: 0;
+		transition: opacity 0.5s ease-out, visibility 0s 0.5s;
+	}
+}
+
+/* Reduced motion: simple fade for all viewports */
+@media (prefers-reduced-motion: reduce) {
+	.splash-dismissed .splash-photo:nth-child(odd),
+	.splash-dismissed .splash-photo:nth-child(even) {
+		animation: none;
+	}
+	.splash-overlay.splash-dismissed {
+		opacity: 0;
+		transition: opacity 0.4s ease-out, visibility 0s 0.4s;
+	}
 }
 
 @keyframes splash-pull-left {
-	to {
-		transform: translateX(-100%);
-		-webkit-transform: translateX(-100%);
-	}
+	from { transform: translate3d(0, 0, 0); }
+	to { transform: translate3d(-100%, 0, 0); }
 }
 
 @keyframes splash-pull-right {
-	to {
-		transform: translateX(100%);
-		-webkit-transform: translateX(100%);
-	}
+	from { transform: translate3d(0, 0, 0); }
+	to { transform: translate3d(100%, 0, 0); }
 }

@@ -5,19 +5,13 @@ templ Index() {
 		<div id="splash-overlay" class="splash-overlay" aria-hidden="false" aria-label="Welcome splash">
 			<button type="button" id="splash-skip" class="splash-skip-btn" aria-label="Skip welcome animation">Skip</button>
 			<figure class="splash-figure">
-				<picture>
-					<source
-						srcset="images/sample.webp"
-						type="image/webp"
-					/>
-					<img
-						alt="Sample Tattoo – tat.it.too tattoo art"
-						src="images/sample.png"
-						class="splash-img"
-						decoding="async"
-						fetchpriority="high"
-					/>
-				</picture>
+				<img
+					alt="tat.it.too tattoo art"
+					src="images/splash/collage.png"
+					class="splash-img"
+					decoding="async"
+					fetchpriority="high"
+				/>
 			</figure>
 		</div>
 		<div class="index-hero card w-full flex-1 flex flex-col min-h-0 px-4">
@@ -42,7 +36,10 @@ templ Index() {
 					sessionStorage.setItem('tatit2SplashSeen', '1');
 				}
 				if (skipBtn) skipBtn.addEventListener('click', dismissSplash);
-				if (sessionStorage.getItem('tatit2SplashSeen') === '1') {
+				var lastPage = sessionStorage.getItem('tatit2LastPage');
+				var cameFromOtherPage = lastPage && lastPage !== '' && lastPage !== 'index.html';
+				var hasSeenIndex = sessionStorage.getItem('tatit2HasSeenIndex') === '1';
+				if (cameFromOtherPage || hasSeenIndex || sessionStorage.getItem('tatit2SplashSeen') === '1') {
 					dismissSplash();
 					return;
 				}

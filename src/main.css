@@ -348,25 +348,30 @@ body {
 .flash-grid {
 	display: grid;
 	gap: 2px;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	width: 100%;
 }
 @media (min-width: 640px) {
 	.flash-grid {
 		gap: 3px;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 @media (min-width: 1024px) {
 	.flash-grid {
 		gap: 4px;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media (min-width: 1280px) {
+	.flash-grid {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }
 .flash-cell {
 	aspect-ratio: 1;
 	overflow: hidden;
-	background: var(--border-subtle);
+	background: #fff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -377,8 +382,35 @@ body {
 	color: inherit;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.08);
 }
+.flash-cell-img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
 .flash-cell:hover {
-	background: rgba(15, 15, 15, 0.12);
+	background: #fff;
+	opacity: 0.95;
+}
+
+@keyframes flash-fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+	.flash-cell {
+		opacity: 0;
+		animation: flash-fade-in 0.4s ease-out forwards;
+	}
+	.flash-cell:nth-child(1) { animation-delay: 0; }
+	.flash-cell:nth-child(2) { animation-delay: 0.04s; }
+	.flash-cell:nth-child(3) { animation-delay: 0.08s; }
+	.flash-cell:nth-child(4) { animation-delay: 0.12s; }
+	.flash-cell:nth-child(5) { animation-delay: 0.16s; }
+	.flash-cell:nth-child(6) { animation-delay: 0.2s; }
+	.flash-cell:nth-child(7) { animation-delay: 0.24s; }
+	.flash-cell:nth-child(8) { animation-delay: 0.28s; }
+	.flash-cell:nth-child(9) { animation-delay: 0.32s; }
 }
 .flash-cell:active {
 	opacity: 0.9;
@@ -439,11 +471,18 @@ body {
 	aspect-ratio: 1;
 	width: min(85vw, 400px);
 	max-height: min(85vw, 400px);
-	background: var(--border-subtle);
+	background: #fff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 2px;
+	overflow: hidden;
+}
+.flash-modal-img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
 }
 .flash-modal-image .flash-placeholder {
 	font-size: 0.875rem;
@@ -812,6 +851,7 @@ body {
 	width: auto;
 	object-fit: contain;
 	border-radius: 2px;
+	filter: grayscale(100%);
 }
 
 @keyframes splash-entrance {

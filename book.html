@@ -112,6 +112,11 @@
 				document.addEventListener('DOMContentLoaded', function() {
 					var path = window.location.href;
 					path = path.substring(path.lastIndexOf('/') + 1);
+					if (path === 'index.html' || path === '') {
+						sessionStorage.setItem('tatit2HasSeenIndex', '1');
+					} else {
+						sessionStorage.setItem('tatit2LastPage', path);
+					}
 					var el = document.getElementById(path);
 					if (el) el.classList.add('border-b');
 					var menu = document.querySelector('.mobile-menu');

@@ -922,6 +922,8 @@ body {
 	background: #000;
 	contain: layout paint;
 	backface-visibility: hidden;
+	/* Overlap by 1px to eliminate sub-pixel gaps between grid cells on desktop */
+	margin: -1px;
 }
 
 .splash-photo img {

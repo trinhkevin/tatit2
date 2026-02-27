@@ -934,15 +934,11 @@ body {
 	filter: grayscale(100%);
 }
 
-/* Desktop: slide photos off-screen (GPU-accelerated) */
+/* Desktop: slide all photos left together (no gaps between panels) */
 @media (min-width: 640px) {
-	.splash-dismissed .splash-photo:nth-child(odd) {
+	.splash-dismissed .splash-photo {
 		will-change: transform;
 		animation: splash-pull-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-	}
-	.splash-dismissed .splash-photo:nth-child(even) {
-		will-change: transform;
-		animation: splash-pull-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 	}
 }
 
@@ -956,8 +952,7 @@ body {
 
 /* Reduced motion: simple fade for all viewports */
 @media (prefers-reduced-motion: reduce) {
-	.splash-dismissed .splash-photo:nth-child(odd),
-	.splash-dismissed .splash-photo:nth-child(even) {
+	.splash-dismissed .splash-photo {
 		animation: none;
 	}
 	.splash-overlay.splash-dismissed {
@@ -969,9 +964,4 @@ body {
 @keyframes splash-pull-left {
 	from { transform: translate3d(0, 0, 0); }
 	to { transform: translate3d(-100%, 0, 0); }
-}
-
-@keyframes splash-pull-right {
-	from { transform: translate3d(0, 0, 0); }
-	to { transform: translate3d(100%, 0, 0); }
 }

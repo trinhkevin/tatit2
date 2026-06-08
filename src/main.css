@@ -388,10 +388,10 @@ body {
 	min-height: 0;
 }
 .flash-grid {
-	display: grid;
-	gap: 2px;
-	grid-template-columns: repeat(1, 1fr);
-	width: 100%;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
 }
 @media (min-width: 640px) {
 	.flash-grid {
@@ -479,13 +479,14 @@ body {
 	cursor: pointer;
 }
 .flash-modal-inner {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	max-width: 100%;
-	max-height: calc(100vh - 4rem);
-	max-height: calc(100dvh - 4rem);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
 }
 .flash-modal-close {
 	position: absolute;
@@ -539,6 +540,25 @@ body {
 	text-align: center;
 	max-width: min(85vw, 400px);
 	line-height: 1.4;
+}
+.flash-modal-cta {
+  display: block;
+  width: min(85vw, 400px);
+  background: #fff;
+  color: #000;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: inherit;
+  margin-top: 2px;
+  transition: opacity 0.15s ease;
+}
+.flash-modal-cta:hover {
+  opacity: 0.8;
 }
 
 .flash-placeholder {
@@ -711,71 +731,72 @@ body {
 	margin-bottom: 2rem;
 }
 .book-legend {
-	display: block;
-	font-size: 0.875rem;
-	font-weight: 500;
-	color: var(--text-primary);
-	letter-spacing: 0.01em;
-	margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.625rem;
 }
 .book-legend.required-label::after {
-	color: var(--text-muted);
+  color: #999;
 }
 .book-input,
 .book-select {
-	display: block;
-	width: 100%;
-	padding: 0.75rem 0.85rem;
-	font-size: 1rem;
-	line-height: 1.5;
-	font-family: inherit;
-	color: var(--text-primary);
-	background: var(--page-bg);
-	border: 1px solid var(--border-subtle);
-	border-radius: 0.375rem;
-	transition: border-color 0.2s ease, box-shadow 0.2s ease;
-	-webkit-appearance: none;
-	appearance: none;
-	min-height: 2.75rem;
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  transition: border-color 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 2.5rem;
 }
 .book-input::placeholder {
-	color: var(--text-muted);
-	opacity: 0.8;
+  color: #bbb;
+  font-weight: 300;
+  opacity: 1;
 }
 .book-input:hover,
 .book-select:hover {
-	border-color: rgba(15, 15, 15, 0.15);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
 }
 .book-input:focus,
 .book-select:focus {
-	outline: none;
-	border-color: var(--text-primary);
-	box-shadow: 0 0 0 2px rgba(15, 15, 15, 0.08);
+  outline: none;
+  border-bottom: 1.5px solid #000;
+  box-shadow: none;
 }
 
 /* Invalid state: only after user attempted submit (accessibility: border + outline, not color alone) */
 .form-attempted .book-input:invalid,
 .form-attempted .book-select:invalid {
-	border-color: #b91c1c;
-	outline: 2px solid #b91c1c;
-	outline-offset: 1px;
+  border-bottom-color: #b91c1c;
+  border-bottom-width: 1.5px;
+  outline: none;
 }
 .form-attempted .book-input:invalid:focus,
 .form-attempted .book-select:invalid:focus {
-	outline: 2px solid #b91c1c;
-	outline-offset: 1px;
-	box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.2);
+  border-bottom-color: #b91c1c;
+  box-shadow: none;
 }
 .book-select {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-position: right 0.6rem center;
-	background-size: 1.25rem;
-	padding-right: 2.25rem;
-	/* Prevent option text from being truncated (override DaisyUI's text-overflow: ellipsis) */
-	width: 100%;
-	max-width: none;
-	text-overflow: unset;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23000000'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  background-size: 1rem;
+  padding-right: 1.5rem;
+  width: 100%;
+  max-width: none;
+  text-overflow: unset;
 }
 .book-hint {
 	font-size: 0.8125rem;
@@ -784,25 +805,28 @@ body {
 	line-height: 1.4;
 }
 .book-file {
-	width: 100%;
-	font-size: 0.875rem;
-	color: var(--text-primary);
+  width: 100%;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  font-family: inherit;
 }
 .book-file::file-selector-button {
-	font-family: inherit;
-	font-size: 0.875rem;
-	font-weight: 500;
-	color: var(--text-primary);
-	background: transparent;
-	border: 1px solid var(--border-subtle);
-	border-radius: 0.375rem;
-	padding: 0.5rem 0.75rem;
-	margin-right: 0.75rem;
-	transition: background 0.2s ease, border-color 0.2s ease;
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 0;
+  padding: 0.4rem 0.75rem;
+  margin-right: 0.75rem;
+  transition: opacity 0.15s ease;
+  cursor: pointer;
 }
 .book-file::file-selector-button:hover {
-	background: rgba(15, 15, 15, 0.04);
-	border-color: rgba(15, 15, 15, 0.15);
+  opacity: 0.8;
 }
 .book-dynamic-fields .book-fieldset {
 	margin-bottom: 1.5rem;

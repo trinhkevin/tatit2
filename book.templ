@@ -1,7 +1,6 @@
 package main
 
 templ Book() {
-	<script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady&render=explicit" defer></script>
 	<script>
 		var recaptchaWidgetId;
 
@@ -58,6 +57,17 @@ templ Book() {
 		}
 
 		document.addEventListener('DOMContentLoaded', function() {
+			var recaptchaLoaded = false;
+			function loadRecaptcha() {
+				if (recaptchaLoaded) return;
+				recaptchaLoaded = true;
+				var s = document.createElement('script');
+				s.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady&render=explicit';
+				s.async = true;
+				document.head.appendChild(s);
+			}
+			var bookForm = document.getElementById('booking-form');
+			if (bookForm) bookForm.addEventListener('focusin', loadRecaptcha, { once: true });
 			var form = document.getElementById("booking-form");
 			if (!form) return;
 			var tattooType = document.getElementById('tattoo-type');
@@ -67,7 +77,7 @@ templ Book() {
 				tattooType.addEventListener('change', function() {
 					var val = this.value;
 					if (!val) { tattooTypeForm.innerHTML = ''; return; }
-					var templateId = val.replace(/\s+/g, '-');
+					var templateId = val.toLowerCase().replace(/\s+/g, '-');
 					var template = document.getElementById(templateId);
 					if (!template) return;
 					tattooTypeForm.innerHTML = '';
@@ -105,7 +115,6 @@ templ Book() {
 					}
 				});
 			});
-			onRecaptchaReady();
 		});
 	</script>
 	@Page("Book a Tattoo | tat.it.too", "Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking.", "https://www.tatit2.com/book.html", "https://www.tatit2.com/book.html") {
@@ -124,19 +133,19 @@ templ Book() {
 					<input type="hidden" name="_template" value="table"/>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Full Name</legend>
-						<input autocomplete="name" id="full-name" name="full_name" type="text" class="book-input input w-full" placeholder="Your name" required aria-required="true" title="Please enter your full name"/>
+						<input autocomplete="name" id="full-name" name="full_name" type="text" class="book-input w-full" placeholder="Your name" required aria-required="true" title="Please enter your full name"/>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Email</legend>
-						<input autocomplete="email" id="email" name="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" class="book-input input w-full" placeholder="Your email" required aria-required="true"/>
+						<input autocomplete="email" id="email" name="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" class="book-input w-full" placeholder="Your email" required aria-required="true"/>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Phone Number</legend>
-						<input autocomplete="tel" id="phone-number" name="phone_number" type="tel" class="book-input input w-full" placeholder="Your phone number" required aria-required="true" title="Please enter your phone number"/>
+						<input autocomplete="tel" id="phone-number" name="phone_number" type="tel" class="book-input w-full" placeholder="Your phone number" required aria-required="true" title="Please enter your phone number"/>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Preferred Day</legend>
-						<select class="book-input book-select select input w-full" id="date-preference" name="date_preference" required aria-required="true" title="Please select your preferred day">
+						<select class="book-input book-select w-full" id="date-preference" name="date_preference" required aria-required="true" title="Please select your preferred day">
 							<option disabled selected value="">Choose one</option>
 							<option value="Weekday">Weekday</option>
 							<option value="Weekend">Weekend</option>
@@ -144,11 +153,11 @@ templ Book() {
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Tattoo Type</legend>
-						<select class="book-input book-select select input w-full" id="tattoo-type" name="tattoo_type" required aria-required="true" title="Please select a tattoo type">
+						<select class="book-input book-select w-full" id="tattoo-type" name="tattoo_type" required aria-required="true" title="Please select a tattoo type">
 							<option disabled selected value="">Choose one</option>
-							<option value="fine line">Fine Line</option>
-							<option value="animal portrait">Animal Portrait</option>
-							<option value="flash">Flash</option>
+							<option value="Fine Line">Fine Line</option>
+							<option value="Animal Portrait">Animal Portrait</option>
+							<option value="Flash">Flash</option>
 						</select>
 					</fieldset>
 					<div id="tattoo-type-form" class="book-dynamic-fields" aria-label="Additional booking details"></div>
@@ -159,72 +168,80 @@ templ Book() {
 				</form>
 				<template id="fine-line">
 					<fieldset class="book-fieldset">
-						<legend class="book-legend required-label">Photo References</legend>
-						<input type="file" class="book-file file-input" name="photo_references" accept="image/png, image/jpeg" required/>
-						<p class="book-hint">If you have any reference photos of a tattoo reference, feel free to send it.</p>
+						<legend class="book-legend required-label">Describe your tattoo</legend>
+						<textarea name="description" class="book-input w-full" placeholder="What do you have in mind? Style, subject, mood, details..." rows="3" required></textarea>
 					</fieldset>
 					<fieldset class="book-fieldset">
-						<legend class="book-legend required-label">Placement picture on your body</legend>
-						<input type="file" class="book-file file-input" name="placement_photo" accept="image/png, image/jpeg" required/>
-						<p class="book-hint">Please attach a picture of your body for context around the area.</p>
+						<legend class="book-legend required-label">Photo References</legend>
+						<input type="file" class="book-file" name="photo_references" accept="image/png, image/jpeg" required/>
+						<p class="book-hint">Any reference photos of a similar tattoo or style you like.</p>
+					</fieldset>
+					<fieldset class="book-fieldset">
+						<legend class="book-legend required-label">Body Placement Photo</legend>
+						<input type="file" class="book-file" name="placement_photo" accept="image/png, image/jpeg" required/>
+						<p class="book-hint">A photo of the area on your body where you'd like the tattoo.</p>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Size</legend>
-						<input name="size" type="number" class="book-input input w-full" placeholder="e.g. 3" min="1" step="0.5" required/>
+						<input name="size" type="number" class="book-input w-full" placeholder="e.g. 3" min="1" step="0.5" required/>
 						<p class="book-hint">Inches only please, not centimeters.</p>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Color</legend>
-						<select class="book-input book-select select input w-full" id="color" name="color" required>
+						<select class="book-input book-select w-full" id="color" name="color" required>
 							<option disabled selected value="">Choose one</option>
-							<option value="color">Color</option>
-							<option value="black/gray">Black/Gray</option>
+							<option value="Color">Color</option>
+							<option value="Black/Gray">Black/Gray</option>
 						</select>
 					</fieldset>
 				</template>
 				<template id="flash">
 					<fieldset class="book-fieldset">
-						<legend class="book-legend required-label">Placement picture on your body</legend>
-						<input type="file" class="book-file file-input" name="placement_photo" accept="image/png, image/jpeg" required/>
-						<p class="book-hint">Please attach a picture of your body for context around the area.</p>
+						<legend class="book-legend required-label">Body Placement Photo</legend>
+						<input type="file" class="book-file" name="placement_photo" accept="image/png, image/jpeg" required/>
+						<p class="book-hint">A photo of the area on your body where you'd like the tattoo.</p>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Size</legend>
-						<input name="size" type="number" class="book-input input w-full" placeholder="e.g. 3" min="1" step="0.5" required/>
+						<input name="size" type="number" class="book-input w-full" placeholder="e.g. 3" min="1" step="0.5" required/>
 						<p class="book-hint">Inches only please, not centimeters.</p>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Color</legend>
-						<select class="book-input book-select select input w-full" id="color" name="color" required>
+						<select class="book-input book-select w-full" id="color" name="color" required>
 							<option disabled selected value="">Choose one</option>
-							<option value="color">Color</option>
-							<option value="black/gray">Black/Gray</option>
+							<option value="Color">Color</option>
+							<option value="Black/Gray">Black/Gray</option>
 						</select>
 					</fieldset>
 				</template>
 				<template id="animal-portrait">
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Pet Photo</legend>
-						<input type="file" class="book-file file-input" name="pet_photo" accept="image/png, image/jpeg" required/>
-						<p class="book-hint">Please send me a high resolution photo of your pet. Not a blurry picture.</p>
+						<input type="file" class="book-file" name="pet_photo" accept="image/png, image/jpeg" required/>
+						<p class="book-hint">High resolution only — blurry photos make it hard to capture the details.</p>
 					</fieldset>
 					<fieldset class="book-fieldset">
-						<legend class="book-legend required-label">Placement picture on your body</legend>
-						<input type="file" class="book-file file-input" name="placement_photo" accept="image/png, image/jpeg" required/>
-						<p class="book-hint">Please attach a picture of your body for context around the area.</p>
+						<legend class="book-legend required-label">Body Placement Photo</legend>
+						<input type="file" class="book-file" name="placement_photo" accept="image/png, image/jpeg" required/>
+						<p class="book-hint">A photo of the area on your body where you'd like the tattoo.</p>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Size</legend>
-						<input name="size" type="number" class="book-input input w-full" placeholder="e.g. 3" min="1" step="0.5" required/>
+						<input name="size" type="number" class="book-input w-full" placeholder="e.g. 3" min="1" step="0.5" required/>
 						<p class="book-hint">Inches only please, not centimeters.</p>
 					</fieldset>
 					<fieldset class="book-fieldset">
 						<legend class="book-legend required-label">Color</legend>
-						<select class="book-input book-select select input w-full" id="color" name="color" required>
+						<select class="book-input book-select w-full" id="color" name="color" required>
 							<option disabled selected value="">Choose one</option>
-							<option value="color">Color</option>
-							<option value="black/gray">Black/Gray</option>
+							<option value="Color">Color</option>
+							<option value="Black/Gray">Black/Gray</option>
 						</select>
+					</fieldset>
+					<fieldset class="book-fieldset">
+						<legend class="book-legend">Additional Notes</legend>
+						<textarea name="notes" class="book-input w-full" placeholder="Anything else you'd like me to know..." rows="2"></textarea>
 					</fieldset>
 				</template>
 			</div>

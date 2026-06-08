@@ -244,11 +244,23 @@ body {
 }
 
 .page-body > nav .menu a {
-	transition: color 0.2s ease, opacity 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+  font-weight: 500;
 }
 
 .page-body > nav .menu a:hover {
-	opacity: 0.7;
+  opacity: 0.5;
+}
+
+.menu li.nav-active > a {
+  color: var(--text-primary);
+  opacity: 1;
+  font-weight: 600;
+  border-bottom: 1.5px solid #000;
+  padding-bottom: 1px;
 }
 
 /* Mobile nav: reliable tap targets and details-based menu */
@@ -545,18 +557,22 @@ body {
 
 /* Primary CTAs: subtle lift on hover, clear press on tap */
 .btn-hip {
-	transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.6875rem !important;
+  transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease;
 }
 .btn-hip:active {
-	transform: scale(0.97);
+  transform: scale(0.97);
 }
 @media (hover: hover) {
-	.btn-hip:hover {
-		transform: translateY(-1px);
-	}
-	.btn-hip:active {
-		transform: translateY(-1px) scale(0.98);
-	}
+  .btn-hip:hover {
+    transform: translateY(-1px);
+  }
+  .btn-hip:active {
+    transform: translateY(-1px) scale(0.98);
+  }
 }
 
 /* Footer: compact, muted copyright only */

@@ -81,14 +81,14 @@ func Page(title string, description string, canonical string, ogURL string) temp
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<link rel=\"preload\" href=\"./src/tailwind.css\" as=\"style\"><link rel=\"preload\" href=\"./src/main.css\" as=\"style\"><link type=\"text/css\" href=\"./src/tailwind.css\" rel=\"stylesheet\"><link type=\"text/css\" href=\"./src/main.css\" rel=\"stylesheet\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link rel=\"preconnect\" href=\"https://www.google.com\"><link rel=\"preconnect\" href=\"https://www.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap\" rel=\"stylesheet\"><meta property=\"og:type\" content=\"website\"><meta property=\"og:title\" content=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<link rel=\"preload\" href=\"./src/tailwind.css\" as=\"style\"><link rel=\"preload\" href=\"./src/main.css\" as=\"style\"><link type=\"text/css\" href=\"./src/tailwind.css\" rel=\"stylesheet\"><link type=\"text/css\" href=\"./src/main.css\" rel=\"stylesheet\"><link rel=\"preconnect\" href=\"https://www.google.com\"><link rel=\"preconnect\" href=\"https://www.gstatic.com\" crossorigin><meta property=\"og:type\" content=\"website\"><meta property=\"og:title\" content=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 31, Col: 44}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 28, Col: 44}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -101,7 +101,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 32, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 29, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -114,7 +114,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(ogURL)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 34, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 31, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -127,7 +127,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 36, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 33, Col: 45}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -140,7 +140,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 37, Col: 57}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 34, Col: 57}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -161,13 +161,13 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(time.Now().Format("2006"))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 89, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 86, Col: 48}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " - All right reserved</p></aside></footer><script>\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tvar path = (window.location.pathname || '/').split('/').pop() || '';\n\t\t\t\t\tif (path === 'index.html' || path === '') {\n\t\t\t\t\t\tsessionStorage.setItem('tatit2HasSeenIndex', '1');\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsessionStorage.setItem('tatit2LastPage', path);\n\t\t\t\t\t}\n\t\t\t\t\tvar el = document.getElementById(path);\n\t\t\t\t\tif (el) el.classList.add('border-b');\n\t\t\t\t\tvar menu = document.querySelector('.mobile-menu');\n\t\t\t\t\tvar summary = menu ? menu.querySelector('summary') : null;\n\t\t\t\t\tif (menu && summary) {\n\t\t\t\t\t\tmenu.addEventListener('toggle', function() {\n\t\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t\t\tsummary.setAttribute('aria-label', menu.open ? 'Close menu' : 'Open menu');\n\t\t\t\t\t\t});\n\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t}\n\t\t\t\t});\n\t\t\t</script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " - All right reserved</p></aside></footer><script>\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tvar path = (window.location.pathname || '/').split('/').pop() || '';\n\t\t\t\t\tif (path === 'index.html' || path === '') {\n\t\t\t\t\t\tsessionStorage.setItem('tatit2HasSeenIndex', '1');\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsessionStorage.setItem('tatit2LastPage', path);\n\t\t\t\t\t}\n\t\t\t\t\tvar el = document.getElementById(path);\n\t\t\t\t\tif (el) el.classList.add('nav-active');\n\t\t\t\t\tvar menu = document.querySelector('.mobile-menu');\n\t\t\t\t\tvar summary = menu ? menu.querySelector('summary') : null;\n\t\t\t\t\tif (menu && summary) {\n\t\t\t\t\t\tmenu.addEventListener('toggle', function() {\n\t\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t\t\tsummary.setAttribute('aria-label', menu.open ? 'Close menu' : 'Open menu');\n\t\t\t\t\t\t});\n\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t}\n\t\t\t\t});\n\t\t\t</script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

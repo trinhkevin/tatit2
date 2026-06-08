@@ -22,11 +22,8 @@ templ Page(title string, description string, canonical string, ogURL string) {
 			<link rel="preload" href="./src/main.css" as="style"/>
 			<link type="text/css" href="./src/tailwind.css" rel="stylesheet"/>
 			<link type="text/css" href="./src/main.css" rel="stylesheet"/>
-			<link rel="preconnect" href="https://fonts.googleapis.com"/>
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 			<link rel="preconnect" href="https://www.google.com"/>
 			<link rel="preconnect" href="https://www.gstatic.com" crossorigin/>
-			<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet"/>
 			<meta property="og:type" content="website"/>
 			<meta property="og:title" content={ title }/>
 			<meta property="og:description" content={ description }/>
@@ -98,7 +95,7 @@ templ Page(title string, description string, canonical string, ogURL string) {
 						sessionStorage.setItem('tatit2LastPage', path);
 					}
 					var el = document.getElementById(path);
-					if (el) el.classList.add('border-b');
+					if (el) el.classList.add('nav-active');
 					var menu = document.querySelector('.mobile-menu');
 					var summary = menu ? menu.querySelector('summary') : null;
 					if (menu && summary) {

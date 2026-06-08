@@ -902,7 +902,7 @@ body {
 		top: max(1rem, env(safe-area-inset-top));
 		right: 1rem;
 		right: max(1rem, env(safe-area-inset-right));
-		background: rgba(0, 0, 0, 0.7);
+		background: #000;
 		color: #fff;
 		border-radius: 0.25rem;
 		font-size: 0.875rem;
@@ -924,7 +924,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: #f8f6f1;
+	background: #000;
 	overflow: hidden;
 	min-height: 100vh;
 	min-height: 100dvh;
@@ -937,8 +937,9 @@ body {
 
 .splash-overlay.splash-dismissed {
 	pointer-events: none;
+	opacity: 0;
 	visibility: hidden;
-	transition: visibility 0s 1.2s;
+	transition: opacity 0.7s ease-out, visibility 0s 0.7s;
 }
 
 .splash-logo {
@@ -962,16 +963,6 @@ body {
 		0 1px 2px rgba(0, 0, 0, 0.5),
 		0 2px 8px rgba(0, 0, 0, 0.4),
 		0 0 40px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 639px) {
-	.splash-logo {
-		font-size: clamp(2.5rem, 14vw, 3.5rem);
-		text-shadow:
-			0 1px 3px rgba(0, 0, 0, 0.6),
-			0 3px 12px rgba(0, 0, 0, 0.5);
-		padding: 0 1.5rem;
-	}
 }
 
 .splash-scrapbook {
@@ -1004,34 +995,31 @@ body {
 	filter: grayscale(100%);
 }
 
-/* Desktop: slide all photos left together (no gaps between panels) */
-@media (min-width: 640px) {
-	.splash-dismissed .splash-photo {
-		will-change: transform;
-		animation: splash-pull-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-	}
-}
-
-/* Mobile: single overlay fade for smooth performance on weaker GPUs */
+/* Mobile: logo-only on white — hide photo grid */
 @media (max-width: 639px) {
-	.splash-overlay.splash-dismissed {
-		opacity: 0;
-		transition: opacity 0.5s ease-out, visibility 0s 0.5s;
+	.splash-scrapbook {
+		display: none;
 	}
-}
-
-/* Reduced motion: simple fade for all viewports */
-@media (prefers-reduced-motion: reduce) {
-	.splash-dismissed .splash-photo {
-		animation: none;
+	.splash-overlay {
+		background: #fff;
+	}
+	.splash-logo {
+		font-size: clamp(2.5rem, 14vw, 3.5rem);
+		color: #000;
+		text-shadow: none;
+		padding: 0 1.5rem;
+	}
+	.splash-skip-btn {
+		background: #000;
 	}
 	.splash-overlay.splash-dismissed {
-		opacity: 0;
 		transition: opacity 0.4s ease-out, visibility 0s 0.4s;
 	}
 }
 
-@keyframes splash-pull-left {
-	from { transform: translate3d(0, 0, 0); }
-	to { transform: translate3d(-100%, 0, 0); }
+/* Reduced motion: shorten fade */
+@media (prefers-reduced-motion: reduce) {
+	.splash-overlay.splash-dismissed {
+		transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+	}
 }

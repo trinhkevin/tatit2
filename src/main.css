@@ -468,7 +468,7 @@ body {
 .flash-divider {
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: 1.1rem;
 	margin: 2.5rem 0 2rem;
 	padding: 0 1.25rem;
 }
@@ -477,15 +477,30 @@ body {
 	content: "";
 	flex: 1;
 	height: 1px;
-	background: var(--border-subtle);
+}
+.flash-divider::before {
+	background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16));
+}
+.flash-divider::after {
+	background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.16));
 }
 .flash-divider-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.7rem;
 	font-size: 0.6875rem;
 	font-weight: 600;
-	letter-spacing: 0.18em;
+	letter-spacing: 0.22em;
 	text-transform: uppercase;
-	color: var(--text-muted);
+	color: var(--text-primary);
 	white-space: nowrap;
+}
+.flash-divider-label::before,
+.flash-divider-label::after {
+	content: "\25C6";
+	font-size: 0.5rem;
+	line-height: 1;
+	color: var(--text-muted);
 }
 @media (min-width: 1024px) {
 	.flash-divider {
@@ -494,36 +509,15 @@ body {
 	}
 }
 
-/* Taken (already tattooed) flash cells */
-.flash-cell--taken {
-	position: relative;
-}
+/* Taken (already tattooed) flash cells: grayed out, no label */
 .flash-cell--taken .flash-cell-img {
-	opacity: 0.5;
-	filter: grayscale(0.15);
-	transition: opacity 0.15s ease;
+	filter: grayscale(1);
+	opacity: 0.72;
+	transition: opacity 0.18s ease, transform 0.35s ease;
 }
-.flash-cell--taken:hover .flash-cell-img {
-	opacity: 0.6;
-}
-.flash-taken-tag {
-	position: absolute;
-	top: 0;
-	left: 0;
-	background: #000;
-	color: #fff;
-	font-size: 0.625rem;
-	font-weight: 600;
-	letter-spacing: 0.14em;
-	text-transform: uppercase;
-	padding: 0.3rem 0.55rem;
-	line-height: 1;
-	pointer-events: none;
-}
-@media (min-width: 1024px) {
-	.flash-taken-tag {
-		font-size: 0.6875rem;
-		padding: 0.35rem 0.65rem;
+@media (hover: hover) {
+	.flash-cell--taken:hover .flash-cell-img {
+		opacity: 0.85;
 	}
 }
 

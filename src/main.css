@@ -423,16 +423,22 @@ body {
 	font: inherit;
 	color: inherit;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.08);
+	transition: box-shadow 0.18s ease;
 }
 .flash-cell-img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
 	display: block;
+	transition: transform 0.35s ease;
 }
-.flash-cell:hover {
-	background: #fff;
-	opacity: 0.95;
+@media (hover: hover) {
+	.flash-cell:hover {
+		box-shadow: inset 0 0 0 1px #000;
+	}
+	.flash-cell:hover .flash-cell-img {
+		transform: scale(1.04);
+	}
 }
 
 @keyframes flash-fade-in {
@@ -456,6 +462,69 @@ body {
 }
 .flash-cell:active {
 	opacity: 0.9;
+}
+
+/* Section divider between current and older flash */
+.flash-divider {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: 2.5rem 0 2rem;
+	padding: 0 1.25rem;
+}
+.flash-divider::before,
+.flash-divider::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: var(--border-subtle);
+}
+.flash-divider-label {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+	white-space: nowrap;
+}
+@media (min-width: 1024px) {
+	.flash-divider {
+		margin: 3.5rem 0 2.5rem;
+		padding: 0 2rem;
+	}
+}
+
+/* Taken (already tattooed) flash cells */
+.flash-cell--taken {
+	position: relative;
+}
+.flash-cell--taken .flash-cell-img {
+	opacity: 0.5;
+	filter: grayscale(0.15);
+	transition: opacity 0.15s ease;
+}
+.flash-cell--taken:hover .flash-cell-img {
+	opacity: 0.6;
+}
+.flash-taken-tag {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #000;
+	color: #fff;
+	font-size: 0.625rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	padding: 0.3rem 0.55rem;
+	line-height: 1;
+	pointer-events: none;
+}
+@media (min-width: 1024px) {
+	.flash-taken-tag {
+		font-size: 0.6875rem;
+		padding: 0.35rem 0.65rem;
+	}
 }
 
 /* Flash modal (Instagram-style) */
@@ -559,6 +628,23 @@ body {
 }
 .flash-modal-cta:hover {
   opacity: 0.8;
+}
+.flash-modal-taken {
+  display: block;
+  width: min(85vw, 400px);
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+.flash-modal-taken[hidden] {
+  display: none;
 }
 
 .flash-placeholder {

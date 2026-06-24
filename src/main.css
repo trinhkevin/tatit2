@@ -512,28 +512,32 @@ body {
 /* Taken (already tattooed) flash cells: desaturated, slashed on hover */
 .flash-cell--taken {
 	position: relative;
-	background: #b5b5b5;
+	background: #8a8a8a;
 }
 .flash-cell--taken .flash-cell-img {
-	filter: grayscale(1) brightness(0.72);
+	filter: grayscale(1) brightness(0.55);
 	opacity: 1;
 	transition: filter 0.18s ease;
 }
-/* Diagonal slash overlay, revealed on hover */
+/* "Not available" label, revealed on hover */
 .flash-cell--taken::after {
-	content: "";
+	content: "Not available";
 	position: absolute;
 	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 0.5rem;
 	pointer-events: none;
 	opacity: 0;
 	transition: opacity 0.22s ease;
-	background-image: linear-gradient(
-		45deg,
-		transparent calc(50% - 0.75px),
-		rgba(0, 0, 0, 0.55) calc(50% - 0.75px),
-		rgba(0, 0, 0, 0.55) calc(50% + 0.75px),
-		transparent calc(50% + 0.75px)
-	);
+	background: rgba(0, 0, 0, 0.55);
+	color: #fff;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
 }
 @media (hover: hover) {
 	.flash-cell--taken:hover::after {

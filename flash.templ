@@ -3,6 +3,9 @@ package main
 templ Flash() {
 	@Page("Flash Tattoos | tat.it.too", "Browse flash tattoo designs. Pre-drawn designs ready to book. tat.it.too tattoo artist.", "https://www.tatit2.com/flash.html", "https://www.tatit2.com/flash.html") {
 		<div class="flash-page flex-1 flex flex-col min-h-0">
+			<div class="flash-divider flash-divider--top" role="separator" aria-label="New Flash">
+				<span class="flash-divider-label">New Flash</span>
+			</div>
 			<div class="flash-grid" role="group" aria-label="Flash tattoo designs">
 				<button type="button" class="flash-cell" aria-label="View flash design A" data-src="images/flash/A.webp"><img src="images/flash/A.webp" alt="Flash design A" class="flash-cell-img" loading="lazy" decoding="async"></button>
 				<button type="button" class="flash-cell" aria-label="View flash design B" data-src="images/flash/B.webp"><img src="images/flash/B.webp" alt="Flash design B" class="flash-cell-img" loading="lazy" decoding="async"></button>

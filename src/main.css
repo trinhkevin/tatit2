@@ -468,7 +468,7 @@ body {
 .flash-divider {
 	display: flex;
 	align-items: center;
-	gap: 1.1rem;
+	gap: 1.25rem;
 	margin: 2.5rem 0 2rem;
 	padding: 0 1.25rem;
 }
@@ -477,17 +477,9 @@ body {
 	content: "";
 	flex: 1;
 	height: 1px;
-}
-.flash-divider::before {
-	background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16));
-}
-.flash-divider::after {
-	background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.16));
+	background: #000;
 }
 .flash-divider-label {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.7rem;
 	font-size: 0.6875rem;
 	font-weight: 600;
 	letter-spacing: 0.22em;
@@ -495,17 +487,16 @@ body {
 	color: var(--text-primary);
 	white-space: nowrap;
 }
-.flash-divider-label::before,
-.flash-divider-label::after {
-	content: "\25C6";
-	font-size: 0.5rem;
-	line-height: 1;
-	color: var(--text-muted);
+.flash-divider--top {
+	margin-top: 1.25rem;
 }
 @media (min-width: 1024px) {
 	.flash-divider {
 		margin: 3.5rem 0 2.5rem;
 		padding: 0 2rem;
+	}
+	.flash-divider--top {
+		margin-top: 1.75rem;
 	}
 }
 

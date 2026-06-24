@@ -436,8 +436,8 @@ body {
 	.flash-cell:hover {
 		box-shadow: inset 0 0 0 1px #000;
 	}
-	.flash-cell:hover .flash-cell-img {
-		transform: scale(1.04);
+	.flash-cell:not(.flash-cell--taken):hover .flash-cell-img {
+		transform: scale(1.05);
 	}
 }
 
@@ -509,15 +509,34 @@ body {
 	}
 }
 
-/* Taken (already tattooed) flash cells: grayed out, no label */
+/* Taken (already tattooed) flash cells: desaturated, slashed on hover */
+.flash-cell--taken {
+	position: relative;
+}
 .flash-cell--taken .flash-cell-img {
 	filter: grayscale(1);
-	opacity: 0.72;
-	transition: opacity 0.18s ease, transform 0.35s ease;
+	opacity: 0.95;
+	transition: opacity 0.18s ease;
+}
+/* Diagonal slash overlay, revealed on hover */
+.flash-cell--taken::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.22s ease;
+	background-image: linear-gradient(
+		45deg,
+		transparent calc(50% - 0.75px),
+		rgba(0, 0, 0, 0.55) calc(50% - 0.75px),
+		rgba(0, 0, 0, 0.55) calc(50% + 0.75px),
+		transparent calc(50% + 0.75px)
+	);
 }
 @media (hover: hover) {
-	.flash-cell--taken:hover .flash-cell-img {
-		opacity: 0.85;
+	.flash-cell--taken:hover::after {
+		opacity: 1;
 	}
 }
 

@@ -512,11 +512,12 @@ body {
 /* Taken (already tattooed) flash cells: desaturated, slashed on hover */
 .flash-cell--taken {
 	position: relative;
+	background: #b5b5b5;
 }
 .flash-cell--taken .flash-cell-img {
-	filter: grayscale(1);
-	opacity: 0.95;
-	transition: opacity 0.18s ease;
+	filter: grayscale(1) brightness(0.72);
+	opacity: 1;
+	transition: filter 0.18s ease;
 }
 /* Diagonal slash overlay, revealed on hover */
 .flash-cell--taken::after {

@@ -212,7 +212,8 @@ body {
 		display: none !important;
 	}
 	.navbar-logo-left {
-		display: block;
+		display: flex;
+		align-items: center;
 		order: -1;
 		flex-shrink: 0;
 	}

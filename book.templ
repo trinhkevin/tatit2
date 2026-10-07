@@ -100,14 +100,18 @@ templ Book() {
 				</template>
 				<template id="flash">
 					<fieldset class="book-field book-field--full">
-						<legend class="book-legend">Flash design</legend>
-						<div class="flash-pick">
+						<legend class="book-legend required-label">Flash design</legend>
+						<div class="flash-pick" id="flash-pick">
 							<span class="flash-pick-img" id="flash-pick-img" hidden><img id="flash-pick-thumb" src="" alt="" decoding="async"/></span>
-							<input id="flash-design" name="flash_design" type="text" class="book-input" placeholder="Which design? e.g. Design F"/>
+							<div class="flash-pick-body">
+								<p class="flash-pick-name" id="flash-pick-name" hidden></p>
+								<a class="arrow-link flash-pick-link" id="flash-pick-link" href="flash.html?from=book"><span id="flash-pick-link-txt">Choose a flash design</span>@Arrow()</a>
+							</div>
 						</div>
+						<input type="hidden" id="flash-design" name="flash_design" value=""/>
 						<input type="hidden" id="flash-image-url" name="flash_image_url" value=""/>
 						<input type="file" id="flash-image" name="flash_image" class="sr-only" tabindex="-1" aria-hidden="true"/>
-						<p class="book-hint" id="flash-pick-hint">Pick one on the <a class="inline-link" href="flash.html">flash page</a> and it fills in here. The drawing is sent with your request.</p>
+						<p class="book-hint" id="flash-pick-hint">Your answers here are kept while you pick. The drawing is sent with your request.</p>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Body placement photo</legend>
@@ -177,9 +181,13 @@ templ Book() {
 				}
 			}
 
+			var DRAFT_KEY = 'tatit2BookDraft';
+			function clearDraft() { try { sessionStorage.removeItem(DRAFT_KEY); } catch (e) {} }
+
 			function onRecaptchaSuccess(token) {
 				document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value;
 				document.getElementById("g-recaptcha-response").remove();
+				clearDraft();
 				document.getElementById("booking-form").submit();
 			}
 
@@ -188,6 +196,19 @@ templ Book() {
 				const form = document.getElementById("booking-form");
 				const liveRegion = document.getElementById("form-live-region");
 				form.classList.add("form-attempted");
+				var typeSel = document.getElementById("tattoo-type");
+				var designVal = document.getElementById("flash-design");
+				if (typeSel && typeSel.value === "Flash" && designVal && !designVal.value) {
+					var pick = document.getElementById("flash-pick");
+					if (pick) pick.classList.add("is-invalid");
+					if (liveRegion) {
+						liveRegion.setAttribute("aria-live", "assertive");
+						liveRegion.textContent = "Please choose a flash design first.";
+					}
+					var link = document.getElementById("flash-pick-link");
+					if (link) link.focus();
+					return false;
+				}
 				if (!form.checkValidity()) {
 					form.reportValidity();
 					var invalid = form.querySelectorAll(":invalid");
@@ -209,6 +230,7 @@ templ Book() {
 				if (recaptchaWidgetId !== undefined) {
 					grecaptcha.execute(recaptchaWidgetId);
 				} else {
+					clearDraft();
 					form.submit();
 				}
 				return false;
@@ -259,34 +281,63 @@ templ Book() {
 				}
 				form.addEventListener("submit", handleFormSubmit);
 				form.querySelectorAll("input, select, textarea").forEach(function(el) { wire(el, form); });
+
+				/* Draft: keep typed answers across a trip to the flash page (files can't be stored) */
+				function readDraft() { try { return JSON.parse(sessionStorage.getItem(DRAFT_KEY) || '{}') || {}; } catch (e) { return {}; } }
+				function writeDraft(d) { try { sessionStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch (e) {} }
+				function saveField(el) {
+					if (!el || !el.name || el.type === 'file' || el.type === 'hidden' || el.name.charAt(0) === '_') return;
+					var d = readDraft(); d[el.name] = el.value; writeDraft(d);
+				}
+				form.addEventListener('input', function(e) { saveField(e.target); });
+				form.addEventListener('change', function(e) { saveField(e.target); });
+
+				/* Flash pick: thumbnail, hidden fields, and the drawing attached as a file */
+				var FLASH_SRC = /^images\/flash\/[A-Za-z0-9_-]+\.webp$/;
+				function applyFlashPick(name, src) {
+					if (!name || !FLASH_SRC.test(src)) return;
+					var thumbWrap = document.getElementById('flash-pick-img');
+					var thumb = document.getElementById('flash-pick-thumb');
+					var nameEl = document.getElementById('flash-pick-name');
+					var linkTxt = document.getElementById('flash-pick-link-txt');
+					var pick = document.getElementById('flash-pick');
+					if (!thumbWrap || !thumb) return;
+					thumb.src = src; thumb.alt = name; thumbWrap.hidden = false;
+					if (nameEl) { nameEl.textContent = name; nameEl.hidden = false; }
+					if (linkTxt) linkTxt.textContent = 'Change design';
+					if (pick) pick.classList.remove('is-invalid');
+					document.getElementById('flash-design').value = name;
+					document.getElementById('flash-image-url').value = 'https://www.tatit2.com/' + src;
+					var d = readDraft(); d.flash_design = name; d.flash_src = src; writeDraft(d);
+					var fileField = document.getElementById('flash-image');
+					if (fileField && window.DataTransfer && window.File) {
+						fetch(src).then(function(r) { return r.ok ? r.blob() : Promise.reject(); }).then(function(blob) {
+							var dt = new DataTransfer();
+							dt.items.add(new File([blob], name.replace(/[^A-Za-z0-9]+/g, '-') + '.webp', { type: blob.type || 'image/webp' }));
+							fileField.files = dt.files;
+						}).catch(function() { /* flash_image_url still identifies the design */ });
+					}
+				}
+
 				try {
+					var draft = readDraft();
 					var params = new URLSearchParams(window.location.search);
-					var wantType = params.get('type');
-					var wantDesign = params.get('design');
+					var wantType = params.get('type') || draft.tattoo_type || '';
 					if (wantType && tattooType && Array.prototype.some.call(tattooType.options, function(o) { return o.value === wantType; })) {
 						tattooType.value = wantType;
 						tattooType.dispatchEvent(new Event('change'));
-						var designField = document.getElementById('flash-design');
-						if (designField && wantDesign) designField.value = wantDesign;
-						var wantSrc = params.get('src') || '';
-						if (/^images\/flash\/[A-Za-z0-9_-]+\.webp$/.test(wantSrc)) {
-							var thumbWrap = document.getElementById('flash-pick-img');
-							var thumb = document.getElementById('flash-pick-thumb');
-							if (thumb && thumbWrap) { thumb.src = wantSrc; thumb.alt = wantDesign || 'Chosen flash design'; thumbWrap.hidden = false; }
-							var urlField = document.getElementById('flash-image-url');
-							if (urlField) urlField.value = 'https://www.tatit2.com/' + wantSrc;
-							var fileField = document.getElementById('flash-image');
-							if (fileField && window.DataTransfer && window.File) {
-								fetch(wantSrc).then(function(r) { return r.ok ? r.blob() : Promise.reject(); }).then(function(blob) {
-									var name = (wantDesign || 'flash').replace(/[^A-Za-z0-9]+/g, '-') + '.webp';
-									var dt = new DataTransfer();
-									dt.items.add(new File([blob], name, { type: blob.type || 'image/webp' }));
-									fileField.files = dt.files;
-								}).catch(function() { /* the link in flash_image_url still identifies the design */ });
-							}
-						}
+					}
+					Object.keys(draft).forEach(function(key) {
+						if (key === 'flash_design' || key === 'flash_src' || key === 'tattoo_type') return;
+						var el = form.querySelector('[name="' + key + '"]');
+						if (el && el.type !== 'file' && el.type !== 'hidden') el.value = draft[key];
+					});
+					if (params.get('design') && params.get('src')) {
+						applyFlashPick(params.get('design'), params.get('src'));
 						var fullName = document.getElementById('full-name');
-						if (fullName) fullName.focus();
+						if (fullName && !fullName.value) fullName.focus();
+					} else if (draft.flash_design && draft.flash_src) {
+						applyFlashPick(draft.flash_design, draft.flash_src);
 					}
 				} catch (e) { /* ignore */ }
 			});

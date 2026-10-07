@@ -62,6 +62,7 @@ var imageMeta = map[string]imageInfo{
 	"images/work/snake-red-flowers.webp":            {1738, 2400, []int{240, 480, 800, 1200, 1600}},
 	"images/work/snake-shoulder.webp":               {1800, 2400, []int{240, 480, 800, 1200, 1600}},
 	"images/work/statue-head-amor.webp":             {1080, 1616, []int{240, 480, 800}},
+	"images/work/temple-stamp.webp":                 {1079, 1616, []int{240, 480, 800}},
 	"images/work/terrier-portrait.webp":             {1800, 2400, []int{240, 480, 800, 1200, 1600}},
 	"images/work/two-beagles.webp":                  {1800, 2400, []int{240, 480, 800, 1200, 1600}},
 	"images/work/two-chihuahuas.webp":               {1800, 2400, []int{240, 480, 800, 1200, 1600}},

@@ -53,7 +53,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_2932.webp", "Snake and flowers tattooed along a forearm", "100vw", true).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/sample.webp", "Angel and demon illustration", "100vw", true).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -141,7 +141,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/sample.webp", "Angel and demon illustration", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/splash/IMG_2932.webp", "Snake and flowers tattooed along a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -385,7 +385,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "</a></div></details></div></section><section class=\"cta-strip\"><a class=\"cta-link\" href=\"book.html\" aria-label=\"Book now\"><span class=\"cta-left\"><span class=\"cta-word\">Book</span></span> <span class=\"cta-right\"><span class=\"cta-word\">Now</span><span class=\"cta-arrow-box\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "</a></div></details></div></section><section class=\"cta-strip\"><a class=\"cta-link\" href=\"book.html\" aria-label=\"Book now\"><span class=\"cta-left\"><span class=\"cta-word\">Book now</span></span> <span class=\"cta-right\"><span class=\"cta-arrow-box\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

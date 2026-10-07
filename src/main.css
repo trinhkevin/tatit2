@@ -648,8 +648,8 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 	line-height: 0.6;
 	text-transform: uppercase;
 }
-.cta-left { width: 35%; padding-left: var(--pad); box-sizing: border-box; }
-.cta-right { display: flex; align-items: center; width: 65%; margin-left: auto; }
+.cta-left { padding-left: var(--pad); box-sizing: border-box; }
+.cta-right { display: flex; align-items: center; margin-left: auto; }
 .cta-arrow-box { margin-left: auto; padding: 32px var(--pad); border-left: 1px solid var(--line); }
 .cta-arrow-box .arrow { width: 76px; height: 76px; transition: transform 0.5s var(--ease); }
 .cta-link:hover .cta-arrow-box .arrow { transform: translate(8px, -8px); }

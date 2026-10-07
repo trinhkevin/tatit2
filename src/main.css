@@ -521,8 +521,8 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 }
 @media (max-width: 479px) {
 	.works { height: 92vw; }
-	.works-previews { position: static; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; width: 100%; margin-top: 2px; }
-	.works-preview { width: 100%; height: 38vw; margin: 0; border-radius: 0; }
+	.works-previews { position: static; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; width: 100%; margin-top: 2px; }
+	.works-preview { width: 100%; height: 30vw; margin: 0; border-radius: 0; }
 }
 
 /* About the artist */
@@ -595,7 +595,7 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 }
 
 /* Pinned gallery */
-.gallery-track { position: relative; width: 100%; height: 300vh; }
+.gallery-track { position: relative; width: 100%; height: 400vh; }
 .gallery-stage {
 	position: sticky; top: 0;
 	display: flex;
@@ -620,6 +620,14 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 	.gallery-main { height: 112vw; }
 	.gallery-col { grid-template-columns: 1fr; }
 	.gallery-item { height: 112vw; }
+}
+
+/* Pet portraits grid */
+.pet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 var(--pad); }
+.pet-grid figure { aspect-ratio: 4 / 5; overflow: hidden; }
+.pet-grid img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 767px) {
+	.pet-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
 }
 
 /* CTA strip */

@@ -41,13 +41,173 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div id=\"splash-overlay\" class=\"splash-overlay\" aria-hidden=\"false\" aria-label=\"Welcome splash\"><button type=\"button\" id=\"splash-skip\" class=\"splash-skip-btn\" aria-label=\"Skip welcome animation\">Skip</button><div class=\"splash-logo\">tat.it.too</div><div class=\"splash-scrapbook\" aria-hidden=\"false\"><div class=\"splash-photo splash-photo-1\"><img src=\"images/splash/IMG_0057.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-2\"><img src=\"images/splash/IMG_2265.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-3\"><img src=\"images/splash/IMG_2932.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-4\"><img src=\"images/splash/IMG_3149.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-5\"><img src=\"images/splash/IMG_4167.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-6\"><img src=\"images/splash/IMG_4760.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-7\"><img src=\"images/splash/IMG_5077.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-8\"><img src=\"images/splash/IMG_5725.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-9\"><img src=\"images/splash/IMG_8282.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div></div></div><div class=\"index-hero card w-full flex-1 flex flex-col min-h-0 px-4\"><div class=\"flex-1 flex items-center justify-center relative z-[1]\"><div class=\"index-hero-content card-body items-center text-center p-0\"><h1 class=\"index-hero-title\">tat.it.too</h1><div class=\"index-hero-actions\"><a href=\"book.html\" class=\"btn btn-xl btn-hip btn-primary active:bg-black active:text-white hover:bg-black hover:text-white text-2xl font-semibold min-w-52\" rel=\"noopener\">Book Now</a> <a id=\"hero-flash-btn\" href=\"flash.html\" class=\"btn btn-xl btn-hip btn-primary active:bg-black active:text-white hover:bg-black hover:text-white text-2xl font-semibold min-w-52\" rel=\"noopener\">Flash</a></div></div></div></div><script>\n\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\tvar overlay = document.getElementById('splash-overlay');\n\t\t\t\tvar skipBtn = document.getElementById('splash-skip');\n\t\t\t\tvar scrapbook = overlay && overlay.querySelector('.splash-scrapbook');\n\t\t\t\tif (!overlay) return;\n\n\t\t\t\tfunction shufflePhotos() {\n\t\t\t\t\tif (!scrapbook) return;\n\t\t\t\t\tvar photos = Array.from(scrapbook.children);\n\t\t\t\t\tfor (var i = photos.length - 1; i > 0; i--) {\n\t\t\t\t\t\tvar j = Math.floor(Math.random() * (i + 1));\n\t\t\t\t\t\tvar t = photos[i];\n\t\t\t\t\t\tphotos[i] = photos[j];\n\t\t\t\t\t\tphotos[j] = t;\n\t\t\t\t\t}\n\t\t\t\t\tphotos.forEach(function(p) { scrapbook.appendChild(p); });\n\t\t\t\t}\n\n\t\t\t\tfunction dismissSplash() {\n\t\t\t\t\toverlay.classList.add('splash-dismissed');\n\t\t\t\t\toverlay.setAttribute('aria-hidden', 'true');\n\t\t\t\t\tsessionStorage.setItem('tatit2SplashSeen', '1');\n\t\t\t\t}\n\t\t\t\tif (skipBtn) skipBtn.addEventListener('click', dismissSplash);\n\t\t\t\toverlay.addEventListener('click', dismissSplash);\n\t\t\t\tvar lastPage = sessionStorage.getItem('tatit2LastPage');\n\t\t\t\tvar cameFromOtherPage = lastPage && lastPage !== '' && lastPage !== 'index.html';\n\t\t\t\tvar hasSeenIndex = sessionStorage.getItem('tatit2HasSeenIndex') === '1';\n\t\t\t\tif (cameFromOtherPage || hasSeenIndex || sessionStorage.getItem('tatit2SplashSeen') === '1') {\n\t\t\t\t\tdismissSplash();\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tshufflePhotos();\n\t\t\t\tsetTimeout(dismissSplash, 1000);\n\t\t\t});\n\t\t</script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"hero\" aria-labelledby=\"hero-title\"><div class=\"hero-top\"><div class=\"artist-profile\"><div class=\"artist-photo\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/artist.webp", "The artist at work, tattooing a client's arm", "(max-width: 479px) 50vw, (max-width: 767px) 20vw, (max-width: 991px) 12vw, 9vw", true).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"artist-desc label\">Founder of Sappe Sin Studio</div></div><h1 id=\"hero-title\" class=\"display h1-hero hero-title\">tat.it.too</h1></div><div class=\"hero-meta\"><div class=\"hero-meta-item\"><div class=\"label\">Styles</div><div class=\"value\"><a href=\"book.html\">Fine line</a>, <a href=\"book.html\">Microrealism</a>, <a href=\"book.html\">Animal portraits</a></div></div><div class=\"hero-meta-right\"><div class=\"hero-meta-item\"><div class=\"label\">Studio</div><div class=\"value\"><a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Sappe Sin Studio on Google Maps, opens in new window\">Sappe Sin Studio</a></div></div><div class=\"hero-meta-item hero-meta-item--end\"><div class=\"label\">Based in</div><div class=\"value\">Chicago, IL</div></div></div></div></section><figure class=\"fullsize\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/art/angel-and-demon.webp", "Angel and demon illustration", "100vw", true).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</figure><section id=\"about\" class=\"about\" aria-labelledby=\"about-label\"><div class=\"about-inner\"><div id=\"about-label\" class=\"label\">About the artist</div><p class=\"about-big\">Patchara is a Chicago tattoo artist working in fine line and realism at Sappe Sin Studio. Born in Bangkok, he has drawn for as long as he can remember, studied art at university in Thailand, and moved to the United States in 2019. He taught himself to tattoo during the 2020 lockdowns, spent four years as a resident artist, and opened Sappe Sin Studio in 2025.</p><div class=\"about-grid\"><p class=\"b-txt\">Pet portraits started with a friend who had just lost a pet. Seeing what that tattoo meant to them changed how he saw the work: a portrait on skin can carry a lot of love. It is now the thing he is best known for, alongside fine line.</p><p class=\"b-txt\">He loves micro realism for its precision, and is increasingly drawn to larger pieces where a whole arm or back can hold one story. If you have a big idea, bring it.</p></div></div></section><section id=\"latest\" aria-labelledby=\"latest-title\"><div class=\"section-head\"><h2 id=\"latest-title\" class=\"h2\">Latest works</h2></div><div class=\"works-wrap\"><div class=\"works\" aria-live=\"polite\"><div class=\"works-photo is-active\" data-id=\"1\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/chihuahua-portrait.webp", "Chihuahua portrait tattoo on an upper arm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div><div class=\"works-photo\" data-id=\"2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/butterfly-back.webp", "Butterfly tattoo between the shoulder blades", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div><div class=\"works-photo\" data-id=\"3\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/octopus-forearm.webp", "Octopus tattoo wrapping a forearm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</div></div><div class=\"works-previews\" role=\"group\" aria-label=\"Choose a photo\"><button type=\"button\" class=\"works-preview is-active\" data-id=\"1\" aria-pressed=\"true\" aria-label=\"Show chihuahua portrait\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/chihuahua-portrait.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"2\" aria-pressed=\"false\" aria-label=\"Show butterfly\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/butterfly-back.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"3\" aria-pressed=\"false\" aria-label=\"Show octopus\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/octopus-forearm.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</button></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/poodle-portrait.webp", "Poodle portrait tattoo peeking over a line on a forearm", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</figure><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/fine-line-leg.webp", "Collage of fine line tattoos on a lower leg", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</figure></section><section id=\"gallery\" class=\"gallery\" aria-label=\"Gallery\"><div class=\"gallery-track\"><div class=\"gallery-stage\"><div class=\"gallery-main\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/pitbull-frame.webp", "Pit bull portrait tattoo with a photo frame on a forearm", "(max-width: 991px) 100vw, 76vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</div><div class=\"gallery-rail\"><div class=\"gallery-col\"><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/two-dog-portraits.webp", "Two dog portraits tattooed on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/snake-and-flowers.webp", "Snake and flowers tattooed along a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/dachshund-halo.webp", "Dachshund portrait tattoo with a halo on a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/art/butterfly.webp", "Butterfly illustration", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</figure></div></div></div></div></section><section id=\"faq\" class=\"faq\" aria-labelledby=\"faq-title\"><h2 id=\"faq-title\" class=\"h1-soft\">FAQ</h2><div class=\"faq-grid\"><details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">How do I book?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">Is there a deposit?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">What if I need to reschedule?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Email me at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">Where is the studio?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614.</p><a class=\"arrow-link faq-link\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Show on Google Map, opens in new window\"><span>Show on Google Map</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</a></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">What do you specialize in?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Fine line, pet portraits and micro realism. I'm also taking on larger pieces, so bring the big ideas too.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">How do I look after my tattoo?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Keep the bandage on for two to three days, then a thin layer of ointment twice a day. No swimming, sun or soaking for two weeks.</p><a class=\"arrow-link faq-link\" href=\"aftercare.html\"><span>Read the aftercare guide</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</a></div></details></div></section><section class=\"cta-strip\"><a class=\"cta-link\" href=\"book.html\" aria-label=\"Book now\"><span class=\"cta-left\"><span class=\"cta-word\">Book</span></span> <span class=\"cta-right\"><span class=\"cta-word\">Now</span><span class=\"cta-arrow-box\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</span></span> <span class=\"cta-mobile\"><span class=\"cta-word\">Book<br>now</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</span></a></section><script type=\"application/ld+json\">\n\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"How do I book?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"Is there a deposit?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"What if I need to reschedule?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Email at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"Where is the studio?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"What do you specialize in?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Fine line, pet portraits and micro realism, and larger pieces too.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"How do I look after my tattoo?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Keep the bandage on for two to three days, then a thin layer of ointment twice a day. No swimming, sun or soaking for two weeks. The full guide is on the aftercare page.\"}}\n\t\t\t]}\n\t\t</script> <div class=\"anchors-bar\"><nav class=\"anchors\" aria-label=\"On this page\"><a class=\"anchor-link\" href=\"#about\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">About</span></a> <a class=\"anchor-link\" href=\"#latest\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Latest works</span></a> <a class=\"anchor-link\" href=\"#gallery\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Gallery</span></a> <a class=\"anchor-link\" href=\"#faq\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">FAQ</span></a></nav><a class=\"bar-book\" href=\"book.html\"><span class=\"anchor-txt\">Book now</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</a></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.", "https://www.tatit2.com/", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("tat.it.too – Tattoo Artist in Chicago | Book Online", "tat.it.too – Chicago tattoo artist at Sappe Sin Studio. Custom tattoos and flash: fine line, animal portraits, and flash designs. Book online.", "https://www.tatit2.com/", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

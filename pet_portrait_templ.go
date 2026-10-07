@@ -41,13 +41,21 @@ func PetPortraits() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"grid min-h-full place-items-center bg-white px-4 py-12 sm:py-16 lg:px-6\" role=\"region\" aria-labelledby=\"pet-portrait-heading\"><div class=\"text-center\"><h1 id=\"pet-portrait-heading\" class=\"text-2xl font-bold text-center mb-6\">PET PORTRAIT INFORMATION</h1><p class=\"text-center mb-4\">Please send me all information below.<br></p><ul class=\"list-disc list-inside space-y-2\"><li><span class=\"font-semibold\">Full Name</span></li><li><span class=\"font-semibold\">Pet photo</span><br><span class=\"text-md\">Please send me a picture of your pet with a high resolution photo. Not a blurry picture.</span></li><li><span class=\"font-semibold\">The placement picture on your body</span><br><span class=\"text-md\">Please attach a picture of your body for context around the area.</span></li><li><span class=\"font-semibold\">Size (inches)</span><br><span class=\"text-md\">Inches only please, not centimeters.</span></li><li><span class=\"font-semibold\">Color (or black and grey)</span></li></ul><p class=\"mt-6\">If you have any questions or need more details, feel free to let me know.</p><p class=\"mt-2\">I will get back to you <span class=\"font-semibold\">as soon as possible.</span></p><p class=\"mt-4 text-center font-medium\">Thank you for your patience 🖤</p></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"page-hero page-hero--mid\" aria-labelledby=\"pet-portrait-heading\"><h1 id=\"pet-portrait-heading\" class=\"display h1-page\">Pet<br>portraits</h1></section><div class=\"util-body\"><div class=\"label label--ink\">Please send me all of the information below</div><div class=\"util-text\"><ul class=\"util-list\"><li><strong>Full name</strong></li><li><strong>Pet photo</strong><span class=\"sub\">A high resolution photo of your pet. Not a blurry picture.</span></li><li><strong>The placement picture on your body</strong><span class=\"sub\">Please attach a picture of your body for context around the area.</span></li><li><strong>Size (inches)</strong><span class=\"sub\">Inches only please, not centimeters.</span></li><li><strong>Color (or black and grey)</strong></li></ul><p class=\"b-txt\" style=\"margin-top:2rem\">If you have any questions or need more details, feel free to let me know. I will get back to you as soon as possible. Thank you for your patience 🖤</p><a class=\"back-home arrow-link\" href=\"book.html\"><span>Book now</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</a></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online.", "", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("Pet Portraits | tat.it.too", "What to send for a pet portrait tattoo request. tat.it.too tattoo artist.", "", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

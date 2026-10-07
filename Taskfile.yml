@@ -15,3 +15,5 @@ tasks:
       - task: css
       - task: templ
       - task: go
+  # Generate responsive image variants + imagemeta_gen.go (needs Pillow)
+  images: python3 scripts/images.py

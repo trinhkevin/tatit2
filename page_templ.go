@@ -10,8 +10,8 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "time"
 
-// border-b. title, description, canonical (empty = no canonical link), ogURL (for og:url, use canonical or homepage).
-func Page(title string, description string, canonical string, ogURL string) templ.Component {
+// Arrow renders the small diagonal arrow used on every call to action.
+func Arrow() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -32,142 +32,345 @@ func Page(title string, description string, canonical string, ogURL string) temp
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><title>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<span class=\"arrow\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" stroke-linejoin=\"miter\"><path d=\"M6 18L18 6M8 6h10v10\"></path></svg></span>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 10, Col: 17}
+		return nil
+	})
+}
+
+// Pic renders a responsive image with srcset/sizes and intrinsic dimensions.
+// eager marks the image as above the fold (no lazy loading, high fetch priority).
+func Pic(src string, alt string, sizes string, eager bool) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\"><meta name=\"color-scheme\" content=\"light\"><meta name=\"description\" content=\"")
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<img src=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(src)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 14, Col: 49}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 14, Col: 11}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"><meta name=\"theme-color\" content=\"#000000\"><link rel=\"icon\" href=\"images/favicon.webp\" type=\"image/webp\"><link rel=\"apple-touch-icon\" href=\"images/favicon.webp\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\" srcset=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if canonical != "" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<link rel=\"canonical\" href=\"")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			var templ_7745c5c3_Var4 templ.SafeURL
-			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(canonical)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 19, Col: 42}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
+		var templ_7745c5c3_Var4 string
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(srcset(src))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 15, Col: 22}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<link rel=\"preload\" href=\"./src/tailwind.css\" as=\"style\"><link rel=\"preload\" href=\"./src/main.css\" as=\"style\"><link type=\"text/css\" href=\"./src/tailwind.css\" rel=\"stylesheet\"><link type=\"text/css\" href=\"./src/main.css\" rel=\"stylesheet\"><link rel=\"preconnect\" href=\"https://www.google.com\"><link rel=\"preconnect\" href=\"https://www.gstatic.com\" crossorigin><meta property=\"og:type\" content=\"website\"><meta property=\"og:title\" content=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" sizes=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(sizes)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 28, Col: 44}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 16, Col: 15}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\"><meta property=\"og:description\" content=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\" alt=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(alt)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 29, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 17, Col: 11}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\"><meta property=\"og:image\" content=\"https://www.tatit2.com/images/sample.webp\"><meta property=\"og:url\" content=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" width=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(ogURL)
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(imgW(src))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 31, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 18, Col: 19}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"twitter:title\" content=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\" height=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(imgH(src))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 33, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 19, Col: 20}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"><meta name=\"twitter:description\" content=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\" decoding=\"async\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var9 string
-		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(description)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 34, Col: 57}
+		if eager {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, " loading=\"eager\" fetchpriority=\"high\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, " loading=\"lazy\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/sample.webp\"}\n\t\t\t\t]\n\t\t\t</script></head><body class=\"page-body\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><nav class=\"navbar navbar-mobile p-0 flex-shrink-0 bg-transparent\" aria-label=\"Main navigation\"><div class=\"navbar-start navbar-start-mobile\"><details class=\"dropdown dropdown-nav mobile-menu\"><summary class=\"btn btn-ghost btn-square nav-tap-target hamburger-btn\" aria-label=\"Open menu\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 hamburger-icon\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h8m-8 6h16\"></path></svg></summary><ul class=\"menu menu-lg dropdown-content rounded-box z-1000 mt-2 w-56 p-2 text-xl mobile-menu-list\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">Instagram</a></li></ul></details></div><div class=\"navbar-logo-center\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.webp\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-center hidden lg:flex\" aria-hidden=\"true\"><ul class=\"menu menu-horizontal text-2xl p-0\"><li id=\"index.html\"><a href=\"index.html\">Home</a></li><li id=\"book.html\"><a href=\"book.html\">Book</a></li><li id=\"flash.html\"><a href=\"flash.html\">Flash</a></li><li id=\"aftercare.html\"><a href=\"aftercare.html\">Aftercare</a></li><li><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">Instagram</a></li></ul></div><div class=\"navbar-logo-left hidden lg:block\"><a href=\"index.html\" class=\"nav-logo-link\" aria-label=\"Home\"><img src=\"images/logo-A.webp\" alt=\"\" class=\"nav-logo-img\" width=\"40\" height=\"48\"></a></div><div class=\"navbar-end navbar-end-mobile\"></div></nav><main id=\"main-content\" class=\"page-main\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, ">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</main><hr class=\"h-px my-1 bg-gray-200 border-0 dark:bg-gray-700 mx-3 flex-shrink-0\"><footer class=\"footer footer-compact flex-shrink-0\" role=\"contentinfo\"><aside><p>Copyright © ")
+		return nil
+	})
+}
+
+// Page is the shared document shell: head, fixed header, mobile menu, main, footer, scripts.
+// title, description, canonical (empty = no canonical link), ogURL (for og:url, use canonical or homepage).
+func Page(title string, description string, canonical string, ogURL string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var9 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var9 == nil {
+			templ_7745c5c3_Var9 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<!doctype html><html lang=\"en\"><head><title>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var10 string
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(time.Now().Format("2006"))
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 86, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 36, Col: 17}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " - All right reserved</p></aside></footer><script>\n\t\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\t\tvar path = (window.location.pathname || '/').split('/').pop() || '';\n\t\t\t\t\tif (path === 'index.html' || path === '') {\n\t\t\t\t\t\tsessionStorage.setItem('tatit2HasSeenIndex', '1');\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsessionStorage.setItem('tatit2LastPage', path);\n\t\t\t\t\t}\n\t\t\t\t\tdocument.querySelectorAll('[id=\"' + path + '\"]').forEach(function(el) { el.classList.add('nav-active'); });\n\t\t\t\t\tvar menu = document.querySelector('.mobile-menu');\n\t\t\t\t\tvar summary = menu ? menu.querySelector('summary') : null;\n\t\t\t\t\tif (menu && summary) {\n\t\t\t\t\t\tmenu.addEventListener('toggle', function() {\n\t\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t\t\tsummary.setAttribute('aria-label', menu.open ? 'Close menu' : 'Open menu');\n\t\t\t\t\t\t});\n\t\t\t\t\t\tsummary.setAttribute('aria-expanded', menu.open ? 'true' : 'false');\n\t\t\t\t\t}\n\t\t\t\t});\n\t\t\t</script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\"><meta name=\"color-scheme\" content=\"light\"><meta name=\"description\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var11 string
+		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 40, Col: 49}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "\"><meta name=\"theme-color\" content=\"#e0e0e0\"><link rel=\"icon\" href=\"favicon.ico\" sizes=\"32x32\"><link rel=\"icon\" href=\"images/favicon.svg\" type=\"image/svg+xml\"><link rel=\"icon\" href=\"images/favicon-192.png\" type=\"image/png\" sizes=\"192x192\"><link rel=\"apple-touch-icon\" href=\"images/apple-touch-icon.png\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if canonical != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<link rel=\"canonical\" href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var12 templ.SafeURL
+			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinURLErrs(canonical)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 47, Col: 42}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<link rel=\"preload\" href=\"./src/fonts/Switzer-Bold.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><link rel=\"preload\" href=\"./src/fonts/Switzer-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><link rel=\"preload\" href=\"./src/tailwind.css\" as=\"style\"><link rel=\"preload\" href=\"./src/main.css\" as=\"style\"><link type=\"text/css\" href=\"./src/tailwind.css\" rel=\"stylesheet\"><link type=\"text/css\" href=\"./src/main.css\" rel=\"stylesheet\"><meta property=\"og:type\" content=\"website\"><meta property=\"og:site_name\" content=\"tat.it.too\"><meta property=\"og:locale\" content=\"en_US\"><meta property=\"og:title\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var13 string
+		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 58, Col: 44}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "\"><meta property=\"og:description\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var14 string
+		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 59, Col: 56}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\"><meta property=\"og:image\" content=\"https://www.tatit2.com/images/og.jpg\"><meta property=\"og:image:type\" content=\"image/jpeg\"><meta property=\"og:image:width\" content=\"1200\"><meta property=\"og:image:height\" content=\"630\"><meta property=\"og:image:alt\" content=\"tat.it.too, fine line and pet portrait tattoos, Sappe Sin Studio, Chicago\"><meta property=\"og:url\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var15 string
+		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(ogURL)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 65, Col: 42}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"twitter:title\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var16 string
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 67, Col: 45}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "\"><meta name=\"twitter:description\" content=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var17 string
+		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 68, Col: 57}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "\"><meta name=\"twitter:image\" content=\"https://www.tatit2.com/images/og.jpg\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/og.jpg\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"1134 W Diversey Pkwy\",\"addressLocality\":\"Chicago\",\"addressRegion\":\"IL\",\"postalCode\":\"60614\",\"addressCountry\":\"US\"},\"location\":{\"@type\":\"Place\",\"name\":\"Sappe Sin Studio\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"1134 W Diversey Pkwy\",\"addressLocality\":\"Chicago\",\"addressRegion\":\"IL\",\"postalCode\":\"60614\",\"addressCountry\":\"US\"}},\"sameAs\":[\"https://www.instagram.com/tat.it.too/\"]}\n\t\t\t\t]\n\t\t\t</script></head><body id=\"top\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><header class=\"site-header\"><div class=\"header-row\"><div class=\"logo-block\"><a href=\"index.html\" class=\"logotype\" data-page=\"index.html\">tat.it.too</a><div class=\"logo-sub\"><span class=\"time-txt\" data-clock></span><span class=\"dot dot--blink\" aria-hidden=\"true\"></span><span>Chicago</span></div></div><nav class=\"header-nav\" aria-label=\"Main navigation\"><div class=\"nav-col\"><a class=\"nav-link\" data-page=\"flash.html\" href=\"flash.html\">Flash</a> <a class=\"nav-link\" data-page=\"aftercare.html\" href=\"aftercare.html\">Aftercare</a></div><div class=\"nav-col\"><a class=\"nav-link arrow-link\" href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\"><span>Instagram</span>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</a></div><div class=\"nav-col nav-cta\"><a class=\"nav-link arrow-link\" data-page=\"book.html\" href=\"book.html\"><span>Book now</span>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</a></div></nav><button type=\"button\" class=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"mobile-menu\"><span class=\"is-open\">Menu</span><span class=\"is-close\">Close</span> <span class=\"burger\" aria-hidden=\"true\"><span></span><span></span></span></button></div></header><div id=\"mobile-menu\" class=\"mobile-menu\" aria-hidden=\"true\"><div class=\"menu-inner\"><nav class=\"menu-links\" aria-label=\"Menu\"><a class=\"menu-link\" href=\"index.html\">Home</a> <a class=\"menu-link\" href=\"flash.html\">Flash</a> <a class=\"menu-link\" href=\"aftercare.html\">Aftercare</a></nav><a class=\"menu-book\" href=\"book.html\"><span>Book now</span>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</a><div class=\"menu-boxes\"><div><div class=\"menu-box-title\">Follow</div><a class=\"menu-box-link\" href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "<span>Instagram</span></a></div><div><div class=\"menu-box-title\">Sappe Sin Studio</div><a class=\"menu-box-link\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Directions on Google Maps, opens in new window\"><span>1134 W Diversey Pkwy, Chicago, IL 60614</span></a></div></div></div></div><main id=\"main-content\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ_7745c5c3_Var9.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</main><footer class=\"site-footer\" role=\"contentinfo\"><address class=\"studio-band\"><div class=\"studio-box\"><p class=\"studio-name\">Sappe Sin Studio</p><p class=\"studio-address\">1134 W Diversey Pkwy,<br>Chicago, IL 60614</p><a class=\"studio-btn\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Show on Google Map, opens in new window\"><span>Show on Google Map</span>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</a></div></address><div class=\"footer-flex\"><div class=\"footer-left\"><a class=\"to-top\" href=\"#top\">Back to top</a></div><div class=\"footer-right\"><div class=\"footer-col\"><div class=\"footer-title\">Discover</div><a class=\"footer-link\" data-page=\"index.html\" href=\"index.html\">Home</a> <a class=\"footer-link\" data-page=\"flash.html\" href=\"flash.html\">Flash</a> <a class=\"footer-link\" data-page=\"book.html\" href=\"book.html\">Book</a> <a class=\"footer-link\" data-page=\"aftercare.html\" href=\"aftercare.html\">Aftercare</a></div><div class=\"footer-col\"><div class=\"footer-title\">Follow us</div><a class=\"footer-link\" href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "<span>Instagram</span></a></div></div></div><div class=\"footer-last\"><span>© ")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var18 string
+		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(time.Now().Format("2006"))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 153, Col: 41}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, " tat.it.too. All rights reserved</span> <a class=\"footer-link footer-link--inline\" data-page=\"privacy.html\" href=\"privacy.html\">Privacy</a></div></footer><script src=\"./src/lenis.min.js\" defer></script><script src=\"./src/site.js\" defer></script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

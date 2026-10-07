@@ -1,68 +1,146 @@
 package main
 
+type flashDesign struct {
+	File  string
+	Name  string
+	Taken bool
+}
+
+var newFlash = []flashDesign{
+	{"F", "Design F", false},
+	{"G", "Design G", false},
+	{"H", "Design H", true},
+	{"I", "Design I", true},
+}
+
+var oldFlash = []flashDesign{
+	{"IMG_6611", "Design 01", true},
+	{"IMG_6612", "Design 02", false},
+	{"IMG_6613", "Design 03", true},
+	{"IMG_6614", "Design 04", false},
+	{"IMG_6615", "Design 05", true},
+	{"IMG_6616", "Design 06", false},
+	{"IMG_6617", "Design 07", false},
+	{"IMG_6618", "Design 08", false},
+	{"IMG_6619", "Design 09", true},
+	{"A", "Design 10", true},
+	{"B", "Design 11", false},
+	{"C", "Design 12", false},
+	{"D", "Design 13", false},
+	{"E", "Design 14", true},
+}
+
+func flashStatus(d flashDesign) string {
+	if d.Taken {
+		return "claimed"
+	}
+	return "available"
+}
+
+func flashLabel(d flashDesign) string {
+	if d.Taken {
+		return "View " + d.Name + " (claimed, no longer available)"
+	}
+	return "View " + d.Name
+}
+
+func flashCardClass(d flashDesign) string {
+	if d.Taken {
+		return "flash-card flash-card--taken"
+	}
+	return "flash-card"
+}
+
+templ FlashCard(d flashDesign) {
+	<button type="button" class={ flashCardClass(d) } data-status={ flashStatus(d) } data-src={ "images/flash/" + d.File + ".webp" } data-name={ d.Name } aria-label={ flashLabel(d) }>
+		<span class="flash-card-img"><img src={ "images/flash/" + d.File + ".webp" } alt="" loading="lazy" decoding="async"/></span>
+		<span class="flash-card-meta"><span class="flash-card-name">{ d.Name }</span><span class="flash-card-status">{ flashStatus(d) }</span></span>
+	</button>
+}
+
 templ Flash() {
 	@Page("Flash Tattoos | tat.it.too", "Browse flash tattoo designs. Pre-drawn designs ready to book. tat.it.too tattoo artist.", "https://www.tatit2.com/flash.html", "https://www.tatit2.com/flash.html") {
-		<div class="flash-page flex-1 flex flex-col min-h-0">
-			<div class="flash-divider flash-divider--top" role="separator" aria-label="New Flash">
-				<span class="flash-divider-label">New Flash</span>
-			</div>
-			<div class="flash-grid" role="group" aria-label="Flash tattoo designs">
-				<button type="button" class="flash-cell" aria-label="View flash design F" data-src="images/flash/F.webp"><img src="images/flash/F.webp" alt="Flash design F" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design G" data-src="images/flash/G.webp"><img src="images/flash/G.webp" alt="Flash design G" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design H (taken — no longer available)" data-src="images/flash/H.webp"><img src="images/flash/H.webp" alt="Flash design H (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design I (taken — no longer available)" data-src="images/flash/I.webp"><img src="images/flash/I.webp" alt="Flash design I (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-			</div>
-			<div class="flash-divider" role="separator" aria-label="Old Flash">
-				<span class="flash-divider-label">Old Flash</span>
-			</div>
-			<div class="flash-grid" role="group" aria-label="Older flash tattoo designs">
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design 1 (taken — no longer available)" data-src="images/flash/IMG_6611.webp"><img src="images/flash/IMG_6611.webp" alt="Flash design 1 (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 2" data-src="images/flash/IMG_6612.webp"><img src="images/flash/IMG_6612.webp" alt="Flash design 2" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design 3 (taken — no longer available)" data-src="images/flash/IMG_6613.webp"><img src="images/flash/IMG_6613.webp" alt="Flash design 3 (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 4" data-src="images/flash/IMG_6614.webp"><img src="images/flash/IMG_6614.webp" alt="Flash design 4" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design 5 (taken — no longer available)" data-src="images/flash/IMG_6615.webp"><img src="images/flash/IMG_6615.webp" alt="Flash design 5 (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 6" data-src="images/flash/IMG_6616.webp"><img src="images/flash/IMG_6616.webp" alt="Flash design 6" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 7" data-src="images/flash/IMG_6617.webp"><img src="images/flash/IMG_6617.webp" alt="Flash design 7" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 8" data-src="images/flash/IMG_6618.webp"><img src="images/flash/IMG_6618.webp" alt="Flash design 8" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design 9 (taken — no longer available)" data-src="images/flash/IMG_6619.webp"><img src="images/flash/IMG_6619.webp" alt="Flash design 9 (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design 10 (taken — no longer available)" data-src="images/flash/A.webp"><img src="images/flash/A.webp" alt="Flash design 10 (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 11" data-src="images/flash/B.webp"><img src="images/flash/B.webp" alt="Flash design 11" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 12" data-src="images/flash/C.webp"><img src="images/flash/C.webp" alt="Flash design 12" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell" aria-label="View flash design 13" data-src="images/flash/D.webp"><img src="images/flash/D.webp" alt="Flash design 13" class="flash-cell-img" loading="lazy" decoding="async"></button>
-				<button type="button" class="flash-cell flash-cell--taken" data-taken="1" aria-label="View flash design 14 (taken — no longer available)" data-src="images/flash/E.webp"><img src="images/flash/E.webp" alt="Flash design 14 (taken)" class="flash-cell-img" loading="lazy" decoding="async"></button>
-			</div>
+		<section class="page-hero" aria-labelledby="flash-title">
+			<h1 id="flash-title" class="display h1-page">Flash</h1>
+			<p class="page-hero-blurb">Pre-drawn designs, ready to book. Pick one, send a placement photo, and it's yours.</p>
+		</section>
+		<div class="flash-filters" role="group" aria-label="Filter designs">
+			<button type="button" class="flash-filter is-active" data-filter="all" aria-pressed="true"><span class="ring" aria-hidden="true"></span>All <span class="count" data-count="all"></span></button>
+			<button type="button" class="flash-filter" data-filter="available" aria-pressed="false"><span class="ring" aria-hidden="true"></span>Available <span class="count" data-count="available"></span></button>
+			<button type="button" class="flash-filter" data-filter="claimed" aria-pressed="false"><span class="ring" aria-hidden="true"></span>Claimed <span class="count" data-count="claimed"></span></button>
 		</div>
+		<section class="flash-group" aria-labelledby="new-flash">
+			<div class="flash-group-label"><span class="dot" aria-hidden="true"></span><span id="new-flash" class="label label--ink">New flash</span></div>
+			<div class="flash-grid">
+				for _, d := range newFlash {
+					@FlashCard(d)
+				}
+			</div>
+		</section>
+		<section class="flash-group" aria-labelledby="old-flash">
+			<div class="flash-group-label"><span class="dot" aria-hidden="true"></span><span id="old-flash" class="label label--ink">Old flash</span></div>
+			<div class="flash-grid">
+				for _, d := range oldFlash {
+					@FlashCard(d)
+				}
+			</div>
+		</section>
+		<p class="flash-empty b-txt" id="flash-empty" hidden>Nothing here right now.</p>
 		<div id="flash-modal" class="flash-modal" role="dialog" aria-modal="true" aria-label="View flash design" aria-hidden="true" hidden>
 			<div class="flash-modal-backdrop" aria-hidden="true"></div>
 			<div class="flash-modal-inner">
-				<button type="button" class="flash-modal-close" aria-label="Close">×</button>
+				<button type="button" class="flash-modal-close" aria-label="Close">Close <span aria-hidden="true">×</span></button>
 				<div class="flash-modal-image">
-					<img id="flash-modal-img" class="flash-modal-img" src="" alt="">
+					<img id="flash-modal-img" class="flash-modal-img" src="" alt=""/>
 				</div>
-				<a href="book.html" id="flash-modal-cta" class="flash-modal-cta">Book this design →</a>
-				<span id="flash-modal-taken" class="flash-modal-taken" hidden>Tattooed — no longer available</span>
+				<a href="book.html" id="flash-modal-cta" class="flash-modal-cta"><span>Book this design</span>@Arrow()</a>
+				<span id="flash-modal-taken" class="flash-modal-taken" hidden><span>Claimed</span><span>No longer available</span></span>
 			</div>
 		</div>
 		<script>
 			(function() {
+				var cards = Array.prototype.slice.call(document.querySelectorAll('.flash-card'));
+				var filters = document.querySelectorAll('.flash-filter');
+				var groups = document.querySelectorAll('.flash-group');
+				var empty = document.getElementById('flash-empty');
+				var counts = { all: cards.length, available: 0, claimed: 0 };
+				cards.forEach(function(c) { counts[c.getAttribute('data-status')]++; });
+				document.querySelectorAll('[data-count]').forEach(function(el) {
+					el.textContent = String(counts[el.getAttribute('data-count')]).padStart(2, '0');
+				});
+				function applyFilter(f) {
+					filters.forEach(function(b) {
+						var on = b.getAttribute('data-filter') === f;
+						b.classList.toggle('is-active', on);
+						b.setAttribute('aria-pressed', String(on));
+					});
+					cards.forEach(function(c) {
+						c.classList.toggle('is-hidden', f !== 'all' && c.getAttribute('data-status') !== f);
+					});
+					groups.forEach(function(g) {
+						g.hidden = !g.querySelector('.flash-card:not(.is-hidden)');
+					});
+					if (empty) empty.hidden = f === 'all' || counts[f] > 0;
+				}
+				filters.forEach(function(b) {
+					b.addEventListener('click', function() { applyFilter(b.getAttribute('data-filter')); });
+				});
+
 				var modal = document.getElementById('flash-modal');
-				var closeBtn = modal ? modal.querySelector('.flash-modal-close') : null;
 				if (!modal) return;
+				var closeBtn = modal.querySelector('.flash-modal-close');
 				var cta = document.getElementById('flash-modal-cta');
 				var takenLabel = document.getElementById('flash-modal-taken');
+				var img = document.getElementById('flash-modal-img');
 				var lastFocused = null;
 				var openedViaKeyboard = false;
-				function openModal(src, trigger, viaKeyboard) {
+				function openModal(trigger, viaKeyboard) {
 					lastFocused = trigger || document.activeElement;
 					openedViaKeyboard = !!viaKeyboard;
-					var img = document.getElementById('flash-modal-img');
-					if (img && src) {
-						img.src = src;
-						var cellImg = trigger && trigger.querySelector ? trigger.querySelector('img') : null;
-						img.alt = cellImg ? cellImg.alt : '';
-					}
-					var isTaken = trigger && trigger.getAttribute('data-taken') === '1';
-					if (cta) cta.hidden = !!isTaken;
+					var src = trigger.getAttribute('data-src');
+					if (img && src) { img.src = src; img.alt = trigger.getAttribute('data-name') || ''; }
+					var isTaken = trigger.getAttribute('data-status') === 'claimed';
+					if (cta) cta.hidden = isTaken;
 					if (takenLabel) takenLabel.hidden = !isTaken;
 					modal.removeAttribute('hidden');
 					modal.setAttribute('aria-hidden', 'false');
@@ -79,24 +157,19 @@ templ Flash() {
 						document.activeElement.blur();
 					}
 				}
-				document.querySelectorAll('.flash-cell').forEach(function(btn) {
-					var src = btn.getAttribute('data-src');
+				cards.forEach(function(btn) {
 					btn.addEventListener('mouseenter', function() {
-						if (src) {
-							var preload = new Image();
-							preload.src = src;
-						}
+						var src = btn.getAttribute('data-src');
+						if (src) { var preload = new Image(); preload.src = src; }
 					});
-					btn.addEventListener('click', function() { openModal(src, this, false); });
+					btn.addEventListener('click', function() { openModal(this, false); });
 					btn.addEventListener('keydown', function(e) {
-						if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(src, this, true); }
+						if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(this, true); }
 					});
 				});
 				modal.querySelector('.flash-modal-backdrop').addEventListener('click', closeModal);
 				closeBtn && closeBtn.addEventListener('click', closeModal);
-				modal.addEventListener('keydown', function(e) {
-					if (e.key === 'Escape') closeModal();
-				});
+				modal.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 			})();
 		</script>
 	}

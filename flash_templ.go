@@ -8,7 +8,58 @@ package main
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Flash() templ.Component {
+type flashDesign struct {
+	File  string
+	Name  string
+	Taken bool
+}
+
+var newFlash = []flashDesign{
+	{"F", "Design F", false},
+	{"G", "Design G", false},
+	{"H", "Design H", true},
+	{"I", "Design I", true},
+}
+
+var oldFlash = []flashDesign{
+	{"IMG_6611", "Design 01", true},
+	{"IMG_6612", "Design 02", false},
+	{"IMG_6613", "Design 03", true},
+	{"IMG_6614", "Design 04", false},
+	{"IMG_6615", "Design 05", true},
+	{"IMG_6616", "Design 06", false},
+	{"IMG_6617", "Design 07", false},
+	{"IMG_6618", "Design 08", false},
+	{"IMG_6619", "Design 09", true},
+	{"A", "Design 10", true},
+	{"B", "Design 11", false},
+	{"C", "Design 12", false},
+	{"D", "Design 13", false},
+	{"E", "Design 14", true},
+}
+
+func flashStatus(d flashDesign) string {
+	if d.Taken {
+		return "claimed"
+	}
+	return "available"
+}
+
+func flashLabel(d flashDesign) string {
+	if d.Taken {
+		return "View " + d.Name + " (claimed, no longer available)"
+	}
+	return "View " + d.Name
+}
+
+func flashCardClass(d flashDesign) string {
+	if d.Taken {
+		return "flash-card flash-card--taken"
+	}
+	return "flash-card"
+}
+
+func FlashCard(d flashDesign) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +80,145 @@ func Flash() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		var templ_7745c5c3_Var2 = []any{flashCardClass(d)}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<button type=\"button\" class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var3 string
+		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var2).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\" data-status=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var4 string
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(flashStatus(d))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 55, Col: 79}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\" data-src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var5 string
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs("images/flash/" + d.File + ".webp")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 55, Col: 127}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" data-name=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var6 string
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(d.Name)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 55, Col: 148}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\" aria-label=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var7 string
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(flashLabel(d))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 55, Col: 177}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\"><span class=\"flash-card-img\"><img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var8 string
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs("images/flash/" + d.File + ".webp")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 56, Col: 76}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\" alt=\"\" loading=\"lazy\" decoding=\"async\"></span> <span class=\"flash-card-meta\"><span class=\"flash-card-name\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var9 string
+		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(d.Name)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 57, Col: 70}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span><span class=\"flash-card-status\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var10 string
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(flashStatus(d))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `flash.templ`, Line: 57, Col: 127}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</span></span></button>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func Flash() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var11 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var11 == nil {
+			templ_7745c5c3_Var11 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Var12 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
 			if !templ_7745c5c3_IsBuffer {
@@ -41,13 +230,41 @@ func Flash() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flash-page flex-1 flex flex-col min-h-0\"><div class=\"flash-divider flash-divider--top\" role=\"separator\" aria-label=\"New Flash\"><span class=\"flash-divider-label\">New Flash</span></div><div class=\"flash-grid\" role=\"group\" aria-label=\"Flash tattoo designs\"><button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design F\" data-src=\"images/flash/F.webp\"><img src=\"images/flash/F.webp\" alt=\"Flash design F\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design G\" data-src=\"images/flash/G.webp\"><img src=\"images/flash/G.webp\" alt=\"Flash design G\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design H (taken — no longer available)\" data-src=\"images/flash/H.webp\"><img src=\"images/flash/H.webp\" alt=\"Flash design H (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design I (taken — no longer available)\" data-src=\"images/flash/I.webp\"><img src=\"images/flash/I.webp\" alt=\"Flash design I (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button></div><div class=\"flash-divider\" role=\"separator\" aria-label=\"Old Flash\"><span class=\"flash-divider-label\">Old Flash</span></div><div class=\"flash-grid\" role=\"group\" aria-label=\"Older flash tattoo designs\"><button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design 1 (taken — no longer available)\" data-src=\"images/flash/IMG_6611.webp\"><img src=\"images/flash/IMG_6611.webp\" alt=\"Flash design 1 (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 2\" data-src=\"images/flash/IMG_6612.webp\"><img src=\"images/flash/IMG_6612.webp\" alt=\"Flash design 2\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design 3 (taken — no longer available)\" data-src=\"images/flash/IMG_6613.webp\"><img src=\"images/flash/IMG_6613.webp\" alt=\"Flash design 3 (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 4\" data-src=\"images/flash/IMG_6614.webp\"><img src=\"images/flash/IMG_6614.webp\" alt=\"Flash design 4\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design 5 (taken — no longer available)\" data-src=\"images/flash/IMG_6615.webp\"><img src=\"images/flash/IMG_6615.webp\" alt=\"Flash design 5 (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 6\" data-src=\"images/flash/IMG_6616.webp\"><img src=\"images/flash/IMG_6616.webp\" alt=\"Flash design 6\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 7\" data-src=\"images/flash/IMG_6617.webp\"><img src=\"images/flash/IMG_6617.webp\" alt=\"Flash design 7\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 8\" data-src=\"images/flash/IMG_6618.webp\"><img src=\"images/flash/IMG_6618.webp\" alt=\"Flash design 8\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design 9 (taken — no longer available)\" data-src=\"images/flash/IMG_6619.webp\"><img src=\"images/flash/IMG_6619.webp\" alt=\"Flash design 9 (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design 10 (taken — no longer available)\" data-src=\"images/flash/A.webp\"><img src=\"images/flash/A.webp\" alt=\"Flash design 10 (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 11\" data-src=\"images/flash/B.webp\"><img src=\"images/flash/B.webp\" alt=\"Flash design 11\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 12\" data-src=\"images/flash/C.webp\"><img src=\"images/flash/C.webp\" alt=\"Flash design 12\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell\" aria-label=\"View flash design 13\" data-src=\"images/flash/D.webp\"><img src=\"images/flash/D.webp\" alt=\"Flash design 13\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"flash-cell flash-cell--taken\" data-taken=\"1\" aria-label=\"View flash design 14 (taken — no longer available)\" data-src=\"images/flash/E.webp\"><img src=\"images/flash/E.webp\" alt=\"Flash design 14 (taken)\" class=\"flash-cell-img\" loading=\"lazy\" decoding=\"async\"></button></div></div><div id=\"flash-modal\" class=\"flash-modal\" role=\"dialog\" aria-modal=\"true\" aria-label=\"View flash design\" aria-hidden=\"true\" hidden><div class=\"flash-modal-backdrop\" aria-hidden=\"true\"></div><div class=\"flash-modal-inner\"><button type=\"button\" class=\"flash-modal-close\" aria-label=\"Close\">×</button><div class=\"flash-modal-image\"><img id=\"flash-modal-img\" class=\"flash-modal-img\" src=\"\" alt=\"\"></div><a href=\"book.html\" id=\"flash-modal-cta\" class=\"flash-modal-cta\">Book this design →</a> <span id=\"flash-modal-taken\" class=\"flash-modal-taken\" hidden>Tattooed — no longer available</span></div></div><script>\n\t\t\t(function() {\n\t\t\t\tvar modal = document.getElementById('flash-modal');\n\t\t\t\tvar closeBtn = modal ? modal.querySelector('.flash-modal-close') : null;\n\t\t\t\tif (!modal) return;\n\t\t\t\tvar cta = document.getElementById('flash-modal-cta');\n\t\t\t\tvar takenLabel = document.getElementById('flash-modal-taken');\n\t\t\t\tvar lastFocused = null;\n\t\t\t\tvar openedViaKeyboard = false;\n\t\t\t\tfunction openModal(src, trigger, viaKeyboard) {\n\t\t\t\t\tlastFocused = trigger || document.activeElement;\n\t\t\t\t\topenedViaKeyboard = !!viaKeyboard;\n\t\t\t\t\tvar img = document.getElementById('flash-modal-img');\n\t\t\t\t\tif (img && src) {\n\t\t\t\t\t\timg.src = src;\n\t\t\t\t\t\tvar cellImg = trigger && trigger.querySelector ? trigger.querySelector('img') : null;\n\t\t\t\t\t\timg.alt = cellImg ? cellImg.alt : '';\n\t\t\t\t\t}\n\t\t\t\t\tvar isTaken = trigger && trigger.getAttribute('data-taken') === '1';\n\t\t\t\t\tif (cta) cta.hidden = !!isTaken;\n\t\t\t\t\tif (takenLabel) takenLabel.hidden = !isTaken;\n\t\t\t\t\tmodal.removeAttribute('hidden');\n\t\t\t\t\tmodal.setAttribute('aria-hidden', 'false');\n\t\t\t\t\tdocument.body.style.overflow = 'hidden';\n\t\t\t\t\tcloseBtn && closeBtn.focus();\n\t\t\t\t}\n\t\t\t\tfunction closeModal() {\n\t\t\t\t\tmodal.setAttribute('hidden', '');\n\t\t\t\t\tmodal.setAttribute('aria-hidden', 'true');\n\t\t\t\t\tdocument.body.style.overflow = '';\n\t\t\t\t\tif (openedViaKeyboard && lastFocused && lastFocused.focus) {\n\t\t\t\t\t\tlastFocused.focus();\n\t\t\t\t\t} else if (document.activeElement && document.activeElement.blur) {\n\t\t\t\t\t\tdocument.activeElement.blur();\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tdocument.querySelectorAll('.flash-cell').forEach(function(btn) {\n\t\t\t\t\tvar src = btn.getAttribute('data-src');\n\t\t\t\t\tbtn.addEventListener('mouseenter', function() {\n\t\t\t\t\t\tif (src) {\n\t\t\t\t\t\t\tvar preload = new Image();\n\t\t\t\t\t\t\tpreload.src = src;\n\t\t\t\t\t\t}\n\t\t\t\t\t});\n\t\t\t\t\tbtn.addEventListener('click', function() { openModal(src, this, false); });\n\t\t\t\t\tbtn.addEventListener('keydown', function(e) {\n\t\t\t\t\t\tif (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(src, this, true); }\n\t\t\t\t\t});\n\t\t\t\t});\n\t\t\t\tmodal.querySelector('.flash-modal-backdrop').addEventListener('click', closeModal);\n\t\t\t\tcloseBtn && closeBtn.addEventListener('click', closeModal);\n\t\t\t\tmodal.addEventListener('keydown', function(e) {\n\t\t\t\t\tif (e.key === 'Escape') closeModal();\n\t\t\t\t});\n\t\t\t})();\n\t\t</script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<section class=\"page-hero\" aria-labelledby=\"flash-title\"><h1 id=\"flash-title\" class=\"display h1-page\">Flash</h1><p class=\"page-hero-blurb\">Pre-drawn designs, ready to book. Pick one, send a placement photo, and it's yours.</p></section><div class=\"flash-filters\" role=\"group\" aria-label=\"Filter designs\"><button type=\"button\" class=\"flash-filter is-active\" data-filter=\"all\" aria-pressed=\"true\"><span class=\"ring\" aria-hidden=\"true\"></span>All <span class=\"count\" data-count=\"all\"></span></button> <button type=\"button\" class=\"flash-filter\" data-filter=\"available\" aria-pressed=\"false\"><span class=\"ring\" aria-hidden=\"true\"></span>Available <span class=\"count\" data-count=\"available\"></span></button> <button type=\"button\" class=\"flash-filter\" data-filter=\"claimed\" aria-pressed=\"false\"><span class=\"ring\" aria-hidden=\"true\"></span>Claimed <span class=\"count\" data-count=\"claimed\"></span></button></div><section class=\"flash-group\" aria-labelledby=\"new-flash\"><div class=\"flash-group-label\"><span class=\"dot\" aria-hidden=\"true\"></span><span id=\"new-flash\" class=\"label label--ink\">New flash</span></div><div class=\"flash-grid\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, d := range newFlash {
+				templ_7745c5c3_Err = FlashCard(d).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div></section><section class=\"flash-group\" aria-labelledby=\"old-flash\"><div class=\"flash-group-label\"><span class=\"dot\" aria-hidden=\"true\"></span><span id=\"old-flash\" class=\"label label--ink\">Old flash</span></div><div class=\"flash-grid\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, d := range oldFlash {
+				templ_7745c5c3_Err = FlashCard(d).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</div></section><p class=\"flash-empty b-txt\" id=\"flash-empty\" hidden>Nothing here right now.</p><div id=\"flash-modal\" class=\"flash-modal\" role=\"dialog\" aria-modal=\"true\" aria-label=\"View flash design\" aria-hidden=\"true\" hidden><div class=\"flash-modal-backdrop\" aria-hidden=\"true\"></div><div class=\"flash-modal-inner\"><button type=\"button\" class=\"flash-modal-close\" aria-label=\"Close\">Close <span aria-hidden=\"true\">×</span></button><div class=\"flash-modal-image\"><img id=\"flash-modal-img\" class=\"flash-modal-img\" src=\"\" alt=\"\"></div><a href=\"book.html\" id=\"flash-modal-cta\" class=\"flash-modal-cta\"><span>Book this design</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</a> <span id=\"flash-modal-taken\" class=\"flash-modal-taken\" hidden><span>Claimed</span><span>No longer available</span></span></div></div><script>\n\t\t\t(function() {\n\t\t\t\tvar cards = Array.prototype.slice.call(document.querySelectorAll('.flash-card'));\n\t\t\t\tvar filters = document.querySelectorAll('.flash-filter');\n\t\t\t\tvar groups = document.querySelectorAll('.flash-group');\n\t\t\t\tvar empty = document.getElementById('flash-empty');\n\t\t\t\tvar counts = { all: cards.length, available: 0, claimed: 0 };\n\t\t\t\tcards.forEach(function(c) { counts[c.getAttribute('data-status')]++; });\n\t\t\t\tdocument.querySelectorAll('[data-count]').forEach(function(el) {\n\t\t\t\t\tel.textContent = String(counts[el.getAttribute('data-count')]).padStart(2, '0');\n\t\t\t\t});\n\t\t\t\tfunction applyFilter(f) {\n\t\t\t\t\tfilters.forEach(function(b) {\n\t\t\t\t\t\tvar on = b.getAttribute('data-filter') === f;\n\t\t\t\t\t\tb.classList.toggle('is-active', on);\n\t\t\t\t\t\tb.setAttribute('aria-pressed', String(on));\n\t\t\t\t\t});\n\t\t\t\t\tcards.forEach(function(c) {\n\t\t\t\t\t\tc.classList.toggle('is-hidden', f !== 'all' && c.getAttribute('data-status') !== f);\n\t\t\t\t\t});\n\t\t\t\t\tgroups.forEach(function(g) {\n\t\t\t\t\t\tg.hidden = !g.querySelector('.flash-card:not(.is-hidden)');\n\t\t\t\t\t});\n\t\t\t\t\tif (empty) empty.hidden = f === 'all' || counts[f] > 0;\n\t\t\t\t}\n\t\t\t\tfilters.forEach(function(b) {\n\t\t\t\t\tb.addEventListener('click', function() { applyFilter(b.getAttribute('data-filter')); });\n\t\t\t\t});\n\n\t\t\t\tvar modal = document.getElementById('flash-modal');\n\t\t\t\tif (!modal) return;\n\t\t\t\tvar closeBtn = modal.querySelector('.flash-modal-close');\n\t\t\t\tvar cta = document.getElementById('flash-modal-cta');\n\t\t\t\tvar takenLabel = document.getElementById('flash-modal-taken');\n\t\t\t\tvar img = document.getElementById('flash-modal-img');\n\t\t\t\tvar lastFocused = null;\n\t\t\t\tvar openedViaKeyboard = false;\n\t\t\t\tfunction openModal(trigger, viaKeyboard) {\n\t\t\t\t\tlastFocused = trigger || document.activeElement;\n\t\t\t\t\topenedViaKeyboard = !!viaKeyboard;\n\t\t\t\t\tvar src = trigger.getAttribute('data-src');\n\t\t\t\t\tif (img && src) { img.src = src; img.alt = trigger.getAttribute('data-name') || ''; }\n\t\t\t\t\tvar isTaken = trigger.getAttribute('data-status') === 'claimed';\n\t\t\t\t\tif (cta) cta.hidden = isTaken;\n\t\t\t\t\tif (takenLabel) takenLabel.hidden = !isTaken;\n\t\t\t\t\tmodal.removeAttribute('hidden');\n\t\t\t\t\tmodal.setAttribute('aria-hidden', 'false');\n\t\t\t\t\tdocument.body.style.overflow = 'hidden';\n\t\t\t\t\tcloseBtn && closeBtn.focus();\n\t\t\t\t}\n\t\t\t\tfunction closeModal() {\n\t\t\t\t\tmodal.setAttribute('hidden', '');\n\t\t\t\t\tmodal.setAttribute('aria-hidden', 'true');\n\t\t\t\t\tdocument.body.style.overflow = '';\n\t\t\t\t\tif (openedViaKeyboard && lastFocused && lastFocused.focus) {\n\t\t\t\t\t\tlastFocused.focus();\n\t\t\t\t\t} else if (document.activeElement && document.activeElement.blur) {\n\t\t\t\t\t\tdocument.activeElement.blur();\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tcards.forEach(function(btn) {\n\t\t\t\t\tbtn.addEventListener('mouseenter', function() {\n\t\t\t\t\t\tvar src = btn.getAttribute('data-src');\n\t\t\t\t\t\tif (src) { var preload = new Image(); preload.src = src; }\n\t\t\t\t\t});\n\t\t\t\t\tbtn.addEventListener('click', function() { openModal(this, false); });\n\t\t\t\t\tbtn.addEventListener('keydown', function(e) {\n\t\t\t\t\t\tif (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(this, true); }\n\t\t\t\t\t});\n\t\t\t\t});\n\t\t\t\tmodal.querySelector('.flash-modal-backdrop').addEventListener('click', closeModal);\n\t\t\t\tcloseBtn && closeBtn.addEventListener('click', closeModal);\n\t\t\t\tmodal.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });\n\t\t\t})();\n\t\t</script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page("Flash Tattoos | tat.it.too", "Browse flash tattoo designs. Pre-drawn designs ready to book. tat.it.too tattoo artist.", "https://www.tatit2.com/flash.html", "https://www.tatit2.com/flash.html").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("Flash Tattoos | tat.it.too", "Browse flash tattoo designs. Pre-drawn designs ready to book. tat.it.too tattoo artist.", "https://www.tatit2.com/flash.html", "https://www.tatit2.com/flash.html").Render(templ.WithChildren(ctx, templ_7745c5c3_Var12), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

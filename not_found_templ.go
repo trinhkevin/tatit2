@@ -41,13 +41,21 @@ func NotFound() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8\" role=\"region\" aria-labelledby=\"not-found-heading\"><div class=\"text-center\"><h1 id=\"not-found-heading\" class=\"text-4xl\">Page not found</h1><p class=\"mt-4\"><a href=\"index.html\" class=\"underline focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-black\">Return to home</a></p></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"page-hero page-hero--mid\" aria-labelledby=\"not-found-heading\"><h1 id=\"not-found-heading\" class=\"display h1-hero\">404</h1></section><div class=\"util-body\"><div class=\"label label--ink\">Page not found</div><div class=\"util-text\"><p class=\"b-txt\">That page doesn't exist, or it moved.</p><a class=\"back-home arrow-link\" href=\"index.html\"><span>Back home</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</a></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online.", "", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("Page not found | tat.it.too", "tat.it.too – Custom tattoos and flash. Book your appointment online.", "", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

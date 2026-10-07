@@ -2,68 +2,71 @@ package main
 
 templ Index() {
 	@Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.", "https://www.tatit2.com/", "https://www.tatit2.com/") {
-		<div id="splash-overlay" class="splash-overlay" aria-hidden="false" aria-label="Welcome splash">
-			<button type="button" id="splash-skip" class="splash-skip-btn" aria-label="Skip welcome animation">Skip</button>
-			<div class="splash-logo">tat.it.too</div>
-			<div class="splash-scrapbook" aria-hidden="false">
-				<div class="splash-photo splash-photo-1"><img src="images/splash/IMG_0057.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-2"><img src="images/splash/IMG_2265.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-3"><img src="images/splash/IMG_2932.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-4"><img src="images/splash/IMG_3149.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-5"><img src="images/splash/IMG_4167.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-6"><img src="images/splash/IMG_4760.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-7"><img src="images/splash/IMG_5077.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-8"><img src="images/splash/IMG_5725.webp" alt="" loading="eager" decoding="async"></div>
-				<div class="splash-photo splash-photo-9"><img src="images/splash/IMG_8282.webp" alt="" loading="eager" decoding="async"></div>
+		<section class="hero" aria-labelledby="hero-title">
+			<h1 id="hero-title" class="display h1-hero hero-title">tat.it.too</h1>
+			<div class="hero-meta">
+				<div class="hero-meta-item">
+					<div class="label">Styles</div>
+					<div class="value"><a href="book.html">Fine line</a>, <a href="book.html">Animal portraits</a>, <a href="flash.html">Flash</a></div>
+				</div>
+				<div class="hero-meta-item">
+					<div class="label">Follow</div>
+					<div class="value"><a href="https://www.instagram.com/tat.it.too/" rel="noopener noreferrer" target="_blank" aria-label="Instagram, opens in new window"><span>{ "@tat.it.too" }</span>@Arrow()</a></div>
+				</div>
 			</div>
-		</div>
-		<div class="index-hero card w-full flex-1 flex flex-col min-h-0 px-4">
-			<div class="flex-1 flex items-center justify-center relative z-[1]">
-				<div class="index-hero-content card-body items-center text-center p-0">
-					<h1 class="index-hero-title">tat.it.too</h1>
-					<div class="index-hero-actions">
-						<a href="book.html" class="btn btn-xl btn-hip btn-primary active:bg-black active:text-white hover:bg-black hover:text-white text-2xl font-semibold min-w-52" rel="noopener">Book Now</a>
-						<a id="hero-flash-btn" href="flash.html" class="btn btn-xl btn-hip btn-primary active:bg-black active:text-white hover:bg-black hover:text-white text-2xl font-semibold min-w-52" rel="noopener">Flash</a>
+		</section>
+		<figure class="fullsize">
+			<img src="images/splash/IMG_2932.webp" alt="Snake and flowers tattooed along a forearm" loading="eager" decoding="async" fetchpriority="high"/>
+		</figure>
+		<section id="latest" aria-labelledby="latest-title">
+			<div class="section-head">
+				<h2 id="latest-title" class="h2">Latest works</h2>
+			</div>
+			<div class="works-wrap">
+				<div class="works" aria-live="polite">
+					<div class="works-photo is-active" data-id="1"><img src="images/splash/IMG_0057.webp" alt="Chihuahua portrait tattoo on an upper arm" loading="lazy" decoding="async"/></div>
+					<div class="works-photo" data-id="2"><img src="images/splash/IMG_5077.webp" alt="Butterfly tattoo between the shoulder blades" loading="lazy" decoding="async"/></div>
+					<div class="works-photo" data-id="3"><img src="images/splash/IMG_4760.webp" alt="Octopus tattoo wrapping a forearm" loading="lazy" decoding="async"/></div>
+				</div>
+				<div class="works-previews" role="group" aria-label="Choose a photo">
+					<button type="button" class="works-preview is-active" data-id="1" aria-pressed="true" aria-label="Show chihuahua portrait"><img src="images/splash/IMG_0057.webp" alt="" loading="lazy" decoding="async"/></button>
+					<button type="button" class="works-preview" data-id="2" aria-pressed="false" aria-label="Show butterfly"><img src="images/splash/IMG_5077.webp" alt="" loading="lazy" decoding="async"/></button>
+					<button type="button" class="works-preview" data-id="3" aria-pressed="false" aria-label="Show octopus"><img src="images/splash/IMG_4760.webp" alt="" loading="lazy" decoding="async"/></button>
+				</div>
+			</div>
+		</section>
+		<section class="pair" aria-label="More work">
+			<figure><img src="images/splash/IMG_2265.webp" alt="Poodle portrait tattoo peeking over a line on a forearm" loading="lazy" decoding="async"/></figure>
+			<figure><img src="images/splash/IMG_3149.webp" alt="Collage of fine line tattoos on a lower leg" loading="lazy" decoding="async"/></figure>
+		</section>
+		<section id="gallery" class="gallery" aria-label="Gallery">
+			<div class="gallery-track">
+				<div class="gallery-stage">
+					<div class="gallery-main"><img src="images/splash/IMG_8282.webp" alt="Pit bull portrait tattoo with a photo frame on a forearm" loading="lazy" decoding="async"/></div>
+					<div class="gallery-rail">
+						<div class="gallery-col">
+							<figure class="gallery-item"><img src="images/splash/IMG_4167.webp" alt="Two dog portraits tattooed on an upper arm" loading="lazy" decoding="async"/></figure>
+							<figure class="gallery-item"><img src="images/sample.webp" alt="Angel and demon illustration" loading="lazy" decoding="async"/></figure>
+							<figure class="gallery-item"><img src="images/splash/IMG_5725.webp" alt="Dachshund portrait tattoo with a halo on a forearm" loading="lazy" decoding="async"/></figure>
+							<figure class="gallery-item"><img src="images/butterfly.webp" alt="Butterfly illustration" loading="lazy" decoding="async"/></figure>
+						</div>
 					</div>
 				</div>
 			</div>
+		</section>
+		<section class="cta-strip">
+			<a class="cta-link" href="book.html" aria-label="Book now">
+				<span class="cta-left"><span class="cta-word">Book</span></span>
+				<span class="cta-right"><span class="cta-word">Now</span><span class="cta-arrow-box">@Arrow()</span></span>
+				<span class="cta-mobile"><span class="cta-word">Book<br/>now</span>@Arrow()</span>
+			</a>
+		</section>
+		<div class="anchors-bar">
+			<nav class="anchors" aria-label="On this page">
+				<a class="anchor-link" href="#latest"><span class="dot" aria-hidden="true"></span><span class="anchor-txt">Latest works</span></a>
+				<a class="anchor-link" href="#gallery"><span class="dot" aria-hidden="true"></span><span class="anchor-txt">Gallery</span></a>
+			</nav>
+			<a class="bar-book" href="book.html"><span class="anchor-txt">Book now</span>@Arrow()</a>
 		</div>
-		<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				var overlay = document.getElementById('splash-overlay');
-				var skipBtn = document.getElementById('splash-skip');
-				var scrapbook = overlay && overlay.querySelector('.splash-scrapbook');
-				if (!overlay) return;
-
-				function shufflePhotos() {
-					if (!scrapbook) return;
-					var photos = Array.from(scrapbook.children);
-					for (var i = photos.length - 1; i > 0; i--) {
-						var j = Math.floor(Math.random() * (i + 1));
-						var t = photos[i];
-						photos[i] = photos[j];
-						photos[j] = t;
-					}
-					photos.forEach(function(p) { scrapbook.appendChild(p); });
-				}
-
-				function dismissSplash() {
-					overlay.classList.add('splash-dismissed');
-					overlay.setAttribute('aria-hidden', 'true');
-					sessionStorage.setItem('tatit2SplashSeen', '1');
-				}
-				if (skipBtn) skipBtn.addEventListener('click', dismissSplash);
-				overlay.addEventListener('click', dismissSplash);
-				var lastPage = sessionStorage.getItem('tatit2LastPage');
-				var cameFromOtherPage = lastPage && lastPage !== '' && lastPage !== 'index.html';
-				var hasSeenIndex = sessionStorage.getItem('tatit2HasSeenIndex') === '1';
-				if (cameFromOtherPage || hasSeenIndex || sessionStorage.getItem('tatit2SplashSeen') === '1') {
-					dismissSplash();
-					return;
-				}
-				shufflePhotos();
-				setTimeout(dismissSplash, 1000);
-			});
-		</script>
 	}
 }

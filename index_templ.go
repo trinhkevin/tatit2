@@ -41,7 +41,52 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div id=\"splash-overlay\" class=\"splash-overlay\" aria-hidden=\"false\" aria-label=\"Welcome splash\"><button type=\"button\" id=\"splash-skip\" class=\"splash-skip-btn\" aria-label=\"Skip welcome animation\">Skip</button><div class=\"splash-logo\">tat.it.too</div><div class=\"splash-scrapbook\" aria-hidden=\"false\"><div class=\"splash-photo splash-photo-1\"><img src=\"images/splash/IMG_0057.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-2\"><img src=\"images/splash/IMG_2265.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-3\"><img src=\"images/splash/IMG_2932.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-4\"><img src=\"images/splash/IMG_3149.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-5\"><img src=\"images/splash/IMG_4167.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-6\"><img src=\"images/splash/IMG_4760.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-7\"><img src=\"images/splash/IMG_5077.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-8\"><img src=\"images/splash/IMG_5725.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div><div class=\"splash-photo splash-photo-9\"><img src=\"images/splash/IMG_8282.webp\" alt=\"\" loading=\"eager\" decoding=\"async\"></div></div></div><div class=\"index-hero card w-full flex-1 flex flex-col min-h-0 px-4\"><div class=\"flex-1 flex items-center justify-center relative z-[1]\"><div class=\"index-hero-content card-body items-center text-center p-0\"><h1 class=\"index-hero-title\">tat.it.too</h1><div class=\"index-hero-actions\"><a href=\"book.html\" class=\"btn btn-xl btn-hip btn-primary active:bg-black active:text-white hover:bg-black hover:text-white text-2xl font-semibold min-w-52\" rel=\"noopener\">Book Now</a> <a id=\"hero-flash-btn\" href=\"flash.html\" class=\"btn btn-xl btn-hip btn-primary active:bg-black active:text-white hover:bg-black hover:text-white text-2xl font-semibold min-w-52\" rel=\"noopener\">Flash</a></div></div></div></div><script>\n\t\t\tdocument.addEventListener('DOMContentLoaded', function() {\n\t\t\t\tvar overlay = document.getElementById('splash-overlay');\n\t\t\t\tvar skipBtn = document.getElementById('splash-skip');\n\t\t\t\tvar scrapbook = overlay && overlay.querySelector('.splash-scrapbook');\n\t\t\t\tif (!overlay) return;\n\n\t\t\t\tfunction shufflePhotos() {\n\t\t\t\t\tif (!scrapbook) return;\n\t\t\t\t\tvar photos = Array.from(scrapbook.children);\n\t\t\t\t\tfor (var i = photos.length - 1; i > 0; i--) {\n\t\t\t\t\t\tvar j = Math.floor(Math.random() * (i + 1));\n\t\t\t\t\t\tvar t = photos[i];\n\t\t\t\t\t\tphotos[i] = photos[j];\n\t\t\t\t\t\tphotos[j] = t;\n\t\t\t\t\t}\n\t\t\t\t\tphotos.forEach(function(p) { scrapbook.appendChild(p); });\n\t\t\t\t}\n\n\t\t\t\tfunction dismissSplash() {\n\t\t\t\t\toverlay.classList.add('splash-dismissed');\n\t\t\t\t\toverlay.setAttribute('aria-hidden', 'true');\n\t\t\t\t\tsessionStorage.setItem('tatit2SplashSeen', '1');\n\t\t\t\t}\n\t\t\t\tif (skipBtn) skipBtn.addEventListener('click', dismissSplash);\n\t\t\t\toverlay.addEventListener('click', dismissSplash);\n\t\t\t\tvar lastPage = sessionStorage.getItem('tatit2LastPage');\n\t\t\t\tvar cameFromOtherPage = lastPage && lastPage !== '' && lastPage !== 'index.html';\n\t\t\t\tvar hasSeenIndex = sessionStorage.getItem('tatit2HasSeenIndex') === '1';\n\t\t\t\tif (cameFromOtherPage || hasSeenIndex || sessionStorage.getItem('tatit2SplashSeen') === '1') {\n\t\t\t\t\tdismissSplash();\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tshufflePhotos();\n\t\t\t\tsetTimeout(dismissSplash, 1000);\n\t\t\t});\n\t\t</script>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"hero\" aria-labelledby=\"hero-title\"><h1 id=\"hero-title\" class=\"display h1-hero hero-title\">tat.it.too</h1><div class=\"hero-meta\"><div class=\"hero-meta-item\"><div class=\"label\">Styles</div><div class=\"value\"><a href=\"book.html\">Fine line</a>, <a href=\"book.html\">Animal portraits</a>, <a href=\"flash.html\">Flash</a></div></div><div class=\"hero-meta-item\"><div class=\"label\">Follow</div><div class=\"value\"><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\"><span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("@tat.it.too")
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 14, Col: 179}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</a></div></div></div></section><figure class=\"fullsize\"><img src=\"images/splash/IMG_2932.webp\" alt=\"Snake and flowers tattooed along a forearm\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\"></figure><section id=\"latest\" aria-labelledby=\"latest-title\"><div class=\"section-head\"><h2 id=\"latest-title\" class=\"h2\">Latest works</h2></div><div class=\"works-wrap\"><div class=\"works\" aria-live=\"polite\"><div class=\"works-photo is-active\" data-id=\"1\"><img src=\"images/splash/IMG_0057.webp\" alt=\"Chihuahua portrait tattoo on an upper arm\" loading=\"lazy\" decoding=\"async\"></div><div class=\"works-photo\" data-id=\"2\"><img src=\"images/splash/IMG_5077.webp\" alt=\"Butterfly tattoo between the shoulder blades\" loading=\"lazy\" decoding=\"async\"></div><div class=\"works-photo\" data-id=\"3\"><img src=\"images/splash/IMG_4760.webp\" alt=\"Octopus tattoo wrapping a forearm\" loading=\"lazy\" decoding=\"async\"></div></div><div class=\"works-previews\" role=\"group\" aria-label=\"Choose a photo\"><button type=\"button\" class=\"works-preview is-active\" data-id=\"1\" aria-pressed=\"true\" aria-label=\"Show chihuahua portrait\"><img src=\"images/splash/IMG_0057.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"works-preview\" data-id=\"2\" aria-pressed=\"false\" aria-label=\"Show butterfly\"><img src=\"images/splash/IMG_5077.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"works-preview\" data-id=\"3\" aria-pressed=\"false\" aria-label=\"Show octopus\"><img src=\"images/splash/IMG_4760.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure><img src=\"images/splash/IMG_2265.webp\" alt=\"Poodle portrait tattoo peeking over a line on a forearm\" loading=\"lazy\" decoding=\"async\"></figure><figure><img src=\"images/splash/IMG_3149.webp\" alt=\"Collage of fine line tattoos on a lower leg\" loading=\"lazy\" decoding=\"async\"></figure></section><section id=\"gallery\" class=\"gallery\" aria-label=\"Gallery\"><div class=\"gallery-track\"><div class=\"gallery-stage\"><div class=\"gallery-main\"><img src=\"images/splash/IMG_8282.webp\" alt=\"Pit bull portrait tattoo with a photo frame on a forearm\" loading=\"lazy\" decoding=\"async\"></div><div class=\"gallery-rail\"><div class=\"gallery-col\"><figure class=\"gallery-item\"><img src=\"images/splash/IMG_4167.webp\" alt=\"Two dog portraits tattooed on an upper arm\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/sample.webp\" alt=\"Angel and demon illustration\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/splash/IMG_5725.webp\" alt=\"Dachshund portrait tattoo with a halo on a forearm\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/butterfly.webp\" alt=\"Butterfly illustration\" loading=\"lazy\" decoding=\"async\"></figure></div></div></div></div></section><section class=\"cta-strip\"><a class=\"cta-link\" href=\"book.html\" aria-label=\"Book now\"><span class=\"cta-left\"><span class=\"cta-word\">Book</span></span> <span class=\"cta-right\"><span class=\"cta-word\">Now</span><span class=\"cta-arrow-box\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</span></span> <span class=\"cta-mobile\"><span class=\"cta-word\">Book<br>now</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</span></a></section><div class=\"anchors-bar\"><nav class=\"anchors\" aria-label=\"On this page\"><a class=\"anchor-link\" href=\"#latest\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Latest works</span></a> <a class=\"anchor-link\" href=\"#gallery\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Gallery</span></a></nav><a class=\"bar-book\" href=\"book.html\"><span class=\"anchor-txt\">Book now</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</a></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

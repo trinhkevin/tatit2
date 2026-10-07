@@ -41,20 +41,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"hero\" aria-labelledby=\"hero-title\"><h1 id=\"hero-title\" class=\"display h1-hero hero-title\">tat.it.too</h1><div class=\"hero-meta\"><div class=\"hero-meta-item\"><div class=\"label\">Styles</div><div class=\"value\"><a href=\"book.html\">Fine line</a>, <a href=\"book.html\">Animal portraits</a>, <a href=\"flash.html\">Flash</a></div></div><div class=\"hero-meta-item\"><div class=\"label\">Follow</div><div class=\"value\"><a href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\"><span>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("@tat.it.too")
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 14, Col: 179}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"hero\" aria-labelledby=\"hero-title\"><div class=\"hero-top\"><div class=\"artist-profile\"><div class=\"artist-photo\"><img src=\"images/artist.webp\" alt=\"The artist at work, tattooing a client's arm\" width=\"1120\" height=\"1400\" loading=\"eager\" decoding=\"async\"></div><div class=\"artist-desc label\">Tattoo artist at Sappe Sin Studio</div></div><h1 id=\"hero-title\" class=\"display h1-hero hero-title\">tat.it.too</h1></div><div class=\"hero-meta\"><div class=\"hero-meta-item\"><div class=\"label\">Styles</div><div class=\"value\"><a href=\"book.html\">Fine line</a>, <a href=\"book.html\">Animal portraits</a>, <a href=\"flash.html\">Flash</a></div></div><div class=\"hero-meta-right\"><div class=\"hero-meta-item\"><div class=\"label\">Studio</div><div class=\"value\"><a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Sappe Sin Studio on Google Maps, opens in new window\">Sappe Sin Studio</a></div></div><div class=\"hero-meta-item hero-meta-item--end\"><div class=\"label\">Based in</div><div class=\"value\">Chicago, IL</div></div></div></div></section><figure class=\"fullsize\"><img src=\"images/splash/IMG_2932.webp\" alt=\"Snake and flowers tattooed along a forearm\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\"></figure><section id=\"latest\" aria-labelledby=\"latest-title\"><div class=\"section-head\"><h2 id=\"latest-title\" class=\"h2\">Latest works</h2></div><div class=\"works-wrap\"><div class=\"works\" aria-live=\"polite\"><div class=\"works-photo is-active\" data-id=\"1\"><img src=\"images/splash/IMG_0057.webp\" alt=\"Chihuahua portrait tattoo on an upper arm\" loading=\"lazy\" decoding=\"async\"></div><div class=\"works-photo\" data-id=\"2\"><img src=\"images/splash/IMG_5077.webp\" alt=\"Butterfly tattoo between the shoulder blades\" loading=\"lazy\" decoding=\"async\"></div><div class=\"works-photo\" data-id=\"3\"><img src=\"images/splash/IMG_4760.webp\" alt=\"Octopus tattoo wrapping a forearm\" loading=\"lazy\" decoding=\"async\"></div></div><div class=\"works-previews\" role=\"group\" aria-label=\"Choose a photo\"><button type=\"button\" class=\"works-preview is-active\" data-id=\"1\" aria-pressed=\"true\" aria-label=\"Show chihuahua portrait\"><img src=\"images/splash/IMG_0057.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"works-preview\" data-id=\"2\" aria-pressed=\"false\" aria-label=\"Show butterfly\"><img src=\"images/splash/IMG_5077.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"works-preview\" data-id=\"3\" aria-pressed=\"false\" aria-label=\"Show octopus\"><img src=\"images/splash/IMG_4760.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure><img src=\"images/splash/IMG_2265.webp\" alt=\"Poodle portrait tattoo peeking over a line on a forearm\" loading=\"lazy\" decoding=\"async\"></figure><figure><img src=\"images/splash/IMG_3149.webp\" alt=\"Collage of fine line tattoos on a lower leg\" loading=\"lazy\" decoding=\"async\"></figure></section><section id=\"gallery\" class=\"gallery\" aria-label=\"Gallery\"><div class=\"gallery-track\"><div class=\"gallery-stage\"><div class=\"gallery-main\"><img src=\"images/splash/IMG_8282.webp\" alt=\"Pit bull portrait tattoo with a photo frame on a forearm\" loading=\"lazy\" decoding=\"async\"></div><div class=\"gallery-rail\"><div class=\"gallery-col\"><figure class=\"gallery-item\"><img src=\"images/splash/IMG_4167.webp\" alt=\"Two dog portraits tattooed on an upper arm\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/sample.webp\" alt=\"Angel and demon illustration\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/splash/IMG_5725.webp\" alt=\"Dachshund portrait tattoo with a halo on a forearm\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/butterfly.webp\" alt=\"Butterfly illustration\" loading=\"lazy\" decoding=\"async\"></figure></div></div></div></div></section><section class=\"cta-strip\"><a class=\"cta-link\" href=\"book.html\" aria-label=\"Book now\"><span class=\"cta-left\"><span class=\"cta-word\">Book</span></span> <span class=\"cta-right\"><span class=\"cta-word\">Now</span><span class=\"cta-arrow-box\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -62,7 +49,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</a></div></div></div></section><figure class=\"fullsize\"><img src=\"images/splash/IMG_2932.webp\" alt=\"Snake and flowers tattooed along a forearm\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\"></figure><section id=\"latest\" aria-labelledby=\"latest-title\"><div class=\"section-head\"><h2 id=\"latest-title\" class=\"h2\">Latest works</h2></div><div class=\"works-wrap\"><div class=\"works\" aria-live=\"polite\"><div class=\"works-photo is-active\" data-id=\"1\"><img src=\"images/splash/IMG_0057.webp\" alt=\"Chihuahua portrait tattoo on an upper arm\" loading=\"lazy\" decoding=\"async\"></div><div class=\"works-photo\" data-id=\"2\"><img src=\"images/splash/IMG_5077.webp\" alt=\"Butterfly tattoo between the shoulder blades\" loading=\"lazy\" decoding=\"async\"></div><div class=\"works-photo\" data-id=\"3\"><img src=\"images/splash/IMG_4760.webp\" alt=\"Octopus tattoo wrapping a forearm\" loading=\"lazy\" decoding=\"async\"></div></div><div class=\"works-previews\" role=\"group\" aria-label=\"Choose a photo\"><button type=\"button\" class=\"works-preview is-active\" data-id=\"1\" aria-pressed=\"true\" aria-label=\"Show chihuahua portrait\"><img src=\"images/splash/IMG_0057.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"works-preview\" data-id=\"2\" aria-pressed=\"false\" aria-label=\"Show butterfly\"><img src=\"images/splash/IMG_5077.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button> <button type=\"button\" class=\"works-preview\" data-id=\"3\" aria-pressed=\"false\" aria-label=\"Show octopus\"><img src=\"images/splash/IMG_4760.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\"></button></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure><img src=\"images/splash/IMG_2265.webp\" alt=\"Poodle portrait tattoo peeking over a line on a forearm\" loading=\"lazy\" decoding=\"async\"></figure><figure><img src=\"images/splash/IMG_3149.webp\" alt=\"Collage of fine line tattoos on a lower leg\" loading=\"lazy\" decoding=\"async\"></figure></section><section id=\"gallery\" class=\"gallery\" aria-label=\"Gallery\"><div class=\"gallery-track\"><div class=\"gallery-stage\"><div class=\"gallery-main\"><img src=\"images/splash/IMG_8282.webp\" alt=\"Pit bull portrait tattoo with a photo frame on a forearm\" loading=\"lazy\" decoding=\"async\"></div><div class=\"gallery-rail\"><div class=\"gallery-col\"><figure class=\"gallery-item\"><img src=\"images/splash/IMG_4167.webp\" alt=\"Two dog portraits tattooed on an upper arm\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/sample.webp\" alt=\"Angel and demon illustration\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/splash/IMG_5725.webp\" alt=\"Dachshund portrait tattoo with a halo on a forearm\" loading=\"lazy\" decoding=\"async\"></figure><figure class=\"gallery-item\"><img src=\"images/butterfly.webp\" alt=\"Butterfly illustration\" loading=\"lazy\" decoding=\"async\"></figure></div></div></div></div></section><section class=\"cta-strip\"><a class=\"cta-link\" href=\"book.html\" aria-label=\"Book now\"><span class=\"cta-left\"><span class=\"cta-word\">Book</span></span> <span class=\"cta-right\"><span class=\"cta-word\">Now</span><span class=\"cta-arrow-box\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</span></span> <span class=\"cta-mobile\"><span class=\"cta-word\">Book<br>now</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -70,7 +57,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</span></span> <span class=\"cta-mobile\"><span class=\"cta-word\">Book<br>now</span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</span></a></section><div class=\"anchors-bar\"><nav class=\"anchors\" aria-label=\"On this page\"><a class=\"anchor-link\" href=\"#latest\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Latest works</span></a> <a class=\"anchor-link\" href=\"#gallery\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Gallery</span></a></nav><a class=\"bar-book\" href=\"book.html\"><span class=\"anchor-txt\">Book now</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -78,21 +65,13 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</span></a></section><div class=\"anchors-bar\"><nav class=\"anchors\" aria-label=\"On this page\"><a class=\"anchor-link\" href=\"#latest\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Latest works</span></a> <a class=\"anchor-link\" href=\"#gallery\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Gallery</span></a></nav><a class=\"bar-book\" href=\"book.html\"><span class=\"anchor-txt\">Book now</span>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</a></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</a></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.", "https://www.tatit2.com/", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Page("tat.it.too – Tattoo Artist in Chicago | Book Online", "tat.it.too – Chicago tattoo artist at Sappe Sin Studio. Custom tattoos and flash: fine line, animal portraits, and flash designs. Book online.", "https://www.tatit2.com/", "https://www.tatit2.com/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

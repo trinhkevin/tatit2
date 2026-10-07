@@ -177,7 +177,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/sample.webp\"}\n\t\t\t\t]\n\t\t\t</script></head><body id=\"top\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><header class=\"site-header\"><div class=\"header-row\"><div class=\"logo-block\"><a href=\"index.html\" class=\"logotype\" data-page=\"index.html\">tat.it.too</a><div class=\"logo-sub\"><span>Custom</span><span class=\"dot dot--blink\" aria-hidden=\"true\"></span><span>Flash</span></div></div><nav class=\"header-nav\" aria-label=\"Main navigation\"><div class=\"nav-col\"><a class=\"nav-link\" data-page=\"flash.html\" href=\"flash.html\">Flash</a> <a class=\"nav-link\" data-page=\"aftercare.html\" href=\"aftercare.html\">Aftercare</a></div><div class=\"nav-col\"><a class=\"nav-link arrow-link\" href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\"><span>Instagram</span>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><script type=\"application/ld+json\">\n\t\t\t\t[\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.tatit2.com/#website\",\"url\":\"https://www.tatit2.com\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Book online. Fine line, animal portraits, and flash designs.\",\"publisher\":{\"@id\":\"https://www.tatit2.com/#business\"},\"inLanguage\":\"en\"},\n\t\t\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://www.tatit2.com/#business\",\"name\":\"tat.it.too\",\"description\":\"Custom tattoos and flash. Fine line, animal portraits, and flash designs. Book online.\",\"url\":\"https://www.tatit2.com\",\"image\":\"https://www.tatit2.com/images/sample.webp\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"1134 W Diversey Pkwy\",\"addressLocality\":\"Chicago\",\"addressRegion\":\"IL\",\"postalCode\":\"60614\",\"addressCountry\":\"US\"},\"location\":{\"@type\":\"Place\",\"name\":\"Sappe Sin Studio\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"1134 W Diversey Pkwy\",\"addressLocality\":\"Chicago\",\"addressRegion\":\"IL\",\"postalCode\":\"60614\",\"addressCountry\":\"US\"}},\"sameAs\":[\"https://www.instagram.com/tat.it.too/\"]}\n\t\t\t\t]\n\t\t\t</script></head><body id=\"top\"><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a><header class=\"site-header\"><div class=\"header-row\"><div class=\"logo-block\"><a href=\"index.html\" class=\"logotype\" data-page=\"index.html\">tat.it.too</a><div class=\"logo-sub\"><span class=\"time-txt\" data-clock></span><span class=\"dot dot--blink\" aria-hidden=\"true\"></span><span>Chicago</span></div></div><nav class=\"header-nav\" aria-label=\"Main navigation\"><div class=\"nav-col\"><a class=\"nav-link\" data-page=\"flash.html\" href=\"flash.html\">Flash</a> <a class=\"nav-link\" data-page=\"aftercare.html\" href=\"aftercare.html\">Aftercare</a></div><div class=\"nav-col\"><a class=\"nav-link arrow-link\" href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\"><span>Instagram</span>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -209,7 +209,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<span>Instagram</span></a></div></div></div></div><main id=\"main-content\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<span>Instagram</span></a></div><div><div class=\"menu-box-title\">Sappe Sin Studio</div><a class=\"menu-box-link\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Directions on Google Maps, opens in new window\"><span>1134 W Diversey Pkwy, Chicago, IL 60614</span></a></div></div></div></div><main id=\"main-content\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -217,7 +217,7 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</main><footer class=\"site-footer\" role=\"contentinfo\"><div class=\"footer-flex\"><div class=\"footer-left\"><a class=\"to-top\" href=\"#top\">Back to top</a></div><div class=\"footer-right\"><div class=\"footer-col\"><div class=\"footer-title\">Discover</div><a class=\"footer-link\" data-page=\"index.html\" href=\"index.html\">Home</a> <a class=\"footer-link\" data-page=\"flash.html\" href=\"flash.html\">Flash</a> <a class=\"footer-link\" data-page=\"book.html\" href=\"book.html\">Book</a> <a class=\"footer-link\" data-page=\"aftercare.html\" href=\"aftercare.html\">Aftercare</a></div><div class=\"footer-col\"><div class=\"footer-title\">Follow us</div><a class=\"footer-link\" href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</main><footer class=\"site-footer\" role=\"contentinfo\"><address class=\"studio-band\"><div class=\"studio-box\"><h3 class=\"studio-name\">Sappe Sin Studio</h3><p class=\"studio-address\">1134 W Diversey Pkwy,<br>Chicago, IL 60614</p><a class=\"studio-btn\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Show on Google Map, opens in new window\"><span>Show on Google Map</span>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -225,20 +225,28 @@ func Page(title string, description string, canonical string, ogURL string) temp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "<span>Instagram</span></a></div></div></div><div class=\"footer-last\"><span>© ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</a></div></address><div class=\"footer-flex\"><div class=\"footer-left\"><a class=\"to-top\" href=\"#top\">Back to top</a></div><div class=\"footer-right\"><div class=\"footer-col\"><div class=\"footer-title\">Discover</div><a class=\"footer-link\" data-page=\"index.html\" href=\"index.html\">Home</a> <a class=\"footer-link\" data-page=\"flash.html\" href=\"flash.html\">Flash</a> <a class=\"footer-link\" data-page=\"book.html\" href=\"book.html\">Book</a> <a class=\"footer-link\" data-page=\"aftercare.html\" href=\"aftercare.html\">Aftercare</a></div><div class=\"footer-col\"><div class=\"footer-title\">Follow us</div><a class=\"footer-link\" href=\"https://www.instagram.com/tat.it.too/\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Instagram, opens in new window\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Arrow().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<span>Instagram</span></a></div></div></div><div class=\"footer-last\"><span>© ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(time.Now().Format("2006"))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 115, Col: 41}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `page.templ`, Line: 126, Col: 41}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, " tat.it.too. All rights reserved</span></div></footer><script src=\"./src/lenis.min.js\" defer></script><script src=\"./src/site.js\" defer></script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, " tat.it.too. All rights reserved</span></div></footer><script src=\"./src/lenis.min.js\" defer></script><script src=\"./src/site.js\" defer></script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

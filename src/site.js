@@ -27,6 +27,22 @@
 		}
 	}
 
+	/* Studio clock (Chicago) */
+	var clocks = document.querySelectorAll('[data-clock]');
+	if (clocks.length) {
+		var fmt = null;
+		try {
+			fmt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/Chicago' });
+		} catch (e) { fmt = null; }
+		var tick = function () {
+			if (!fmt) { return; }
+			var t = fmt.format(new Date()).toUpperCase() + ', CT';
+			clocks.forEach(function (el) { el.textContent = t; });
+		};
+		tick();
+		setInterval(tick, 15000);
+	}
+
 	/* Current page marker */
 	var path = window.location.pathname.split('/').pop() || 'index.html';
 	document.querySelectorAll('[data-page]').forEach(function (el) {

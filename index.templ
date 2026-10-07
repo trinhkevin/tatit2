@@ -1,17 +1,29 @@
 package main
 
 templ Index() {
-	@Page("tat.it.too – Tattoo Artist | Book Online", "tat.it.too – Custom tattoos and flash. Book your appointment online. Fine line, animal portraits, and flash designs.", "https://www.tatit2.com/", "https://www.tatit2.com/") {
+	@Page("tat.it.too – Tattoo Artist in Chicago | Book Online", "tat.it.too – Chicago tattoo artist at Sappe Sin Studio. Custom tattoos and flash: fine line, animal portraits, and flash designs. Book online.", "https://www.tatit2.com/", "https://www.tatit2.com/") {
 		<section class="hero" aria-labelledby="hero-title">
-			<h1 id="hero-title" class="display h1-hero hero-title">tat.it.too</h1>
+			<div class="hero-top">
+				<div class="artist-profile">
+					<div class="artist-photo"><img src="images/artist.webp" alt="The artist at work, tattooing a client's arm" width="1120" height="1400" loading="eager" decoding="async"/></div>
+					<div class="artist-desc label">Tattoo artist at Sappe Sin Studio</div>
+				</div>
+				<h1 id="hero-title" class="display h1-hero hero-title">tat.it.too</h1>
+			</div>
 			<div class="hero-meta">
 				<div class="hero-meta-item">
 					<div class="label">Styles</div>
 					<div class="value"><a href="book.html">Fine line</a>, <a href="book.html">Animal portraits</a>, <a href="flash.html">Flash</a></div>
 				</div>
-				<div class="hero-meta-item">
-					<div class="label">Follow</div>
-					<div class="value"><a href="https://www.instagram.com/tat.it.too/" rel="noopener noreferrer" target="_blank" aria-label="Instagram, opens in new window"><span>{ "@tat.it.too" }</span>@Arrow()</a></div>
+				<div class="hero-meta-right">
+					<div class="hero-meta-item">
+						<div class="label">Studio</div>
+						<div class="value"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614" rel="noopener noreferrer" target="_blank" aria-label="Sappe Sin Studio on Google Maps, opens in new window">Sappe Sin Studio</a></div>
+					</div>
+					<div class="hero-meta-item hero-meta-item--end">
+						<div class="label">Based in</div>
+						<div class="value">Chicago, IL</div>
+					</div>
 				</div>
 			</div>
 		</section>

@@ -61,9 +61,9 @@ tile_png(32, 0).convert('RGBA').save('favicon.ico', sizes=[(16, 16), (32, 32)])
 
 # --- Open Graph image 1200x630 ----------------------------------------------
 og = Image.new('RGB', (1200, 630), BLACK)
-art = Image.open('images/art/angel-and-demon.webp').convert('RGB')
+art = Image.open('images/work/pitbull-chicago-stars.webp').convert('RGB')
 art.thumbnail((10000, 630))
-og.paste(art, (1200 - art.width - 24, 0))
+og.paste(art, (1200 - art.width, 0))
 d = ImageDraw.Draw(og)
 big = ImageFont.truetype(otf, 118)
 small = ImageFont.truetype(otf.replace('Bold', 'Regular'), 30)

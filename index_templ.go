@@ -57,191 +57,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</figure><section id=\"about\" class=\"about\" aria-labelledby=\"about-label\"><div class=\"about-inner\"><div id=\"about-label\" class=\"label\">About the artist</div><p class=\"about-big\">Patchara is a Chicago tattoo artist working in fine line and realism at Sappe Sin Studio. Born in Bangkok, he has drawn for as long as he can remember, studied art at university in Thailand, and moved to the United States in 2019. He taught himself to tattoo during the 2020 lockdowns, spent four years as a resident artist, and opened Sappe Sin Studio in 2025.</p><div class=\"about-grid\"><p class=\"b-txt\">Pet portraits started with a friend who had just lost a pet. Seeing what that tattoo meant to them changed how he saw the work: a portrait on skin can carry a lot of love. It is now the thing he is best known for, alongside fine line.</p><p class=\"b-txt\">He loves micro realism for its precision, and is increasingly drawn to larger pieces where a whole arm or back can hold one story. If you have a big idea, bring it.</p></div></div></section><section id=\"latest\" aria-labelledby=\"latest-title\"><div class=\"section-head\"><h2 id=\"latest-title\" class=\"h2\">Latest works</h2></div><div class=\"works-wrap\"><div class=\"works\" aria-live=\"polite\"><div class=\"works-photo is-active\" data-id=\"1\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/dragon-back.webp", "Dragon and snake tattoo across the upper back", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div><div class=\"works-photo\" data-id=\"2\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/cupid-archer.webp", "Cupid drawing a bow, tattooed on a forearm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div><div class=\"works-photo\" data-id=\"3\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/snake-and-peony.webp", "Snake coiled through a red peony on an upper arm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</div><div class=\"works-photo\" data-id=\"4\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/eagle-chest.webp", "Eagle in flight tattooed on the chest", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div></div><div class=\"works-previews\" role=\"group\" aria-label=\"Choose a photo\"><button type=\"button\" class=\"works-preview is-active\" data-id=\"1\" aria-pressed=\"true\" aria-label=\"Show dragon back piece\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/dragon-back.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"2\" aria-pressed=\"false\" aria-label=\"Show cupid\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/cupid-archer.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"3\" aria-pressed=\"false\" aria-label=\"Show snake and peony\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/snake-and-peony.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"4\" aria-pressed=\"false\" aria-label=\"Show eagle\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/eagle-chest.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</button></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/magnolia-wrist.webp", "Magnolia flower tattoo wrapping a wrist", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</figure><figure>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/anatomical-heart.webp", "Anatomical heart tattoo with fine crosshair lines", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</figure></section><section id=\"gallery\" class=\"gallery\" aria-label=\"Gallery\"><div class=\"gallery-track\"><div class=\"gallery-stage\"><div class=\"gallery-main\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/snake-and-roses-sleeve.webp", "Snake and red roses tattooed down a forearm", "(max-width: 991px) 100vw, 76vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</div><div class=\"gallery-rail\"><div class=\"gallery-col\"><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/statue-head-amor.webp", "Classical marble bust tattoo with the word AMOR across the face", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "</figure><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/winged-victory.webp", "Winged statue tattoo down an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</figure><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/raven.webp", "Raven tattoo in micro realism on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</figure><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/bat.webp", "Bat with spread wings tattooed along a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</figure><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/snake-shoulder.webp", "Snake tattoo curling over a shoulder", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</figure><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/snake-and-rose-leg.webp", "Snake wrapped around a rose on a lower leg", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</figure><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/snake-red-flowers.webp", "Snake with red spider lilies on a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</figure><figure class=\"gallery-item\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/butterfly-skull.webp", "Butterfly with a skull pattern in its wings on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</figure></div></div></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/octopus-wrap.webp", "Octopus tattoo wrapping a forearm", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</figure><figure>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/butterfly-back.webp", "Butterfly tattoo between the shoulder blades", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</figure></section><section class=\"pair\" aria-label=\"More work\"><figure>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/coiled-snake-forearm.webp", "Coiled snake tattoo on a forearm", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</figure><figure>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = Pic("images/work/candy-skull.webp", "Skull inside a candy wrapper tattooed on a lower leg", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</figure></section><section id=\"pets\" aria-labelledby=\"pets-title\"><div class=\"section-head\"><h2 id=\"pets-title\" class=\"h2\">Pet portraits</h2></div><div class=\"pet-grid\"><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</figure><section id=\"about\" class=\"about\" aria-labelledby=\"about-label\"><div class=\"about-inner\"><div id=\"about-label\" class=\"label\">About the artist</div><p class=\"about-big\">Patchara is a Chicago tattoo artist working in fine line and realism at Sappe Sin Studio. Born in Bangkok, he has drawn for as long as he can remember, studied art at university in Thailand, and moved to the United States in 2019. He taught himself to tattoo during the 2020 lockdowns, spent four years as a resident artist, and opened Sappe Sin Studio in 2025.</p><div class=\"about-grid\"><p class=\"b-txt\">Pet portraits started with a friend who had just lost a pet. Seeing what that tattoo meant to them changed how he saw the work: a portrait on skin can carry a lot of love. It is now the thing he is best known for, alongside fine line.</p><p class=\"b-txt\">He loves micro realism for its precision, and is increasingly drawn to larger pieces where a whole arm or back can hold one story. If you have a big idea, bring it.</p></div></div></section><section id=\"pets\" aria-labelledby=\"pets-title\"><div class=\"section-head\"><h2 id=\"pets-title\" class=\"h2\">Pet portraits</h2></div><div class=\"pet-grid\"><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -249,7 +65,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -257,7 +73,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -265,7 +81,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -273,7 +89,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -281,7 +97,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -289,7 +105,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -297,7 +113,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -305,7 +121,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -313,7 +129,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -321,7 +137,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -329,7 +145,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -337,7 +153,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -345,7 +161,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -353,7 +169,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -361,7 +177,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 41, "</figure><figure>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</figure><figure>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -369,7 +185,191 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "</figure></div></section><section id=\"faq\" class=\"faq\" aria-labelledby=\"faq-title\"><h2 id=\"faq-title\" class=\"h1-soft\">FAQ</h2><div class=\"faq-grid\"><details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">How do I book?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">Is there a deposit?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">What if I need to reschedule?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Email me at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">Where is the studio?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614.</p><a class=\"arrow-link faq-link\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Show on Google Map, opens in new window\"><span>Show on Google Map</span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</figure></div></section><section id=\"latest\" aria-labelledby=\"latest-title\"><div class=\"section-head\"><h2 id=\"latest-title\" class=\"h2\">Latest works</h2></div><div class=\"works-wrap\"><div class=\"works\" aria-live=\"polite\"><div class=\"works-photo is-active\" data-id=\"1\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/dragon-back.webp", "Dragon and snake tattoo across the upper back", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</div><div class=\"works-photo\" data-id=\"2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/cupid-archer.webp", "Cupid drawing a bow, tattooed on a forearm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</div><div class=\"works-photo\" data-id=\"3\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/snake-and-peony.webp", "Snake coiled through a red peony on an upper arm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</div><div class=\"works-photo\" data-id=\"4\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/eagle-chest.webp", "Eagle in flight tattooed on the chest", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</div></div><div class=\"works-previews\" role=\"group\" aria-label=\"Choose a photo\"><button type=\"button\" class=\"works-preview is-active\" data-id=\"1\" aria-pressed=\"true\" aria-label=\"Show dragon back piece\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/dragon-back.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"2\" aria-pressed=\"false\" aria-label=\"Show cupid\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/cupid-archer.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"3\" aria-pressed=\"false\" aria-label=\"Show snake and peony\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/snake-and-peony.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</button> <button type=\"button\" class=\"works-preview\" data-id=\"4\" aria-pressed=\"false\" aria-label=\"Show eagle\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/eagle-chest.webp", "", "(max-width: 479px) 25vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</button></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/magnolia-wrist.webp", "Magnolia flower tattoo wrapping a wrist", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</figure><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/anatomical-heart.webp", "Anatomical heart tattoo with fine crosshair lines", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</figure></section><section id=\"gallery\" class=\"gallery\" aria-label=\"Gallery\"><div class=\"gallery-track\"><div class=\"gallery-stage\"><div class=\"gallery-main\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/snake-and-roses-sleeve.webp", "Snake and red roses tattooed down a forearm", "(max-width: 991px) 100vw, 76vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</div><div class=\"gallery-rail\"><div class=\"gallery-col\"><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/statue-head-amor.webp", "Classical marble bust tattoo with the word AMOR across the face", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/winged-victory.webp", "Winged statue tattoo down an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/raven.webp", "Raven tattoo in micro realism on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/bat.webp", "Bat with spread wings tattooed along a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/snake-shoulder.webp", "Snake tattoo curling over a shoulder", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/snake-and-rose-leg.webp", "Snake wrapped around a rose on a lower leg", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/snake-red-flowers.webp", "Snake with red spider lilies on a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "</figure><figure class=\"gallery-item\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/butterfly-skull.webp", "Butterfly with a skull pattern in its wings on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</figure></div></div></div></div></section><section class=\"pair\" aria-label=\"More work\"><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/octopus-wrap.webp", "Octopus tattoo wrapping a forearm", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "</figure><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/butterfly-back.webp", "Butterfly tattoo between the shoulder blades", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, "</figure></section><section class=\"pair\" aria-label=\"More work\"><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/coiled-snake-forearm.webp", "Coiled snake tattoo on a forearm", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 41, "</figure><figure>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Pic("images/work/candy-skull.webp", "Skull inside a candy wrapper tattooed on a lower leg", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "</figure></section><section id=\"faq\" class=\"faq\" aria-labelledby=\"faq-title\"><h2 id=\"faq-title\" class=\"h1-soft\">FAQ</h2><div class=\"faq-grid\"><details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">How do I book?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">Is there a deposit?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">What if I need to reschedule?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Email me at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once.</p></div></details> <details class=\"faq-item\"><summary class=\"faq-head\"><span class=\"faq-ring\" aria-hidden=\"true\"></span><span class=\"faq-q\">Where is the studio?</span><span class=\"faq-icon\" aria-hidden=\"true\"><span></span><span></span></span></summary><div class=\"faq-body\"><p>Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614.</p><a class=\"arrow-link faq-link\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614\" rel=\"noopener noreferrer\" target=\"_blank\" aria-label=\"Show on Google Map, opens in new window\"><span>Show on Google Map</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -401,7 +401,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "</span></a></section><script type=\"application/ld+json\">\n\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"How do I book?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"Is there a deposit?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"What if I need to reschedule?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Email at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"Where is the studio?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"What do you specialize in?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Fine line, pet portraits and micro realism, and larger pieces too.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"How do I look after my tattoo?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Keep the bandage on for two to three days, then a thin layer of ointment twice a day. No swimming, sun or soaking for two weeks. The full guide is on the aftercare page.\"}}\n\t\t\t]}\n\t\t</script> <div class=\"anchors-bar\"><nav class=\"anchors\" aria-label=\"On this page\"><a class=\"anchor-link\" href=\"#about\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">About</span></a> <a class=\"anchor-link\" href=\"#latest\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Latest works</span></a> <a class=\"anchor-link\" href=\"#gallery\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Gallery</span></a> <a class=\"anchor-link\" href=\"#pets\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Pet portraits</span></a> <a class=\"anchor-link\" href=\"#faq\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">FAQ</span></a></nav><a class=\"bar-book\" href=\"book.html\"><span class=\"anchor-txt\">Book now</span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "</span></a></section><script type=\"application/ld+json\">\n\t\t\t{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"How do I book?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"Is there a deposit?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"What if I need to reschedule?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Email at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"Where is the studio?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"What do you specialize in?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Fine line, pet portraits and micro realism, and larger pieces too.\"}},\n\t\t\t\t{\"@type\":\"Question\",\"name\":\"How do I look after my tattoo?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Keep the bandage on for two to three days, then a thin layer of ointment twice a day. No swimming, sun or soaking for two weeks. The full guide is on the aftercare page.\"}}\n\t\t\t]}\n\t\t</script> <div class=\"anchors-bar\"><nav class=\"anchors\" aria-label=\"On this page\"><a class=\"anchor-link\" href=\"#about\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">About</span></a> <a class=\"anchor-link\" href=\"#pets\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Pet portraits</span></a> <a class=\"anchor-link\" href=\"#latest\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Latest works</span></a> <a class=\"anchor-link\" href=\"#gallery\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">Gallery</span></a> <a class=\"anchor-link\" href=\"#faq\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"anchor-txt\">FAQ</span></a></nav><a class=\"bar-book\" href=\"book.html\"><span class=\"anchor-txt\">Book now</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -737,7 +737,7 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
    -------------------------------------------------------------------------- */
 .book-tabs {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	border-top: 1px solid var(--line);
 	border-bottom: 1px solid var(--line);
 }
@@ -749,8 +749,6 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 	letter-spacing: -0.04em;
 	text-transform: uppercase;
 }
-.book-tab + .book-tab { border-left: 1px solid var(--line); opacity: 0.45; transition: opacity 0.4s; }
-.book-tab + .book-tab:hover { opacity: 0.8; }
 .book-tab .dot { width: 14px; height: 14px; }
 .book-layout { display: grid; grid-template-columns: 1fr 1fr; }
 .book-pane { padding: 28px var(--pad) 72px; }
@@ -820,7 +818,6 @@ textarea.book-input { min-height: 7rem; resize: vertical; line-height: 1.35; }
 .book-submit:hover { opacity: 0.8; }
 .book-submit .arrow { width: 12px; height: 12px; }
 @media (max-width: 767px) {
-	.book-tabs { grid-template-columns: 1fr 1.2fr; }
 	.book-tab { padding: 16px var(--pad); }
 	.book-layout { grid-template-columns: 1fr; }
 	.book-pane--empty { display: none; }

@@ -16,10 +16,12 @@ Custom website for Patchare Ake.
 ### How To
 
 1. Modify the *.templ files
-2. Run `task generate` to generate CSS, Go, and HTML files
+2. Run `task generate` to generate CSS, Go, and HTML files (run `task images` first if you added photos)
 3. Publish this to GitHub
 4. The GitHub Actions task should bundle and deploy the *.html files
 
 ## Design
 
 The look follows `docs/superpowers/specs/2026-10-07-monolith-redesign-design.md`. Preview locally with `python3 -m http.server` (fonts are blocked under `file://`).
+
+Icons and the Open Graph image come from `scripts/brand.py`, which needs the Switzer OTF from fontshare.com (not checked in): `python3 scripts/brand.py path/to/Switzer-Bold.otf`.

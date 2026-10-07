@@ -6,7 +6,7 @@ templ Index() {
 			<div class="hero-top">
 				<div class="artist-profile">
 					<div class="artist-photo">@Pic("images/artist.webp", "The artist at work, tattooing a client's arm", "(max-width: 479px) 50vw, (max-width: 767px) 20vw, (max-width: 991px) 12vw, 9vw", true)</div>
-					<div class="artist-desc label">Tattoo artist at Sappe Sin Studio</div>
+					<div class="artist-desc label">Founder of Sappe Sin Studio</div>
 				</div>
 				<h1 id="hero-title" class="display h1-hero hero-title">tat.it.too</h1>
 			</div>
@@ -30,6 +30,16 @@ templ Index() {
 		<figure class="fullsize">
 			@Pic("images/sample.webp", "Angel and demon illustration", "100vw", true)
 		</figure>
+		<section id="about" class="about" aria-labelledby="about-label">
+			<div class="about-inner">
+				<div id="about-label" class="label">About the artist</div>
+				<p class="about-big">Patchara is a Chicago tattoo artist working in fine line and realism at Sappe Sin Studio. Born in Bangkok, he has drawn for as long as he can remember, studied art at university in Thailand, and moved to the United States in 2019. He taught himself to tattoo during the 2020 lockdowns, spent four years as a resident artist, and opened Sappe Sin Studio in 2025.</p>
+				<div class="about-grid">
+					<p class="b-txt">Pet portraits started with a friend who had just lost a pet. Seeing what that tattoo meant to them changed how he saw the work: a portrait on skin can carry a lot of love. It is now the thing he is best known for, alongside fine line.</p>
+					<p class="b-txt">He loves micro realism for its precision, and is increasingly drawn to larger pieces where a whole arm or back can hold one story. If you have a big idea, bring it.</p>
+				</div>
+			</div>
+		</section>
 		<section id="latest" aria-labelledby="latest-title">
 			<div class="section-head">
 				<h2 id="latest-title" class="h2">Latest works</h2>
@@ -66,6 +76,35 @@ templ Index() {
 				</div>
 			</div>
 		</section>
+		<section id="faq" class="faq" aria-labelledby="faq-title">
+			<h2 id="faq-title" class="h1-soft">FAQ</h2>
+			<div class="faq-grid">
+				<details class="faq-item">
+					<summary class="faq-head"><span class="faq-ring" aria-hidden="true"></span><span class="faq-q">How do I book?</span><span class="faq-icon" aria-hidden="true"><span></span><span></span></span></summary>
+					<div class="faq-body"><p>Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in.</p></div>
+				</details>
+				<details class="faq-item">
+					<summary class="faq-head"><span class="faq-ring" aria-hidden="true"></span><span class="faq-q">Is there a deposit?</span><span class="faq-icon" aria-hidden="true"><span></span><span></span></span></summary>
+					<div class="faq-body"><p>Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable.</p></div>
+				</details>
+				<details class="faq-item">
+					<summary class="faq-head"><span class="faq-ring" aria-hidden="true"></span><span class="faq-q">What if I need to reschedule?</span><span class="faq-icon" aria-hidden="true"><span></span><span></span></span></summary>
+					<div class="faq-body"><p>Email me at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once.</p></div>
+				</details>
+				<details class="faq-item">
+					<summary class="faq-head"><span class="faq-ring" aria-hidden="true"></span><span class="faq-q">Where is the studio?</span><span class="faq-icon" aria-hidden="true"><span></span><span></span></span></summary>
+					<div class="faq-body"><p>Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614.</p><a class="arrow-link faq-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614" rel="noopener noreferrer" target="_blank" aria-label="Show on Google Map, opens in new window"><span>Show on Google Map</span>@Arrow()</a></div>
+				</details>
+				<details class="faq-item">
+					<summary class="faq-head"><span class="faq-ring" aria-hidden="true"></span><span class="faq-q">What do you specialize in?</span><span class="faq-icon" aria-hidden="true"><span></span><span></span></span></summary>
+					<div class="faq-body"><p>Fine line, pet portraits and micro realism. I'm also taking on larger pieces, so bring the big ideas too.</p></div>
+				</details>
+				<details class="faq-item">
+					<summary class="faq-head"><span class="faq-ring" aria-hidden="true"></span><span class="faq-q">How do I look after my tattoo?</span><span class="faq-icon" aria-hidden="true"><span></span><span></span></span></summary>
+					<div class="faq-body"><p>Keep the bandage on for two to three days, then a thin layer of ointment twice a day. No swimming, sun or soaking for two weeks.</p><a class="arrow-link faq-link" href="aftercare.html"><span>Read the aftercare guide</span>@Arrow()</a></div>
+				</details>
+			</div>
+		</section>
 		<section class="cta-strip">
 			<a class="cta-link" href="book.html" aria-label="Book now">
 				<span class="cta-left"><span class="cta-word">Book</span></span>
@@ -73,10 +112,22 @@ templ Index() {
 				<span class="cta-mobile"><span class="cta-word">Book<br/>now</span>@Arrow()</span>
 			</a>
 		</section>
+		<script type="application/ld+json">
+			{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+				{"@type":"Question","name":"How do I book?","acceptedAnswer":{"@type":"Answer","text":"Send the booking form with your idea, a placement photo and the size you want. I'll reply by email so we can settle the design, date and time. Your spot is confirmed once the deposit is in."}},
+				{"@type":"Question","name":"Is there a deposit?","acceptedAnswer":{"@type":"Answer","text":"Yes. A $200 deposit holds your appointment and comes off the final price of the tattoo. Send it by Zelle, and add the date and time of your appointment in the note if you like. Deposits are non-refundable."}},
+				{"@type":"Question","name":"What if I need to reschedule?","acceptedAnswer":{"@type":"Answer","text":"Email at least 48 hours before your appointment and your deposit moves to the new date. With less than 48 hours' notice, or for a second reschedule, a new $200 deposit is needed. A deposit can only be moved once."}},
+				{"@type":"Question","name":"Where is the studio?","acceptedAnswer":{"@type":"Answer","text":"Sappe Sin Studio, 1134 W Diversey Pkwy, Chicago, IL 60614."}},
+				{"@type":"Question","name":"What do you specialize in?","acceptedAnswer":{"@type":"Answer","text":"Fine line, pet portraits and micro realism, and larger pieces too."}},
+				{"@type":"Question","name":"How do I look after my tattoo?","acceptedAnswer":{"@type":"Answer","text":"Keep the bandage on for two to three days, then a thin layer of ointment twice a day. No swimming, sun or soaking for two weeks. The full guide is on the aftercare page."}}
+			]}
+		</script>
 		<div class="anchors-bar">
 			<nav class="anchors" aria-label="On this page">
+				<a class="anchor-link" href="#about"><span class="dot" aria-hidden="true"></span><span class="anchor-txt">About</span></a>
 				<a class="anchor-link" href="#latest"><span class="dot" aria-hidden="true"></span><span class="anchor-txt">Latest works</span></a>
 				<a class="anchor-link" href="#gallery"><span class="dot" aria-hidden="true"></span><span class="anchor-txt">Gallery</span></a>
+				<a class="anchor-link" href="#faq"><span class="dot" aria-hidden="true"></span><span class="anchor-txt">FAQ</span></a>
 			</nav>
 			<a class="bar-book" href="book.html"><span class="anchor-txt">Book now</span>@Arrow()</a>
 		</div>

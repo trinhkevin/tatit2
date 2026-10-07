@@ -25,6 +25,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.tatit2.com/privacy.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://www.tatit2.com/thank_you.html</loc>
     <lastmod>2026-10-07</lastmod>
     <changefreq>yearly</changefreq>

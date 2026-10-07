@@ -133,7 +133,10 @@ templ Flash() {
 					var src = trigger.getAttribute('data-src');
 					if (img && src) { img.src = src; img.alt = trigger.getAttribute('data-name') || ''; }
 					var isTaken = trigger.getAttribute('data-status') === 'claimed';
-					if (cta) cta.hidden = isTaken;
+					if (cta) {
+						cta.hidden = isTaken;
+						cta.href = 'book.html?type=Flash&design=' + encodeURIComponent(trigger.getAttribute('data-name') || '');
+					}
 					if (takenLabel) takenLabel.hidden = !isTaken;
 					modal.removeAttribute('hidden');
 					modal.setAttribute('aria-hidden', 'false');

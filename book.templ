@@ -27,7 +27,7 @@ templ Book() {
 			<div class="book-pane">
 				<div class="book-meta"><span>General information</span><span>*Required</span></div>
 				<div id="form-live-region" class="sr-only" role="alert" aria-live="polite" aria-atomic="true" aria-relevant="additions text"></div>
-				<form id="booking-form" action="https://formsubmit.co/tatittoo.a@gmail.com" method="POST" enctype="multipart/form-data" class="book-form" novalidate>
+				<form id="booking-form" method="POST" enctype="multipart/form-data" class="book-form" data-to="dGF0aXR0b28uYUBnbWFpbC5jb20=" novalidate>
 					<input type="hidden" name="_next" value="https://www.tatit2.com/thank_you.html"/>
 					<input type="hidden" id="subject" name="_subject" value="[Booking Request] Unknown Name"/>
 					<input type="text" name="_honey" style="display:none"/>
@@ -66,6 +66,7 @@ templ Book() {
 					<div id="recaptcha-container" aria-hidden="true" class="sr-only"></div>
 					<div class="book-field book-field--full">
 						<button type="submit" class="book-submit" aria-describedby="form-live-region"><span>Send request</span>@Arrow()</button>
+						<p class="book-legal">Protected by reCAPTCHA. The Google <a class="inline-link" href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Privacy Policy</a> and <a class="inline-link" href="https://policies.google.com/terms" rel="noopener noreferrer" target="_blank">Terms of Service</a> apply. See how your details are handled in the <a class="inline-link" href="privacy.html">privacy note</a>.</p>
 					</div>
 				</form>
 				<template id="fine-line">
@@ -98,6 +99,11 @@ templ Book() {
 					</fieldset>
 				</template>
 				<template id="flash">
+					<fieldset class="book-field book-field--full">
+						<legend class="book-legend">Flash design</legend>
+						<input id="flash-design" name="flash_design" type="text" class="book-input" placeholder="Which design? e.g. Design F"/>
+						<p class="book-hint">Pick one on the <a class="inline-link" href="flash.html">flash page</a> and it fills in here.</p>
+					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Body placement photo</legend>
 						<input type="file" class="book-file" name="placement_photo" accept="image/png, image/jpeg" required/>
@@ -217,6 +223,7 @@ templ Book() {
 				if (bookForm) bookForm.addEventListener('focusin', loadRecaptcha, { once: true });
 				var form = document.getElementById("booking-form");
 				if (!form) return;
+				try { form.action = 'https://formsubmit.co/' + atob(form.getAttribute('data-to')); } catch (e) { /* no action without JS */ }
 				function wire(el, f) {
 					el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
 					function check() {
@@ -247,6 +254,19 @@ templ Book() {
 				}
 				form.addEventListener("submit", handleFormSubmit);
 				form.querySelectorAll("input, select, textarea").forEach(function(el) { wire(el, form); });
+				try {
+					var params = new URLSearchParams(window.location.search);
+					var wantType = params.get('type');
+					var wantDesign = params.get('design');
+					if (wantType && tattooType && Array.prototype.some.call(tattooType.options, function(o) { return o.value === wantType; })) {
+						tattooType.value = wantType;
+						tattooType.dispatchEvent(new Event('change'));
+						var designField = document.getElementById('flash-design');
+						if (designField && wantDesign) designField.value = wantDesign;
+						var fullName = document.getElementById('full-name');
+						if (fullName) fullName.focus();
+					}
+				} catch (e) { /* ignore */ }
 			});
 		</script>
 	}

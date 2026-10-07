@@ -17,6 +17,7 @@ var components = map[string]func() templ.Component{
 	"thank_you.html":     ThankYou,
 	"fine_line.html":     FineLine,
 	"pet_portraits.html": PetPortraits,
+	"privacy.html":       Privacy,
 }
 
 // main - generate components and output to *.html files

@@ -9,8 +9,22 @@ templ Book() {
 			<div class="book-tab"><span>Book</span><span class="dot" aria-hidden="true"></span></div>
 		</div>
 		<div class="book-layout">
+			<aside class="book-aside">
+				<div class="book-aside-inner">
+					<p class="book-lead">Tell me what you have in mind.</p>
+					<div class="book-notes">
+						<div class="label label--ink">What to include</div>
+						<ul class="book-note-list">
+							<li>Reference photos of a tattoo or style you like</li>
+							<li>A photo of the placement area on your body</li>
+							<li>Size in inches, not centimeters</li>
+							<li>Color, or black and grey</li>
+						</ul>
+						<p class="b-txt">I'll get back to you as soon as possible.</p>
+					</div>
+				</div>
+			</aside>
 			<div class="book-pane">
-				<p class="book-lead">Tell me what you have in mind.</p>
 				<div class="book-meta"><span>General information</span><span>*Required</span></div>
 				<div id="form-live-region" class="sr-only" role="alert" aria-live="polite" aria-atomic="true" aria-relevant="additions text"></div>
 				<form id="booking-form" action="https://formsubmit.co/tatittoo.a@gmail.com" method="POST" enctype="multipart/form-data" class="book-form" novalidate>
@@ -133,7 +147,6 @@ templ Book() {
 					</fieldset>
 				</template>
 			</div>
-			<div class="book-pane book-pane--empty" aria-hidden="true"></div>
 		</div>
 	<script>
 			var recaptchaWidgetId;

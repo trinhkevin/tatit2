@@ -104,7 +104,6 @@ templ Book() {
 						<div class="flash-pick" id="flash-pick">
 							<span class="flash-pick-img" id="flash-pick-img" hidden><img id="flash-pick-thumb" src="" alt="" decoding="async"/></span>
 							<div class="flash-pick-body">
-								<p class="flash-pick-name" id="flash-pick-name" hidden></p>
 								<a class="arrow-link flash-pick-link" id="flash-pick-link" href="flash.html?from=book"><span id="flash-pick-link-txt">Choose a flash design</span>@Arrow()</a>
 							</div>
 						</div>
@@ -293,17 +292,15 @@ templ Book() {
 				form.addEventListener('change', function(e) { saveField(e.target); });
 
 				/* Flash pick: thumbnail, hidden fields, and the drawing attached as a file */
-				var FLASH_SRC = /^images\/flash\/[A-Za-z0-9_-]+\.webp$/;
+				var FLASH_SRC = /^images\/flash\/flash-[0-9]+\.webp$/;
 				function applyFlashPick(name, src) {
-					if (!name || !FLASH_SRC.test(src)) return;
+					if (!/^flash-[0-9]+$/.test(name) || !FLASH_SRC.test(src)) return;
 					var thumbWrap = document.getElementById('flash-pick-img');
 					var thumb = document.getElementById('flash-pick-thumb');
-					var nameEl = document.getElementById('flash-pick-name');
 					var linkTxt = document.getElementById('flash-pick-link-txt');
 					var pick = document.getElementById('flash-pick');
 					if (!thumbWrap || !thumb) return;
-					thumb.src = src; thumb.alt = name; thumbWrap.hidden = false;
-					if (nameEl) { nameEl.textContent = name; nameEl.hidden = false; }
+					thumb.src = src; thumb.alt = 'Your chosen flash design'; thumbWrap.hidden = false;
 					if (linkTxt) linkTxt.textContent = 'Change design';
 					if (pick) pick.classList.remove('is-invalid');
 					document.getElementById('flash-design').value = name;

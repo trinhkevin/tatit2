@@ -53,7 +53,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/sample.webp", "Angel and demon illustration", "100vw", true).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/art/angel-and-demon.webp", "Angel and demon illustration", "100vw", true).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -61,7 +61,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_0057.webp", "Chihuahua portrait tattoo on an upper arm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/chihuahua-portrait.webp", "Chihuahua portrait tattoo on an upper arm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -69,7 +69,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_5077.webp", "Butterfly tattoo between the shoulder blades", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/butterfly-back.webp", "Butterfly tattoo between the shoulder blades", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -77,7 +77,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_4760.webp", "Octopus tattoo wrapping a forearm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/octopus-forearm.webp", "Octopus tattoo wrapping a forearm", "100vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -85,7 +85,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_0057.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/chihuahua-portrait.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -93,7 +93,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_5077.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/butterfly-back.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -101,7 +101,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_4760.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/octopus-forearm.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -109,7 +109,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_2265.webp", "Poodle portrait tattoo peeking over a line on a forearm", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/poodle-portrait.webp", "Poodle portrait tattoo peeking over a line on a forearm", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -117,7 +117,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_3149.webp", "Collage of fine line tattoos on a lower leg", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/fine-line-leg.webp", "Collage of fine line tattoos on a lower leg", "(max-width: 479px) 100vw, 50vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -125,7 +125,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_8282.webp", "Pit bull portrait tattoo with a photo frame on a forearm", "(max-width: 991px) 100vw, 76vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/pitbull-frame.webp", "Pit bull portrait tattoo with a photo frame on a forearm", "(max-width: 991px) 100vw, 76vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -133,7 +133,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_4167.webp", "Two dog portraits tattooed on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/two-dog-portraits.webp", "Two dog portraits tattooed on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -141,7 +141,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_2932.webp", "Snake and flowers tattooed along a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/snake-and-flowers.webp", "Snake and flowers tattooed along a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -149,7 +149,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/splash/IMG_5725.webp", "Dachshund portrait tattoo with a halo on a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/work/dachshund-halo.webp", "Dachshund portrait tattoo with a halo on a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -157,7 +157,7 @@ func Index() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = Pic("images/butterfly.webp", "Butterfly illustration", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Pic("images/art/butterfly.webp", "Butterfly illustration", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

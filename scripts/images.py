@@ -4,9 +4,9 @@ Run from the repo root: python3 scripts/images.py (also run by `task images`).""
 import os, glob
 from PIL import Image
 PLAN = {
-  'images/splash/*.webp': [240, 480, 800, 1200, 1600, 2400],
-  'images/sample.webp':   [480, 800, 1600],
-  'images/butterfly.webp':[480],
+  'images/work/*.webp':   [240, 480, 800, 1200, 1600, 2400],
+  'images/art/angel-and-demon.webp': [480, 800, 1600],
+  'images/art/butterfly.webp': [480],
   'images/artist.webp':   [300, 600],
   'images/flash/*.webp':  [400, 800],
 }

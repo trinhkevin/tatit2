@@ -738,11 +738,9 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 	transition: transform 0.6s var(--ease), opacity 0.4s;
 }
 .flash-card:hover .flash-card-img img { transform: scale(1.04); }
-.flash-card-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 10px 4px 14px; }
-.flash-card-name { font-size: 0.85rem; letter-spacing: -0.01em; }
+.flash-card-meta { display: flex; justify-content: flex-start; align-items: baseline; gap: 8px; padding: 10px 4px 14px; }
 .flash-card-status { font-size: 0.7rem; font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; color: var(--muted); }
 .flash-card--taken .flash-card-img img { filter: grayscale(1); opacity: 0.35; }
-.flash-card--taken .flash-card-name { color: var(--muted); }
 .flash-card--taken:hover .flash-card-img img { transform: none; }
 @keyframes flash-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) {
@@ -758,7 +756,7 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 	.flash-card:nth-child(n+9) { animation-delay: 0.34s; }
 }
 @media (max-width: 1279px) { .flash-grid { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 991px) { .flash-grid { grid-template-columns: repeat(3, 1fr); } .flash-card-name { font-size: 0.95rem; } .flash-card-status { font-size: 0.75rem; } }
+@media (max-width: 991px) { .flash-grid { grid-template-columns: repeat(3, 1fr); } .flash-card-status { font-size: 0.75rem; } }
 @media (max-width: 767px) { .flash-grid { grid-template-columns: repeat(2, 1fr); } }
 .flash-empty { padding: 42px var(--pad); }
 .flash-empty[hidden] { display: none; }
@@ -868,7 +866,6 @@ textarea.book-input { min-height: 7rem; resize: vertical; line-height: 1.35; }
 }
 .flash-pick { display: flex; align-items: center; gap: 14px; min-height: 3.2rem; }
 .flash-pick-body { display: flex; flex-direction: column; gap: 8px; }
-.flash-pick-name { font-size: 0.95rem; letter-spacing: -0.01em; }
 .flash-pick-link { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
 .flash-pick.is-invalid .flash-pick-link { color: #b91c1c; }
 .flash-pick-img { flex: none; width: 4.5rem; height: 6rem; padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: 3px; box-sizing: border-box; }

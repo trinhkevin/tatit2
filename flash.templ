@@ -1,33 +1,32 @@
 package main
 
 type flashDesign struct {
-	File  string
-	Name  string
+	ID    string // file name without extension, e.g. flash-15; also what the booking email reports
 	Taken bool
 }
 
 var newFlash = []flashDesign{
-	{"F", "Design F", false},
-	{"G", "Design G", false},
-	{"H", "Design H", true},
-	{"I", "Design I", true},
+	{"flash-15", false},
+	{"flash-16", false},
+	{"flash-17", true},
+	{"flash-18", true},
 }
 
 var oldFlash = []flashDesign{
-	{"IMG_6611", "Design 01", true},
-	{"IMG_6612", "Design 02", false},
-	{"IMG_6613", "Design 03", true},
-	{"IMG_6614", "Design 04", false},
-	{"IMG_6615", "Design 05", true},
-	{"IMG_6616", "Design 06", false},
-	{"IMG_6617", "Design 07", false},
-	{"IMG_6618", "Design 08", false},
-	{"IMG_6619", "Design 09", true},
-	{"A", "Design 10", true},
-	{"B", "Design 11", false},
-	{"C", "Design 12", false},
-	{"D", "Design 13", false},
-	{"E", "Design 14", true},
+	{"flash-01", true},
+	{"flash-02", false},
+	{"flash-03", true},
+	{"flash-04", false},
+	{"flash-05", true},
+	{"flash-06", false},
+	{"flash-07", false},
+	{"flash-08", false},
+	{"flash-09", true},
+	{"flash-10", true},
+	{"flash-11", false},
+	{"flash-12", false},
+	{"flash-13", false},
+	{"flash-14", true},
 }
 
 func flashStatus(d flashDesign) string {
@@ -45,9 +44,9 @@ func flashCardClass(d flashDesign) string {
 }
 
 templ FlashCard(d flashDesign) {
-	<button type="button" class={ flashCardClass(d) } data-status={ flashStatus(d) } data-src={ "images/flash/" + d.File + ".webp" } data-name={ d.Name }>
-		<span class="flash-card-img">@Pic("images/flash/" + d.File + ".webp", "", "(max-width: 767px) 50vw, (max-width: 991px) 33vw, (max-width: 1279px) 25vw, 20vw", false)</span>
-		<span class="flash-card-meta"><span class="flash-card-name">{ d.Name }</span><span class="flash-card-status">{ flashStatus(d) }</span></span>
+	<button type="button" class={ flashCardClass(d) } data-status={ flashStatus(d) } data-src={ "images/flash/" + d.ID + ".webp" } data-id={ d.ID } aria-label={ "View flash design, " + flashStatus(d) }>
+		<span class="flash-card-img">@Pic("images/flash/" + d.ID + ".webp", "", "(max-width: 767px) 50vw, (max-width: 991px) 33vw, (max-width: 1279px) 25vw, 20vw", false)</span>
+		<span class="flash-card-meta"><span class="flash-card-status">{ flashStatus(d) }</span></span>
 	</button>
 }
 
@@ -131,11 +130,11 @@ templ Flash() {
 					lastFocused = trigger || document.activeElement;
 					openedViaKeyboard = !!viaKeyboard;
 					var src = trigger.getAttribute('data-src');
-					if (img && src) { img.src = src; img.alt = trigger.getAttribute('data-name') || ''; }
+					if (img && src) { img.src = src; img.alt = 'Flash design'; }
 					var isTaken = trigger.getAttribute('data-status') === 'claimed';
 					if (cta) {
 						cta.hidden = isTaken;
-						cta.href = 'book.html?type=Flash&design=' + encodeURIComponent(trigger.getAttribute('data-name') || '') + '&src=' + encodeURIComponent(trigger.getAttribute('data-src') || '');
+						cta.href = 'book.html?type=Flash&design=' + encodeURIComponent(trigger.getAttribute('data-id') || '') + '&src=' + encodeURIComponent(trigger.getAttribute('data-src') || '');
 					}
 					if (takenLabel) takenLabel.hidden = !isTaken;
 					modal.removeAttribute('hidden');

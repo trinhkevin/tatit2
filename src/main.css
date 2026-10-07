@@ -866,6 +866,11 @@ textarea.book-input { min-height: 7rem; resize: vertical; line-height: 1.35; }
 	border: 0; border-radius: 2px;
 	cursor: pointer;
 }
+.flash-pick { display: flex; align-items: flex-start; gap: 12px; }
+.flash-pick .book-input { flex: 1; min-width: 0; }
+.flash-pick-img { flex: none; width: 4.5rem; height: 6rem; padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: 3px; box-sizing: border-box; }
+.flash-pick-img[hidden] { display: none; }
+.flash-pick-img img { width: 100%; height: 100%; object-fit: contain; }
 .book-hint { margin-top: 8px; font-size: 0.75rem; line-height: 1.35; opacity: 0.65; }
 .form-attempted .book-input:invalid, .form-attempted .book-select:invalid, .form-attempted .book-file:invalid { border-color: #b91c1c; }
 .book-dynamic-fields { display: contents; }

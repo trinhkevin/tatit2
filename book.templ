@@ -101,8 +101,13 @@ templ Book() {
 				<template id="flash">
 					<fieldset class="book-field book-field--full">
 						<legend class="book-legend">Flash design</legend>
-						<input id="flash-design" name="flash_design" type="text" class="book-input" placeholder="Which design? e.g. Design F"/>
-						<p class="book-hint">Pick one on the <a class="inline-link" href="flash.html">flash page</a> and it fills in here.</p>
+						<div class="flash-pick">
+							<span class="flash-pick-img" id="flash-pick-img" hidden><img id="flash-pick-thumb" src="" alt="" decoding="async"/></span>
+							<input id="flash-design" name="flash_design" type="text" class="book-input" placeholder="Which design? e.g. Design F"/>
+						</div>
+						<input type="hidden" id="flash-image-url" name="flash_image_url" value=""/>
+						<input type="file" id="flash-image" name="flash_image" class="sr-only" tabindex="-1" aria-hidden="true"/>
+						<p class="book-hint" id="flash-pick-hint">Pick one on the <a class="inline-link" href="flash.html">flash page</a> and it fills in here. The drawing is sent with your request.</p>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Body placement photo</legend>
@@ -263,6 +268,23 @@ templ Book() {
 						tattooType.dispatchEvent(new Event('change'));
 						var designField = document.getElementById('flash-design');
 						if (designField && wantDesign) designField.value = wantDesign;
+						var wantSrc = params.get('src') || '';
+						if (/^images\/flash\/[A-Za-z0-9_-]+\.webp$/.test(wantSrc)) {
+							var thumbWrap = document.getElementById('flash-pick-img');
+							var thumb = document.getElementById('flash-pick-thumb');
+							if (thumb && thumbWrap) { thumb.src = wantSrc; thumb.alt = wantDesign || 'Chosen flash design'; thumbWrap.hidden = false; }
+							var urlField = document.getElementById('flash-image-url');
+							if (urlField) urlField.value = 'https://www.tatit2.com/' + wantSrc;
+							var fileField = document.getElementById('flash-image');
+							if (fileField && window.DataTransfer && window.File) {
+								fetch(wantSrc).then(function(r) { return r.ok ? r.blob() : Promise.reject(); }).then(function(blob) {
+									var name = (wantDesign || 'flash').replace(/[^A-Za-z0-9]+/g, '-') + '.webp';
+									var dt = new DataTransfer();
+									dt.items.add(new File([blob], name, { type: blob.type || 'image/webp' }));
+									fileField.files = dt.files;
+								}).catch(function() { /* the link in flash_image_url still identifies the design */ });
+							}
+						}
 						var fullName = document.getElementById('full-name');
 						if (fullName) fullName.focus();
 					}

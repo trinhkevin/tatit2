@@ -48,7 +48,7 @@
 					var isTaken = trigger.getAttribute('data-status') === 'claimed';
 					if (cta) {
 						cta.hidden = isTaken;
-						cta.href = 'book.html?type=Flash&design=' + encodeURIComponent(trigger.getAttribute('data-name') || '');
+						cta.href = 'book.html?type=Flash&design=' + encodeURIComponent(trigger.getAttribute('data-name') || '') + '&src=' + encodeURIComponent(trigger.getAttribute('data-src') || '');
 					}
 					if (takenLabel) takenLabel.hidden = !isTaken;
 					modal.removeAttribute('hidden');

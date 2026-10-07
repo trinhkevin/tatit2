@@ -673,6 +673,7 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 }
 .page-hero--tall { min-height: 85vh; min-height: 85svh; }
 .page-hero--mid { min-height: 45vh; }
+.page-hero--book { padding-bottom: 3.5rem; }
 .page-hero-intro { max-width: 27%; margin-top: auto; padding-top: 4rem; }
 .page-hero-blurb { max-width: 36ch; margin-top: 16px; font-size: 0.8rem; font-weight: 400; line-height: 1.35; letter-spacing: 0.01em; text-transform: uppercase; }
 @media (max-width: 991px) {
@@ -810,15 +811,15 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 }
 .book-tab .dot { width: 14px; height: 14px; }
 .book-layout { display: grid; grid-template-columns: 35% 1fr; }
-.book-aside { padding: 28px var(--pad) 72px; border-right: 1px solid var(--line); }
+.book-aside { padding: 32px var(--pad) 56px; border-right: 1px solid var(--line); }
 .book-aside-inner { position: sticky; top: 6rem; }
-.book-pane { padding: 28px var(--pad) 72px; }
+.book-pane { padding: 32px var(--pad) 56px; }
 .book-lead { font-size: clamp(1.4rem, 2.3vw, 2.3rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
-.book-notes { margin-top: 3rem; }
+.book-notes { margin-top: 2.25rem; }
 .book-note-list { margin: 14px 0 20px; }
 .book-note-list li { padding: 10px 0; border-top: 1px solid var(--line-soft); font-size: 0.93rem; line-height: 1.3; }
 .book-note-list li:last-child { border-bottom: 1px solid var(--line-soft); }
-.book-meta { display: flex; justify-content: space-between; margin: 0 0 24px; font-size: 0.85rem; opacity: 0.65; }
+.book-meta { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); font-size: 0.85rem; opacity: 0.65; }
 .book-form { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; }
 .book-field { display: block; min-width: 0; margin: 0; padding: 0; border: 0; }
 .book-field--full { grid-column: 1 / -1; }

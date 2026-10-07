@@ -5,7 +5,7 @@ templ Index() {
 		<section class="hero" aria-labelledby="hero-title">
 			<div class="hero-top">
 				<div class="artist-profile">
-					<div class="artist-photo"><img src="images/artist.webp" alt="The artist at work, tattooing a client's arm" width="1120" height="1400" loading="eager" decoding="async"/></div>
+					<div class="artist-photo">@Pic("images/artist.webp", "The artist at work, tattooing a client's arm", "(max-width: 479px) 50vw, (max-width: 767px) 20vw, (max-width: 991px) 12vw, 9vw", true)</div>
 					<div class="artist-desc label">Tattoo artist at Sappe Sin Studio</div>
 				</div>
 				<h1 id="hero-title" class="display h1-hero hero-title">tat.it.too</h1>
@@ -28,7 +28,7 @@ templ Index() {
 			</div>
 		</section>
 		<figure class="fullsize">
-			<img src="images/splash/IMG_2932.webp" alt="Snake and flowers tattooed along a forearm" loading="eager" decoding="async" fetchpriority="high"/>
+			@Pic("images/splash/IMG_2932.webp", "Snake and flowers tattooed along a forearm", "100vw", true)
 		</figure>
 		<section id="latest" aria-labelledby="latest-title">
 			<div class="section-head">
@@ -36,31 +36,31 @@ templ Index() {
 			</div>
 			<div class="works-wrap">
 				<div class="works" aria-live="polite">
-					<div class="works-photo is-active" data-id="1"><img src="images/splash/IMG_0057.webp" alt="Chihuahua portrait tattoo on an upper arm" loading="lazy" decoding="async"/></div>
-					<div class="works-photo" data-id="2"><img src="images/splash/IMG_5077.webp" alt="Butterfly tattoo between the shoulder blades" loading="lazy" decoding="async"/></div>
-					<div class="works-photo" data-id="3"><img src="images/splash/IMG_4760.webp" alt="Octopus tattoo wrapping a forearm" loading="lazy" decoding="async"/></div>
+					<div class="works-photo is-active" data-id="1">@Pic("images/splash/IMG_0057.webp", "Chihuahua portrait tattoo on an upper arm", "100vw", false)</div>
+					<div class="works-photo" data-id="2">@Pic("images/splash/IMG_5077.webp", "Butterfly tattoo between the shoulder blades", "100vw", false)</div>
+					<div class="works-photo" data-id="3">@Pic("images/splash/IMG_4760.webp", "Octopus tattoo wrapping a forearm", "100vw", false)</div>
 				</div>
 				<div class="works-previews" role="group" aria-label="Choose a photo">
-					<button type="button" class="works-preview is-active" data-id="1" aria-pressed="true" aria-label="Show chihuahua portrait"><img src="images/splash/IMG_0057.webp" alt="" loading="lazy" decoding="async"/></button>
-					<button type="button" class="works-preview" data-id="2" aria-pressed="false" aria-label="Show butterfly"><img src="images/splash/IMG_5077.webp" alt="" loading="lazy" decoding="async"/></button>
-					<button type="button" class="works-preview" data-id="3" aria-pressed="false" aria-label="Show octopus"><img src="images/splash/IMG_4760.webp" alt="" loading="lazy" decoding="async"/></button>
+					<button type="button" class="works-preview is-active" data-id="1" aria-pressed="true" aria-label="Show chihuahua portrait">@Pic("images/splash/IMG_0057.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false)</button>
+					<button type="button" class="works-preview" data-id="2" aria-pressed="false" aria-label="Show butterfly">@Pic("images/splash/IMG_5077.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false)</button>
+					<button type="button" class="works-preview" data-id="3" aria-pressed="false" aria-label="Show octopus">@Pic("images/splash/IMG_4760.webp", "", "(max-width: 479px) 33vw, (max-width: 767px) 14vw, 12vw", false)</button>
 				</div>
 			</div>
 		</section>
 		<section class="pair" aria-label="More work">
-			<figure><img src="images/splash/IMG_2265.webp" alt="Poodle portrait tattoo peeking over a line on a forearm" loading="lazy" decoding="async"/></figure>
-			<figure><img src="images/splash/IMG_3149.webp" alt="Collage of fine line tattoos on a lower leg" loading="lazy" decoding="async"/></figure>
+			<figure>@Pic("images/splash/IMG_2265.webp", "Poodle portrait tattoo peeking over a line on a forearm", "(max-width: 479px) 100vw, 50vw", false)</figure>
+			<figure>@Pic("images/splash/IMG_3149.webp", "Collage of fine line tattoos on a lower leg", "(max-width: 479px) 100vw, 50vw", false)</figure>
 		</section>
 		<section id="gallery" class="gallery" aria-label="Gallery">
 			<div class="gallery-track">
 				<div class="gallery-stage">
-					<div class="gallery-main"><img src="images/splash/IMG_8282.webp" alt="Pit bull portrait tattoo with a photo frame on a forearm" loading="lazy" decoding="async"/></div>
+					<div class="gallery-main">@Pic("images/splash/IMG_8282.webp", "Pit bull portrait tattoo with a photo frame on a forearm", "(max-width: 991px) 100vw, 76vw", false)</div>
 					<div class="gallery-rail">
 						<div class="gallery-col">
-							<figure class="gallery-item"><img src="images/splash/IMG_4167.webp" alt="Two dog portraits tattooed on an upper arm" loading="lazy" decoding="async"/></figure>
-							<figure class="gallery-item"><img src="images/sample.webp" alt="Angel and demon illustration" loading="lazy" decoding="async"/></figure>
-							<figure class="gallery-item"><img src="images/splash/IMG_5725.webp" alt="Dachshund portrait tattoo with a halo on a forearm" loading="lazy" decoding="async"/></figure>
-							<figure class="gallery-item"><img src="images/butterfly.webp" alt="Butterfly illustration" loading="lazy" decoding="async"/></figure>
+							<figure class="gallery-item">@Pic("images/splash/IMG_4167.webp", "Two dog portraits tattooed on an upper arm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false)</figure>
+							<figure class="gallery-item">@Pic("images/sample.webp", "Angel and demon illustration", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false)</figure>
+							<figure class="gallery-item">@Pic("images/splash/IMG_5725.webp", "Dachshund portrait tattoo with a halo on a forearm", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false)</figure>
+							<figure class="gallery-item">@Pic("images/butterfly.webp", "Butterfly illustration", "(max-width: 479px) 100vw, (max-width: 991px) 50vw, 24vw", false)</figure>
 						</div>
 					</div>
 				</div>

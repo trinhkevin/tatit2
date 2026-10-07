@@ -1,108 +1,7 @@
 package main
 
 templ Book() {
-	<script>
-		var recaptchaWidgetId;
-
-		function onRecaptchaReady() {
-			if (document.readyState === "loading") return;
-			if (typeof grecaptcha === "undefined") return;
-			var el = document.getElementById("recaptcha-container");
-			if (el && recaptchaWidgetId === undefined) {
-				try {
-					recaptchaWidgetId = grecaptcha.render(el, {
-						sitekey: "6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC",
-						size: "invisible",
-						callback: onRecaptchaSuccess
-					});
-				} catch (e) { /* reCAPTCHA failed, form will submit without it */ }
-			}
-		}
-
-		function onRecaptchaSuccess(token) {
-			document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value;
-			document.getElementById("g-recaptcha-response").remove();
-			document.getElementById("booking-form").submit();
-		}
-
-		function handleFormSubmit(event) {
-			event.preventDefault();
-			const form = document.getElementById("booking-form");
-			const liveRegion = document.getElementById("form-live-region");
-			form.classList.add("form-attempted");
-			if (!form.checkValidity()) {
-				form.reportValidity();
-				var invalid = form.querySelectorAll(":invalid");
-				var labels = [];
-				invalid.forEach(function(el) {
-					var label = el.closest("fieldset")?.querySelector(".book-legend")?.textContent?.trim() || el.name || "Field";
-					if (label && !labels.includes(label)) labels.push(label);
-				});
-				if (liveRegion && labels.length) {
-					liveRegion.setAttribute("aria-live", "assertive");
-					liveRegion.textContent = "Please fix " + labels.length + " error(s): " + labels.join(", ") + ".";
-				}
-				return false;
-			}
-			if (liveRegion) {
-				liveRegion.setAttribute("aria-live", "polite");
-				liveRegion.textContent = "";
-			}
-			if (recaptchaWidgetId !== undefined) {
-				grecaptcha.execute(recaptchaWidgetId);
-			} else {
-				form.submit();
-			}
-			return false;
-		}
-
-		document.addEventListener('DOMContentLoaded', function() {
-			var recaptchaLoaded = false;
-			function loadRecaptcha() {
-				if (recaptchaLoaded) return;
-				recaptchaLoaded = true;
-				var s = document.createElement('script');
-				s.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady&render=explicit';
-				s.async = true;
-				document.head.appendChild(s);
-			}
-			var bookForm = document.getElementById('booking-form');
-			if (bookForm) bookForm.addEventListener('focusin', loadRecaptcha, { once: true });
-			var form = document.getElementById("booking-form");
-			if (!form) return;
-			function wire(el, f) {
-				el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
-				function check() {
-					if (f.classList.contains("form-attempted")) {
-						this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
-					}
-				}
-				el.addEventListener("input", check);
-				el.addEventListener("blur", check);
-			}
-			var tattooType = document.getElementById('tattoo-type');
-			var tattooTypeForm = document.getElementById('tattoo-type-form');
-			var liveRegion = document.getElementById('form-live-region');
-			if (tattooType && tattooTypeForm) {
-				tattooType.addEventListener('change', function() {
-					var val = this.value;
-					if (!val) { tattooTypeForm.innerHTML = ''; return; }
-					var templateId = val.toLowerCase().replace(/\s+/g, '-');
-					var template = document.getElementById(templateId);
-					if (!template) return;
-					tattooTypeForm.innerHTML = '';
-					tattooTypeForm.appendChild(template.content.cloneNode(true));
-					tattooTypeForm.querySelectorAll("input, select, textarea").forEach(function(el) { wire(el, form); });
-					if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
-					var firstField = tattooTypeForm.querySelector('input, select, textarea');
-					if (firstField) firstField.focus();
-				});
-			}
-			form.addEventListener("submit", handleFormSubmit);
-			form.querySelectorAll("input, select, textarea").forEach(function(el) { wire(el, form); });
-		});
-	</script>
-	@Page("Book a Tattoo | tat.it.too", "Book your tattoo appointment online. Choose fine line, animal portraits, or flash. Quick and easy booking.", "https://www.tatit2.com/book.html", "https://www.tatit2.com/book.html") {
+	@Page("Book a Tattoo in Chicago | tat.it.too", "Book a tattoo with tat.it.too at Sappe Sin Studio, Chicago. Fine line, animal portraits, or flash. Quick online booking.", "https://www.tatit2.com/book.html", "https://www.tatit2.com/book.html") {
 		<section class="page-hero page-hero--mid" aria-labelledby="book-title">
 			<h1 id="book-title" class="display h1-page">Book your<br/>tattoo</h1>
 		</section>
@@ -150,7 +49,7 @@ templ Book() {
 							<option value="Flash">Flash</option>
 						</select>
 					</fieldset>
-					<div id="tattoo-type-form" class="book-dynamic-fields" aria-label="Additional booking details"></div>
+					<div id="tattoo-type-form" class="book-dynamic-fields" role="group" aria-label="Additional booking details"></div>
 					<div id="recaptcha-container" aria-hidden="true" class="sr-only"></div>
 					<div class="book-field book-field--full">
 						<button type="submit" class="book-submit" aria-describedby="form-live-region"><span>Send request</span>@Arrow()</button>
@@ -237,5 +136,106 @@ templ Book() {
 			</div>
 			<div class="book-pane book-pane--empty" aria-hidden="true"></div>
 		</div>
+	<script>
+			var recaptchaWidgetId;
+
+			function onRecaptchaReady() {
+				if (document.readyState === "loading") return;
+				if (typeof grecaptcha === "undefined") return;
+				var el = document.getElementById("recaptcha-container");
+				if (el && recaptchaWidgetId === undefined) {
+					try {
+						recaptchaWidgetId = grecaptcha.render(el, {
+							sitekey: "6LdG6o8rAAAAADkcwZuF733BEv8FJqfaIC4XIBcC",
+							size: "invisible",
+							callback: onRecaptchaSuccess
+						});
+					} catch (e) { /* reCAPTCHA failed, form will submit without it */ }
+				}
+			}
+
+			function onRecaptchaSuccess(token) {
+				document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value;
+				document.getElementById("g-recaptcha-response").remove();
+				document.getElementById("booking-form").submit();
+			}
+
+			function handleFormSubmit(event) {
+				event.preventDefault();
+				const form = document.getElementById("booking-form");
+				const liveRegion = document.getElementById("form-live-region");
+				form.classList.add("form-attempted");
+				if (!form.checkValidity()) {
+					form.reportValidity();
+					var invalid = form.querySelectorAll(":invalid");
+					var labels = [];
+					invalid.forEach(function(el) {
+						var label = el.closest("fieldset")?.querySelector(".book-legend")?.textContent?.trim() || el.name || "Field";
+						if (label && !labels.includes(label)) labels.push(label);
+					});
+					if (liveRegion && labels.length) {
+						liveRegion.setAttribute("aria-live", "assertive");
+						liveRegion.textContent = "Please fix " + labels.length + " error(s): " + labels.join(", ") + ".";
+					}
+					return false;
+				}
+				if (liveRegion) {
+					liveRegion.setAttribute("aria-live", "polite");
+					liveRegion.textContent = "";
+				}
+				if (recaptchaWidgetId !== undefined) {
+					grecaptcha.execute(recaptchaWidgetId);
+				} else {
+					form.submit();
+				}
+				return false;
+			}
+
+			document.addEventListener('DOMContentLoaded', function() {
+				var recaptchaLoaded = false;
+				function loadRecaptcha() {
+					if (recaptchaLoaded) return;
+					recaptchaLoaded = true;
+					var s = document.createElement('script');
+					s.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady&render=explicit';
+					s.async = true;
+					document.head.appendChild(s);
+				}
+				var bookForm = document.getElementById('booking-form');
+				if (bookForm) bookForm.addEventListener('focusin', loadRecaptcha, { once: true });
+				var form = document.getElementById("booking-form");
+				if (!form) return;
+				function wire(el, f) {
+					el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
+					function check() {
+						if (f.classList.contains("form-attempted")) {
+							this.setAttribute("aria-invalid", !this.validity.valid ? "true" : "false");
+						}
+					}
+					el.addEventListener("input", check);
+					el.addEventListener("blur", check);
+				}
+				var tattooType = document.getElementById('tattoo-type');
+				var tattooTypeForm = document.getElementById('tattoo-type-form');
+				var liveRegion = document.getElementById('form-live-region');
+				if (tattooType && tattooTypeForm) {
+					tattooType.addEventListener('change', function() {
+						var val = this.value;
+						if (!val) { tattooTypeForm.innerHTML = ''; return; }
+						var templateId = val.toLowerCase().replace(/\s+/g, '-');
+						var template = document.getElementById(templateId);
+						if (!template) return;
+						tattooTypeForm.innerHTML = '';
+						tattooTypeForm.appendChild(template.content.cloneNode(true));
+						tattooTypeForm.querySelectorAll("input, select, textarea").forEach(function(el) { wire(el, form); });
+						if (liveRegion) liveRegion.textContent = 'Additional fields for ' + val + ' have been added.';
+						var firstField = tattooTypeForm.querySelector('input, select, textarea');
+						if (firstField) firstField.focus();
+					});
+				}
+				form.addEventListener("submit", handleFormSubmit);
+				form.querySelectorAll("input, select, textarea").forEach(function(el) { wire(el, form); });
+			});
+		</script>
 	}
 }

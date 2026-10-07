@@ -7,6 +7,26 @@ templ Arrow() {
 	<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 18L18 6M8 6h10v10"></path></svg></span>
 }
 
+// Pic renders a responsive image with srcset/sizes and intrinsic dimensions.
+// eager marks the image as above the fold (no lazy loading, high fetch priority).
+templ Pic(src string, alt string, sizes string, eager bool) {
+	<img
+		src={ src }
+		srcset={ srcset(src) }
+		sizes={ sizes }
+		alt={ alt }
+		width={ imgW(src) }
+		height={ imgH(src) }
+		decoding="async"
+		if eager {
+			loading="eager"
+			fetchpriority="high"
+		} else {
+			loading="lazy"
+		}
+	/>
+}
+
 // Page is the shared document shell: head, fixed header, mobile menu, main, footer, scripts.
 // title, description, canonical (empty = no canonical link), ogURL (for og:url, use canonical or homepage).
 templ Page(title string, description string, canonical string, ogURL string) {
@@ -30,12 +50,14 @@ templ Page(title string, description string, canonical string, ogURL string) {
 			<link rel="preload" href="./src/main.css" as="style"/>
 			<link type="text/css" href="./src/tailwind.css" rel="stylesheet"/>
 			<link type="text/css" href="./src/main.css" rel="stylesheet"/>
-			<link rel="preconnect" href="https://www.google.com"/>
-			<link rel="preconnect" href="https://www.gstatic.com" crossorigin/>
 			<meta property="og:type" content="website"/>
+			<meta property="og:site_name" content="tat.it.too"/>
+			<meta property="og:locale" content="en_US"/>
 			<meta property="og:title" content={ title }/>
 			<meta property="og:description" content={ description }/>
 			<meta property="og:image" content="https://www.tatit2.com/images/sample.webp"/>
+			<meta property="og:image:width" content="1080"/>
+			<meta property="og:image:height" content="1350"/>
 			<meta property="og:url" content={ ogURL }/>
 			<meta name="twitter:card" content="summary_large_image"/>
 			<meta name="twitter:title" content={ title }/>
@@ -99,7 +121,7 @@ templ Page(title string, description string, canonical string, ogURL string) {
 			<footer class="site-footer" role="contentinfo">
 				<address class="studio-band">
 					<div class="studio-box">
-						<h3 class="studio-name">Sappe Sin Studio</h3>
+						<p class="studio-name">Sappe Sin Studio</p>
 						<p class="studio-address">1134 W Diversey Pkwy,<br/>Chicago, IL 60614</p>
 						<a class="studio-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=1134+W+Diversey+Pkwy%2C+Chicago%2C+IL+60614" rel="noopener noreferrer" target="_blank" aria-label="Show on Google Map, opens in new window"><span>Show on Google Map</span>@Arrow()</a>
 					</div>

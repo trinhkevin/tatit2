@@ -37,13 +37,6 @@ func flashStatus(d flashDesign) string {
 	return "available"
 }
 
-func flashLabel(d flashDesign) string {
-	if d.Taken {
-		return "View " + d.Name + " (claimed, no longer available)"
-	}
-	return "View " + d.Name
-}
-
 func flashCardClass(d flashDesign) string {
 	if d.Taken {
 		return "flash-card flash-card--taken"
@@ -52,14 +45,14 @@ func flashCardClass(d flashDesign) string {
 }
 
 templ FlashCard(d flashDesign) {
-	<button type="button" class={ flashCardClass(d) } data-status={ flashStatus(d) } data-src={ "images/flash/" + d.File + ".webp" } data-name={ d.Name } aria-label={ flashLabel(d) }>
-		<span class="flash-card-img"><img src={ "images/flash/" + d.File + ".webp" } alt="" loading="lazy" decoding="async"/></span>
+	<button type="button" class={ flashCardClass(d) } data-status={ flashStatus(d) } data-src={ "images/flash/" + d.File + ".webp" } data-name={ d.Name }>
+		<span class="flash-card-img">@Pic("images/flash/" + d.File + ".webp", "", "(max-width: 767px) 50vw, (max-width: 991px) 33vw, (max-width: 1279px) 25vw, 20vw", false)</span>
 		<span class="flash-card-meta"><span class="flash-card-name">{ d.Name }</span><span class="flash-card-status">{ flashStatus(d) }</span></span>
 	</button>
 }
 
 templ Flash() {
-	@Page("Flash Tattoos | tat.it.too", "Browse flash tattoo designs. Pre-drawn designs ready to book. tat.it.too tattoo artist.", "https://www.tatit2.com/flash.html", "https://www.tatit2.com/flash.html") {
+	@Page("Flash Tattoos in Chicago | tat.it.too", "Browse flash tattoo designs by tat.it.too, Chicago tattoo artist at Sappe Sin Studio. Pre-drawn designs ready to book.", "https://www.tatit2.com/flash.html", "https://www.tatit2.com/flash.html") {
 		<section class="page-hero" aria-labelledby="flash-title">
 			<h1 id="flash-title" class="display h1-page">Flash</h1>
 			<p class="page-hero-blurb">Pre-drawn designs, ready to book. Pick one, send a placement photo, and it's yours.</p>

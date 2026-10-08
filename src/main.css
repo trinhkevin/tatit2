@@ -64,6 +64,10 @@ html {
 @media (max-width: 991px) {
 	html { font-size: 16px; }
 }
+/* Phones: the reference grows its base size with the viewport again. */
+@media (max-width: 479px) {
+	html { font-size: clamp(15px, 4.46vw, 19px); }
+}
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -138,6 +142,12 @@ ul { padding: 0; list-style: none; }
 	.label { font-size: 0.8rem; }
 	.value { font-size: 1rem; }
 	.b-txt { font-size: 1rem; }
+}
+@media (max-width: 479px) {
+	.label { font-size: 0.85rem; }
+	.h1-hero { font-size: 14vw; }
+	.h1-page, .h1-soft { font-size: 16vw; }
+	.h2 { font-size: 10vw; }
 }
 
 .arrow { display: inline-block; width: 10px; height: 10px; flex: none; }
@@ -234,6 +244,10 @@ ul { padding: 0; list-style: none; }
 	.menu-toggle { display: flex; }
 	.logotype { font-size: 0.85rem; }
 	.logo-sub { font-size: 0.75rem; }
+}
+@media (max-width: 479px) {
+	.logotype { font-size: 1rem; }
+	.logo-sub { font-size: 0.93rem; }
 }
 
 /* Mobile menu panel ---------------------------------------------------------- */
@@ -372,6 +386,8 @@ body.menu-open { overflow: hidden; }
 	.footer-col + .footer-col { margin-left: 0; }
 	.footer-last { margin-top: 62px; padding-top: 16px; padding-bottom: 16px; }
 	.footer-last .credit { display: none; }
+	.studio-name { font-size: 1.7rem; }
+	.footer-title, .to-top { font-size: 0.9rem; }
 }
 body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 
@@ -670,6 +686,7 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 	.cta-strip { margin-top: 0; padding-top: 42px; }
 	.cta-link { padding: 20px var(--pad); }
 	.cta-mobile .arrow { width: 32px; height: 32px; }
+	.cta-mobile .cta-word { font-size: 13vw; }
 }
 
 /* --------------------------------------------------------------------------

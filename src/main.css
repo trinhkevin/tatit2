@@ -57,7 +57,7 @@
 
 /* Reference scales everything from body{font-size:1vw}. Same idea, via rem. */
 html {
-	font-size: clamp(12px, 1vw, 19px);
+	font-size: clamp(16px, 1.12vw, 19px);
 	background: var(--grey);
 	-webkit-text-size-adjust: 100%;
 }
@@ -337,12 +337,12 @@ body.menu-open { overflow: hidden; }
 .footer-right { width: 65%; padding-right: var(--pad); display: flex; box-sizing: border-box; }
 .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
 .footer-col + .footer-col { margin-left: auto; }
-.footer-title { margin-bottom: 24px; font-size: 0.75rem; font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; }
+.footer-title { margin-bottom: 24px; font-size: 0.8rem; font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; }
 .footer-link {
 	display: inline-flex; align-items: center; gap: 4px;
 	min-height: 24px;
 	padding: 4px 0;
-	font-size: 0.7rem;
+	font-size: 0.75rem;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
 	transition: opacity 0.4s;
@@ -365,7 +365,7 @@ body.menu-open { overflow: hidden; }
 	margin-top: 6rem;
 	padding: 20px var(--pad);
 	border-top: 1px solid var(--line-light);
-	font-size: 0.7rem;
+	font-size: 0.75rem;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
 }
@@ -414,7 +414,7 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 .anchor-link .dot { width: 4px; height: 4px; }
 .anchor-link:hover { opacity: 1; }
 .anchor-link.is-current { opacity: 1; background: var(--black); color: var(--white); }
-.anchor-txt { font-size: 0.7rem; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
+.anchor-txt { font-size: 0.75rem; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
 .bar-book {
 	display: flex; align-items: center; gap: 8px;
 	margin-left: auto;

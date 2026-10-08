@@ -461,9 +461,10 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 	.hero-top { flex-direction: column; }
 	.artist-profile { order: 2; width: 50%; margin-top: 40px; margin-left: auto; }
 	.artist-photo { width: 100%; height: 53vw; }
-	.hero-meta { flex-wrap: wrap; gap: 2.5rem 8px; margin-top: 6rem; padding-top: 0; }
-	.hero-meta-item { width: calc(50% - 4px); }
-	.hero-meta-right { display: contents; }
+	.hero-meta { flex-wrap: wrap; align-items: flex-start; gap: 2.5rem 8px; margin-top: 6rem; padding-top: 0; }
+	.hero-meta > .hero-meta-item { width: 100%; }
+	.hero-meta-right { width: 100%; gap: 8px; }
+	.hero-meta-right .hero-meta-item { width: calc(50% - 4px); }
 	.hero-meta-item--end { margin-left: 0; text-align: left; }
 }
 

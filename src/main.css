@@ -851,6 +851,7 @@ body.has-bar .site-footer { padding-bottom: var(--bar-h); }
 .book-form { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; }
 .book-field { display: block; min-width: 0; margin: 0; padding: 0; border: 0; }
 .book-field--full { grid-column: 1 / -1; }
+.book-field[hidden] { display: none; }
 .book-legend { display: block; margin-bottom: 10px; font-size: 0.8rem; letter-spacing: -0.01em; }
 .book-legend.required-label::after { content: '*'; }
 .book-input, .book-select, .book-file {

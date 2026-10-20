@@ -53,6 +53,18 @@ templ Book() {
 							<option value="Weekend">Weekend</option>
 						</select>
 					</fieldset>
+					<fieldset class="book-field">
+						<legend class="book-legend required-label">Location</legend>
+						<select class="book-select" id="location" name="location" required aria-required="true" title="Please choose where you'd like to be tattooed">
+							<option disabled selected value="">Choose one</option>
+							<option value="Chicago">Chicago (Sappe Sin Studio)</option>
+							<option value="Guest spot">Guest spot</option>
+						</select>
+					</fieldset>
+					<fieldset class="book-field" id="guest-city-field" hidden>
+						<legend class="book-legend required-label">Which city?</legend>
+						<input autocomplete="address-level2" id="guest-city" name="guest_city" type="text" class="book-input" placeholder="e.g. Los Angeles" title="Please enter the city of the guest spot"/>
+					</fieldset>
 					<fieldset class="book-field book-field--full">
 						<legend class="book-legend required-label">Tattoo type</legend>
 						<select class="book-select" id="tattoo-type" name="tattoo_type" required aria-required="true" title="Please select a tattoo type">
@@ -183,8 +195,14 @@ templ Book() {
 			var DRAFT_KEY = 'tatit2BookDraft';
 			function clearDraft() { try { sessionStorage.removeItem(DRAFT_KEY); } catch (e) {} }
 
+			function setSubject() {
+				var loc = document.getElementById("location");
+				var tail = loc && loc.value ? " \u00b7 " + loc.value : "";
+				document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value + tail;
+			}
+
 			function onRecaptchaSuccess(token) {
-				document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value;
+				setSubject();
 				document.getElementById("g-recaptcha-response").remove();
 				clearDraft();
 				document.getElementById("booking-form").submit();
@@ -229,6 +247,7 @@ templ Book() {
 				if (recaptchaWidgetId !== undefined) {
 					grecaptcha.execute(recaptchaWidgetId);
 				} else {
+					setSubject();
 					clearDraft();
 					form.submit();
 				}
@@ -278,6 +297,22 @@ templ Book() {
 						if (firstField) firstField.focus();
 					});
 				}
+				var locationSel = document.getElementById('location');
+				var guestCityField = document.getElementById('guest-city-field');
+				var guestCity = document.getElementById('guest-city');
+				function syncGuestCity() {
+					var guest = locationSel && locationSel.value === 'Guest spot';
+					if (guestCityField) guestCityField.hidden = !guest;
+					if (guestCity) {
+						guestCity.required = guest;
+						guestCity.setAttribute('aria-required', guest ? 'true' : 'false');
+						if (!guest) { guestCity.value = ''; guestCity.removeAttribute('aria-invalid'); }
+					}
+				}
+				if (locationSel) locationSel.addEventListener('change', function() {
+					syncGuestCity();
+					if (this.value === 'Guest spot' && guestCity) guestCity.focus();
+				});
 				form.addEventListener("submit", handleFormSubmit);
 				form.querySelectorAll("input, select, textarea").forEach(function(el) { wire(el, form); });
 
@@ -329,6 +364,7 @@ templ Book() {
 						var el = form.querySelector('[name="' + key + '"]');
 						if (el && el.type !== 'file' && el.type !== 'hidden') el.value = draft[key];
 					});
+					syncGuestCity();
 					if (params.get('design') && params.get('src')) {
 						applyFlashPick(params.get('design'), params.get('src'));
 						var fullName = document.getElementById('full-name');

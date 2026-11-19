@@ -2,7 +2,7 @@
 // book.html, emails the request through Resend, then redirects to the thank-you page.
 
 import { Buffer } from 'node:buffer';
-import { buildEmail, esc } from './email.js';
+import { buildEmail, buildConfirmation, esc } from './email.js';
 
 const MAX_BODY = 20 * 1024 * 1024; // whole request
 // Photos combined. Encoding for email adds a third, and Gmail refuses messages over 25MB,
@@ -52,18 +52,20 @@ function safeName(name, fallback) {
 	return clean || fallback;
 }
 
-async function recaptchaOk(env, token, ip) {
+async function recaptchaOk(env, token, ip, hosts) {
 	if (!env.RECAPTCHA_SECRET) return true;
 	if (!token) return false;
 	const body = new URLSearchParams({ secret: env.RECAPTCHA_SECRET, response: token });
 	if (ip) body.set('remoteip', ip);
 	const r = await fetch('https://www.google.com/recaptcha/api/siteverify', { method: 'POST', body });
 	const data = await r.json().catch(() => ({}));
-	return data.success === true;
+	if (data.success !== true) console.warn('booking: reCAPTCHA refused', JSON.stringify(data['error-codes'] || []));
+	// The token must have been solved on this site, not harvested from another one.
+	return data.success === true && hosts.includes(data.hostname);
 }
 
 export default {
-	async fetch(request, env) {
+	async fetch(request, env, ctx) {
 		const siteUrl = (env.SITE_URL || 'https://www.tatit2.com').replace(/\/$/, '');
 		const thanks = Response.redirect(siteUrl + '/thank_you.html', 303);
 
@@ -75,6 +77,12 @@ export default {
 
 		if (Number(request.headers.get('content-length') || 0) > MAX_BODY) {
 			return page(siteUrl, 413, 'Photos too large', 'Together the photos are over 15 MB. Please pick smaller ones and send again.');
+		}
+
+		// At most 5 requests a minute from one address.
+		if (env.LIMITER) {
+			const { success } = await env.LIMITER.limit({ key: request.headers.get('cf-connecting-ip') || 'unknown' });
+			if (!success) return page(siteUrl, 429, 'Slow down', 'Too many requests came from your connection. Please wait a minute and send the form again.');
 		}
 
 		let form;
@@ -106,7 +114,7 @@ export default {
 		if (b.type === 'Flash' && FLASH_RE.test(b.flashDesign)) b.flashUrl = `${siteUrl}/images/flash/${b.flashDesign}.webp`;
 		else b.flashDesign = '';
 
-		if (!(await recaptchaOk(env, field(form, 'g-recaptcha-response', 4000), request.headers.get('cf-connecting-ip')))) {
+		if (!(await recaptchaOk(env, field(form, 'g-recaptcha-response', 4000), request.headers.get('cf-connecting-ip'), allowed.map((o) => o.replace(/^https?:\/\//, ''))))) {
 			return page(siteUrl, 400, 'Not sent', 'The spam check did not pass. Please go back and send the form again.');
 		}
 
@@ -159,6 +167,19 @@ export default {
 		if (!res.ok) {
 			console.error('booking: Resend rejected the email', res.status, await res.text());
 			return page(siteUrl, 502, 'Not sent', 'Something went wrong while sending your request. Please go back and try again in a minute.');
+		}
+		// The customer's copy. Sent only for requests reCAPTCHA has verified, so a bot cannot
+		// make this domain email strangers. A failure here never fails the booking.
+		if (env.RECAPTCHA_SECRET && env.SEND_CONFIRMATION !== 'off') {
+			const c = buildConfirmation(b, siteUrl);
+			ctx.waitUntil(
+				fetch(env.RESEND_API_URL || 'https://api.resend.com/emails', {
+					method: 'POST',
+					headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
+					body: JSON.stringify({ from: env.FROM_EMAIL, to: [b.email], reply_to: env.TO_EMAIL.split(',')[0].trim(), subject: c.subject, html: c.html, text: c.text }),
+				}).then(async (r) => { if (!r.ok) console.error('booking: confirmation rejected', r.status, await r.text()); })
+					.catch((e) => console.error('booking: confirmation failed', e)),
+			);
 		}
 		console.log('booking: sent', JSON.stringify({ type: b.type, location: b.location, photos: photos.length, bytes: total }));
 		return thanks;

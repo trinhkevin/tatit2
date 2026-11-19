@@ -16,7 +16,7 @@ export function esc(s) {
 function fact(label, valueHtml) {
 	return `<td class="fact" width="50%" valign="top" style="padding:16px 12px 16px 0;border-top:1px solid ${LINE};">
 <div style="${LABEL}padding-bottom:6px;">${esc(label)}</div>
-<div style="font-family:${FONT};font-size:20px;line-height:26px;font-weight:500;letter-spacing:-0.02em;color:${BLACK};">${valueHtml}</div>
+<div style="font-family:${FONT};font-size:20px;line-height:26px;font-weight:500;letter-spacing:-0.02em;color:${BLACK};word-break:break-word;overflow-wrap:anywhere;">${valueHtml}</div>
 </td>`;
 }
 
@@ -29,7 +29,7 @@ function factRows(facts) {
 function block(label, bodyHtml) {
 	return `<tr><td class="pad" style="padding:0 32px;"><div style="border-top:1px solid ${LINE};padding:20px 0 24px;">
 <div style="${LABEL}padding-bottom:8px;">${esc(label)}</div>
-<div style="font-family:${FONT};font-size:17px;line-height:26px;color:${BLACK};">${bodyHtml}</div>
+<div style="font-family:${FONT};font-size:17px;line-height:26px;color:${BLACK};word-break:break-word;overflow-wrap:anywhere;">${bodyHtml}</div>
 </div></td></tr>`;
 }
 
@@ -38,7 +38,7 @@ function link(href, text) {
 }
 
 function multiline(s) {
-	return esc(s).replace(/\r?\n/g, '<br>');
+	return esc(s).replace(/(\r?\n){3,}/g, '\n\n').replace(/\r?\n/g, '<br>');
 }
 
 function photo(label, src) {
@@ -89,7 +89,7 @@ export function buildEmail(b, photos, siteUrl) {
 <body style="margin:0;padding:0;background:${PAGE};">
 <div style="display:none;max-height:0;overflow:hidden;">${esc(b.type)}${b.size ? ', ' + esc(b.size) + ' in' : ''}${where ? ' · ' + esc(where) : ''}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${PAGE};"><tr><td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background:${PAGE};">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;table-layout:fixed;background:${PAGE};">
 
 <tr><td class="pad" style="padding:18px 32px;background:${BLACK};">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
@@ -99,10 +99,10 @@ export function buildEmail(b, photos, siteUrl) {
 
 <tr><td class="pad" style="padding:40px 32px 32px;">
 <div style="${LABEL}color:${BLACK};padding-bottom:14px;">${esc(b.type)}</div>
-<div class="h1" style="font-family:${FONT};font-size:52px;line-height:50px;font-weight:700;letter-spacing:-0.04em;text-transform:uppercase;color:${BLACK};">${esc(b.name)}</div>
+<div class="h1" style="font-family:${FONT};font-size:52px;line-height:50px;font-weight:700;letter-spacing:-0.04em;text-transform:uppercase;color:${BLACK};word-break:break-word;overflow-wrap:anywhere;">${esc(b.name)}</div>
 </td></tr>
 
-${facts ? `<tr><td class="pad" style="padding:0 32px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+${facts ? `<tr><td class="pad" style="padding:0 32px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed;">
 ${facts}
 </table></td></tr>` : ''}
 

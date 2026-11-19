@@ -4,8 +4,10 @@
 import { Buffer } from 'node:buffer';
 import { buildEmail, esc } from './email.js';
 
-const MAX_BODY = 30 * 1024 * 1024; // whole request
-const MAX_FILES = 25 * 1024 * 1024; // photos combined; Resend allows 40MB after encoding
+const MAX_BODY = 20 * 1024 * 1024; // whole request
+// Photos combined. Encoding for email adds a third, and Gmail refuses messages over 25MB,
+// so 15MB of photos is the most that reliably arrives.
+const MAX_FILES = 15 * 1024 * 1024;
 const TYPES = ['Fine Line', 'Animal Portrait', 'Flash'];
 const LOCATIONS = ['Chicago', 'Guest spot'];
 const PHOTO_FIELDS = [
@@ -41,6 +43,10 @@ function field(form, name, max = 200) {
 	return typeof v === 'string' ? v.trim().slice(0, max) : '';
 }
 
+function line(form, name, max) {
+	return field(form, name, max).replace(/[\u0000-\u001f\u007f\u2028\u2029]+/g, ' ').trim();
+}
+
 function safeName(name, fallback) {
 	const clean = String(name || '').replace(/[^A-Za-z0-9._-]+/g, '-').replace(/^[-.]+/, '').slice(-80);
 	return clean || fallback;
@@ -68,7 +74,7 @@ export default {
 		if (!origin || !allowed.includes(origin)) return page(siteUrl, 403, 'Not sent', 'This form can only be sent from tatit2.com.');
 
 		if (Number(request.headers.get('content-length') || 0) > MAX_BODY) {
-			return page(siteUrl, 413, 'Photos too large', 'Together the photos are over 25 MB. Please pick smaller ones and send again.');
+			return page(siteUrl, 413, 'Photos too large', 'Together the photos are over 15 MB. Please pick smaller ones and send again.');
 		}
 
 		let form;
@@ -80,17 +86,17 @@ export default {
 		if (field(form, '_honey')) return thanks;
 
 		const b = {
-			name: field(form, 'full_name', 120),
-			email: field(form, 'email', 200),
-			phone: field(form, 'phone_number', 40),
-			day: field(form, 'date_preference', 20),
-			location: field(form, 'location', 20),
-			city: field(form, 'guest_city', 80),
-			type: field(form, 'tattoo_type', 30),
+			name: line(form, 'full_name', 120),
+			email: line(form, 'email', 200),
+			phone: line(form, 'phone_number', 40),
+			day: line(form, 'date_preference', 20),
+			location: line(form, 'location', 20),
+			city: line(form, 'guest_city', 80),
+			type: line(form, 'tattoo_type', 30),
 			description: field(form, 'description', 4000),
-			size: field(form, 'size', 10),
-			color: field(form, 'color', 20),
-			flashDesign: field(form, 'flash_design', 30),
+			size: line(form, 'size', 10),
+			color: line(form, 'color', 20),
+			flashDesign: line(form, 'flash_design', 30),
 			notes: field(form, 'notes', 4000),
 			flashUrl: '',
 		};
@@ -110,14 +116,14 @@ export default {
 		for (const [name, label] of PHOTO_FIELDS) {
 			const files = form.getAll(name).filter((f) => typeof f !== 'string' && f.size > 0);
 			for (const [i, f] of files.entries()) {
-				if (!/^image\//.test(f.type)) return page(siteUrl, 400, 'Not sent', 'Only image files can be attached. Please go back and choose photos.');
+				if (!/^image\//.test(f.type) && !/\.(jpe?g|png|heic|heif|webp)$/i.test(f.name || '')) return page(siteUrl, 400, 'Not sent', 'Only image files can be attached. Please go back and choose photos.');
 				total += f.size;
-				if (total > MAX_FILES) return page(siteUrl, 413, 'Photos too large', 'Together the photos are over 25 MB. Please pick smaller ones and send again.');
+				if (total > MAX_FILES) return page(siteUrl, 413, 'Photos too large', 'Together the photos are over 15 MB. Please pick smaller ones and send again.');
 				const cid = `${name}-${i}`;
 				attachments.push({
 					filename: safeName(f.name, `${name}.jpg`),
 					content: Buffer.from(await f.arrayBuffer()).toString('base64'),
-					content_type: f.type,
+					content_type: f.type || 'application/octet-stream',
 					content_id: cid,
 				});
 				photos.push({ label: files.length > 1 ? `${label} ${i + 1}` : label, cid });

@@ -31,15 +31,15 @@ templ Book() {
 					<input type="text" name="_honey" style="display:none"/>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Full name</legend>
-						<input autocomplete="name" id="full-name" name="full_name" type="text" class="book-input" placeholder="Enter your name" required aria-required="true" title="Please enter your full name"/>
+						<input autocomplete="name" id="full-name" name="full_name" type="text" maxlength="120" class="book-input" placeholder="Enter your name" required aria-required="true" title="Please enter your full name"/>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Email</legend>
-						<input autocomplete="email" id="email" name="email" type="email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" class="book-input" placeholder="Enter your email" required aria-required="true"/>
+						<input autocomplete="email" id="email" name="email" type="email" maxlength="200" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" class="book-input" placeholder="Enter your email" required aria-required="true"/>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Phone number</legend>
-						<input autocomplete="tel" id="phone-number" name="phone_number" type="tel" class="book-input" placeholder="Enter your phone number" required aria-required="true" title="Please enter your phone number"/>
+						<input autocomplete="tel" id="phone-number" name="phone_number" type="tel" maxlength="40" class="book-input" placeholder="Enter your phone number" required aria-required="true" title="Please enter your phone number"/>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Preferred day</legend>
@@ -59,7 +59,7 @@ templ Book() {
 					</fieldset>
 					<fieldset class="book-field" id="guest-city-field" hidden>
 						<legend class="book-legend required-label">Which city?</legend>
-						<input autocomplete="off" id="guest-city" name="guest_city" type="text" class="book-input" placeholder="e.g. Los Angeles" title="Please enter the city of the guest spot"/>
+						<input autocomplete="off" id="guest-city" name="guest_city" type="text" maxlength="80" class="book-input" placeholder="e.g. Los Angeles" title="Please enter the city of the guest spot"/>
 					</fieldset>
 					<fieldset class="book-field book-field--full">
 						<legend class="book-legend required-label">Tattoo type</legend>
@@ -80,7 +80,7 @@ templ Book() {
 				<template id="fine-line">
 					<fieldset class="book-field book-field--full">
 						<legend class="book-legend required-label">Describe your tattoo</legend>
-						<textarea name="description" class="book-input" placeholder="Style, subject, mood, details..." rows="3" required></textarea>
+						<textarea name="description" maxlength="4000" class="book-input" placeholder="Style, subject, mood, details..." rows="3" required></textarea>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Photo references</legend>
@@ -165,7 +165,7 @@ templ Book() {
 					</fieldset>
 					<fieldset class="book-field book-field--full">
 						<legend class="book-legend">Additional notes</legend>
-						<textarea name="notes" class="book-input" placeholder="Anything else you'd like me to know..." rows="2"></textarea>
+						<textarea name="notes" maxlength="4000" class="book-input" placeholder="Anything else you'd like me to know..." rows="2"></textarea>
 					</fieldset>
 				</template>
 			</div>
@@ -311,6 +311,19 @@ templ Book() {
 				}
 				form.addEventListener('input', function(e) { saveField(e.target); });
 				form.addEventListener('change', function(e) { saveField(e.target); });
+
+				/* Photos travel in one email, and mail providers refuse very large messages */
+				var MAX_PHOTOS = 15 * 1024 * 1024;
+				form.addEventListener('change', function(e) {
+					if (!e.target || e.target.type !== 'file') return;
+					var total = 0;
+					var inputs = form.querySelectorAll('input.book-file');
+					inputs.forEach(function(i) { i.setCustomValidity(''); if (i.files && i.files[0]) total += i.files[0].size; });
+					if (total > MAX_PHOTOS) {
+						e.target.setCustomValidity('Together the photos are over 15 MB. Please choose a smaller photo.');
+						e.target.reportValidity();
+					}
+				});
 
 				/* Flash pick: thumbnail, hidden fields, and the drawing attached as a file */
 				var FLASH_SRC = /^images\/flash\/flash-[0-9]+\.webp$/;

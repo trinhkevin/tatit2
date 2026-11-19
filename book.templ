@@ -27,19 +27,15 @@ templ Book() {
 			<div class="book-pane">
 				<div class="book-meta"><span>General information</span><span>*Required</span></div>
 				<div id="form-live-region" class="sr-only" role="alert" aria-live="polite" aria-atomic="true" aria-relevant="additions text"></div>
-				<form id="booking-form" method="POST" enctype="multipart/form-data" class="book-form" data-to="dGF0aXR0b28uYUBnbWFpbC5jb20=" novalidate>
-					<input type="hidden" name="_next" value="https://www.tatit2.com/thank_you.html"/>
-					<input type="hidden" id="subject" name="_subject" value="[Booking Request] Unknown Name"/>
+				<form id="booking-form" method="POST" enctype="multipart/form-data" action="https://tatit2-booking.ktrinh-a-96.workers.dev/" class="book-form" novalidate>
 					<input type="text" name="_honey" style="display:none"/>
-					<input type="hidden" name="_captcha" value="false"/>
-					<input type="hidden" name="_template" value="table"/>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Full name</legend>
 						<input autocomplete="name" id="full-name" name="full_name" type="text" class="book-input" placeholder="Enter your name" required aria-required="true" title="Please enter your full name"/>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Email</legend>
-						<input autocomplete="email" id="email" name="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" class="book-input" placeholder="Enter your email" required aria-required="true"/>
+						<input autocomplete="email" id="email" name="email" type="email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" class="book-input" placeholder="Enter your email" required aria-required="true"/>
 					</fieldset>
 					<fieldset class="book-field">
 						<legend class="book-legend required-label">Phone number</legend>
@@ -195,15 +191,7 @@ templ Book() {
 			var DRAFT_KEY = 'tatit2BookDraft';
 			function clearDraft() { try { sessionStorage.removeItem(DRAFT_KEY); } catch (e) {} }
 
-			function setSubject() {
-				var loc = document.getElementById("location");
-				var tail = loc && loc.value ? " \u00b7 " + loc.value : "";
-				document.getElementById("subject").value = "[Booking Request] " + document.getElementById("full-name").value + tail;
-			}
-
 			function onRecaptchaSuccess(token) {
-				setSubject();
-				document.getElementById("g-recaptcha-response").remove();
 				clearDraft();
 				document.getElementById("booking-form").submit();
 			}
@@ -247,7 +235,6 @@ templ Book() {
 				if (recaptchaWidgetId !== undefined) {
 					grecaptcha.execute(recaptchaWidgetId);
 				} else {
-					setSubject();
 					clearDraft();
 					form.submit();
 				}
@@ -268,7 +255,6 @@ templ Book() {
 				if (bookForm) bookForm.addEventListener('focusin', loadRecaptcha, { once: true });
 				var form = document.getElementById("booking-form");
 				if (!form) return;
-				try { form.action = 'https://formsubmit.co/' + atob(form.getAttribute('data-to')); } catch (e) { /* no action without JS */ }
 				function wire(el, f) {
 					el.addEventListener("invalid", function() { this.setAttribute("aria-invalid", "true"); });
 					function check() {

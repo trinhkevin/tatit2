@@ -1,0 +1,18 @@
+name = "tatit2-booking"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[observability]
+enabled = true
+
+[vars]
+FROM_EMAIL = "tat.it.too bookings <bookings@tatit2.com>"
+SITE_URL = "https://www.tatit2.com"
+ALLOWED_ORIGINS = "https://www.tatit2.com,https://tatit2.com"
+
+# Secrets, set with `npx wrangler secret put <NAME>`:
+#   RESEND_API_KEY     Resend API key (sending access only)
+#   TO_EMAIL           inbox that receives booking requests
+#   RECAPTCHA_SECRET   optional; reCAPTCHA v2 secret key. When set, every request must pass.

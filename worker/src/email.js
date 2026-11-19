@@ -147,8 +147,7 @@ export function buildConfirmation(b, siteUrl) {
 		barRight: 'Request received',
 		label: 'Your request is in',
 		headline: `Thank you, ${first}`,
-		hero: `<tr><td style="padding:0;"><a href="${siteUrl}"><img src="${siteUrl}/images/email/thanks.jpg" alt="A full back piece by tat.it.too: a dragon, a ram, a tiger and a rooster in a vase" width="600" style="display:block;width:100%;max-width:600px;height:auto;border:0;background:#bdbdbd;"></a></td></tr>`,
-		inner: `<tr><td class="pad" style="padding:32px 32px 0;"><div class="ink" style="font-family:${FONT};font-size:22px;line-height:30px;letter-spacing:-0.02em;color:${BLACK};">Thanks for your booking request. I'll get back to you as soon as possible. Thank you for your patience &#128420;</div></td></tr>
+		inner: `<tr><td class="pad" style="padding:0 32px;"><div class="ink" style="font-family:${FONT};font-size:22px;line-height:30px;letter-spacing:-0.02em;color:${BLACK};">Thanks for your booking request. I'll get back to you as soon as possible. Thank you for your patience &#128420;</div></td></tr>
 
 ${heading('What happens next')}
 ${step('01', 'I read your request', 'Your idea, photos and size are with me now.')}

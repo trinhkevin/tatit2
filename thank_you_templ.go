@@ -49,7 +49,7 @@ func ThankYou() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</a></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</a></div></div><script>\n\t\t\t/* The request arrived, so the saved booking answers are no longer needed */\n\t\t\ttry { sessionStorage.removeItem('tatit2BookDraft'); } catch (e) {}\n\t\t</script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

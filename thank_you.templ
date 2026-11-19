@@ -13,5 +13,9 @@ templ ThankYou() {
 				<a class="back-home arrow-link" href="index.html"><span>Back home</span>@Arrow()</a>
 			</div>
 		</div>
+		<script>
+			/* The request arrived, so the saved booking answers are no longer needed */
+			try { sessionStorage.removeItem('tatit2BookDraft'); } catch (e) {}
+		</script>
 	}
 }

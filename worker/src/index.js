@@ -33,7 +33,7 @@ a{color:inherit;}
 @media (max-width:767px){header,main{padding-left:16px;padding-right:16px;}}
 </style></head><body><header><a href="${siteUrl}" style="text-decoration:none">tat.it.too</a></header>
 <main><h1>${esc(title)}</h1><p>${esc(message)}</p>
-<p>Your answers are still on the previous page. If it keeps failing, send a message on <a href="https://www.instagram.com/tat.it.too/">Instagram</a> instead.</p>
+<p>Go back to find your answers still filled in; you may need to choose the photos again. If it keeps failing, send a message on <a href="https://www.instagram.com/tat.it.too/">Instagram</a> instead.</p>
 <button class="btn" onclick="history.back()">Back to the form</button></main></body></html>`;
 	return new Response(html, { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
 }

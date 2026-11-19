@@ -189,15 +189,37 @@ templ Book() {
 			}
 
 			var DRAFT_KEY = 'tatit2BookDraft';
-			function clearDraft() { try { sessionStorage.removeItem(DRAFT_KEY); } catch (e) {} }
+
+			/* One request per tap: a second tap while the first is in flight does nothing */
+			var sending = false;
+			var lastAttempt = 0;
+			function setSending(on) {
+				sending = on;
+				var btn = document.querySelector("#booking-form .book-submit");
+				if (!btn) return;
+				btn.setAttribute("aria-disabled", on ? "true" : "false");
+				var txt = btn.querySelector("span");
+				if (txt) txt.textContent = on ? "Sending\u2026" : "Send request";
+			}
+			function sendForm() {
+				if (sending) return;
+				setSending(true);
+				document.getElementById("booking-form").submit();
+			}
+			/* Coming back to this page (the Back button after an error) makes the form usable again */
+			window.addEventListener("pageshow", function() {
+				setSending(false);
+				lastAttempt = 0;
+				if (recaptchaWidgetId !== undefined) { try { grecaptcha.reset(recaptchaWidgetId); } catch (e) {} }
+			});
 
 			function onRecaptchaSuccess(token) {
-				clearDraft();
-				document.getElementById("booking-form").submit();
+				sendForm();
 			}
 
 			function handleFormSubmit(event) {
 				event.preventDefault();
+				if (sending || Date.now() - lastAttempt < 2000) return false;
 				const form = document.getElementById("booking-form");
 				const liveRegion = document.getElementById("form-live-region");
 				form.classList.add("form-attempted");
@@ -232,11 +254,11 @@ templ Book() {
 					liveRegion.setAttribute("aria-live", "polite");
 					liveRegion.textContent = "";
 				}
+				lastAttempt = Date.now();
 				if (recaptchaWidgetId !== undefined) {
 					grecaptcha.execute(recaptchaWidgetId);
 				} else {
-					clearDraft();
-					form.submit();
+					sendForm();
 				}
 				return false;
 			}

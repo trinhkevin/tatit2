@@ -917,6 +917,7 @@ textarea.book-input { min-height: 7rem; resize: vertical; line-height: 1.35; }
 	transition: opacity 0.4s;
 }
 .book-submit:hover { opacity: 0.8; }
+.book-submit[aria-disabled="true"] { opacity: 0.55; pointer-events: none; }
 .book-submit .arrow { width: 12px; height: 12px; }
 .book-legal { margin-top: 14px; font-size: 0.75rem; line-height: 1.4; opacity: 0.65; }
 .inline-link { text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.4s; }
